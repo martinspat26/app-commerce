@@ -1,0 +1,118 @@
+body {
+    background-color: green;
+    padding: 0;
+    /* margin-left: 50px; */
+    font-family: "Lucida Sans Unicode", Arial;
+    font-size: 14px;
+}
+
+header {
+    background-color: white;
+    padding: 0;
+    width: 100%;
+}
+
+#site {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 0 0;
+}
+
+#footer {
+    margin: 0 auto;
+    width: 1400px;
+    padding: 30px 0 0 0;
+    padding: 30px 0 0;
+    background-color: white;
+}
+
+#data {
+    text-align: right;
+    font-size: 12px;
+    color: #0a0a0a;
+    padding: 0 5% 10px;
+}
+
+h1, h2 {
+    font-size: 18px;
+    padding: 0 0 5px;
+    /* This is a single-line comment border-bottom: 1px solid #001428; */
+    margin-bottom: 5px;
+    color: #0a0a0a;
+}
+
+
+h3 {
+    font-size: 14px;
+    padding: 15px 0 5px;
+    margin-bottom: 5px;
+    border-color: #cccccc;
+}
+
+img {
+    border: 0;
+}
+
+p {
+    padding: 0 0 5px;
+}
+
+a {
+    color: #000;
+}
+
+#content {
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+#logo {
+    text-align: left;
+    padding: 5px;
+    margin-top: 5%;
+    padding-top: 25px;
+}
+
+#logo hr {
+    display: block;
+    height: 1px;
+    overflow: hidden;
+    background: #BBB;
+    border: 0;
+    padding: 0;
+    margin: 30px 0 20px;
+}
+
+.claim {
+    text-transform: uppercase;
+    color: #BBB;
+}
+
+#site ul {
+    padding: 10px 0 10px 20px;
+    list-style: circle;
+}
+
+.buttons {
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.buttons a {
+    display: inline-block;
+    background: #2a873b;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    width: 40%;
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+.buttons a:hover {
+    background: #1C8BC1;
+}
+
+.buttons a:last-child {
+    margin: 0;
+}

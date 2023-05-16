@@ -70,7 +70,7 @@ class ProductController extends FrontendController
      */
     public function detailAction(Request $request)
     {
-
+        dd($request->query->all());
         $gac = Product::getById($_GET["id"]);
         return $this->render('gac/gac_detail.html.twig', [
             "gac" => $gac
