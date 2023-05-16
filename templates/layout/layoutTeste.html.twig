@@ -1,0 +1,17 @@
+{% extends ('layouts/layoutTeste.html.twig') %} 
+
+{% block content %}
+
+    <h1> {{ pimcore_input ('headline') }}</h1>
+
+    {% for i in pimcore_block('contentblock').iterator %}
+
+        <p> {{ pimcore_wysiwyg ('content') }}</p>
+
+        {{pimcore_image ('image', {
+            'thumbnail': 'exampleRotate'
+        })}}
+            
+    {% endfor %}
+    
+{% endblock %}

@@ -1,0 +1,20 @@
+<div class="filter pb-3">
+
+    <div class="card">
+        <div class="card-body">
+
+            <h6 class="mb-0">{{ (label)|trans }}</h6>
+            <br />
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="{{ fieldname }}" value="{{ currentValue }}">
+            </div>
+
+            <div class="d-flex justify-content-end pt-3">
+                <button style="background: #e86657; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;" type="submit">{{ 'Apply' | trans }}</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

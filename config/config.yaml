@@ -1,5 +1,6 @@
 imports:
     - { resource: 'local/' }
+    - { resource: ecommerce/base-ecommerce.yaml }
 
 
 pimcore:
@@ -22,8 +23,9 @@ pimcore:
 #        zend_date: true
 
 #### CLASS OVERRIDES EXAMPLES
-#    models:
-#        class_overrides:
+    models:
+        class_overrides:
+            'Pimcore\Model\DataObject\Product': 'App\Model\DataObject\Product'
 #            'Pimcore\Model\DataObject\News': 'App\Model\DataObject\News'
 #            'Pimcore\Model\DataObject\News\Listing': 'App\Model\DataObject\News\Listing'
 #            'Pimcore\Model\DataObject\Folder': 'App\Model\DataObject\Folder'

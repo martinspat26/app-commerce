@@ -1,0 +1,17 @@
+{% extends ('layout/patLayout.html.twig') %}
+
+
+{% block body %} 
+
+	{{ pimcore_wysiwyg('contentdescription')}}
+
+	<h3>{{ pimcore_link ('linkHtml') }}</h3>
+	<p>{{ pimcore_areablock ('twigTeste') }}</p>
+
+	<h3>{{ pimcore_link ('link') }}</h3>
+	<p>{{ pimcore_areablock ('twigIfBlock') }}</p>
+
+	<h3>{{ pimcore_link ('mylink') }}</h3>
+	<p>{{ pimcore_areablock ('twigForBlock') }}</p>
+	
+{% endblock %}

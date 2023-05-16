@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="static/images/icons/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/62e43a72a9.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.3/dist/umd/popper.min.js" integrity="sha384-+Bb+0NUug1JkHvzATGljLLve0dyzQmwg+1ZCHpL9o9Htj12nQ2DnNTzouPilBNiL" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-lsZ8D2Qz4h4K4t4yhTtW8rkfHcGBcjXvkS4z4sCJST4l+ZsFxEPZs41hjrCeXHJMOEz+af/h/8gLTxw72z+rA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>{{document.getTitle()}}</title>
+</head>
+<body>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: "Lucida Sans Unicode", Arial;
+            font-size: 14px;
+            background-color: #f8f9fa;
+        }
+    
+        #site {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        #logo {
+            text-align: center;
+            padding: 10px 0;
+            background: #E86657;
+        }
+    
+        #logo hr {
+            display: block;
+            height: 1px;
+            overflow: hidden;
+            background: #BBB;
+            border: 0;
+            padding: 0;
+            margin: 30px 0 20px 0;
+        }
+
+        #footer {
+            text-align: center;
+            background: #E86657;
+        }
+    
+        #site ul {
+            padding: 10px 0 10px 20px;
+            list-style: circle;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .bottom p {
+            display: inline-block;
+            margin-right: 50px;
+        }
+
+        .texto-direita {
+            display: inline-block;
+        }
+
+        .texto-direita i {
+            margin-left: 5px;
+        }
+
+        .image {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .expandir-imagem {
+            margin-left: 100px;
+        }
+
+        .imagens-menores {
+            clear: both;
+            display: block;
+            margin-top: -20px;
+            margin-left: -525px;
+            margin-bottom: 50px;
+        }
+
+        .imagem-menor {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 8px;
+            max-width: 100px;
+        }
+
+        .imagens-menores img {
+            display: inline-block;
+            margin-right: 8px;
+            max-width: 100px;
+        }
+
+        .fechar-imagem {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 16px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .fechar-imagem:hover {
+            color: #ccc;
+        }
+
+        .text {
+            flex: 2;
+            text-align: left;
+            position: relative;
+            justify-content: space-between;
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+
+        .downloadBtn {
+            margin-top: -200px;
+            margin-left: 1030px;
+            background: #28a745;
+            border-radius: 6px;
+            padding: 15px;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+        }
+
+        .nav-link {
+            user-select: none;
+            border: 2px solid #444;
+            padding: 10px; 
+            display: inline-block;
+            margin-right: 10px;
+            color: black;
+        }
+
+        .nav-link.active{
+            color: #E86657;
+        }
+
+        .nav-link:hover{
+            color: black;
+        }
+
+        .nav-b2c {
+            user-select: none;
+            border: 2px solid #444;
+            padding: 12px;
+            display: flex;
+            margin-right: 10px;
+            margin-top: 10px;
+            color: black;
+            align-items: center;
+        }
+
+        .nav-b2c.active{
+            color: #E86657;
+        }
+
+        .nav-b2c:hover{
+            color: black;
+        }
+
+        .tab-icon {
+            display: inline-block;
+            margin-right: 5px;
+            margin-left: 5px;
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+        }
+
+        .tab-title {
+            font-weight: bold;
+            font-size: 14px;
+            width: calc(100% - 13px);
+        }
+
+        z {
+            color: #FFF;
+        }
+
+        h5 {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .status-container {
+            margin-top: 10px;
+        }
+
+        .status {
+            text-align: left;
+        }
+
+        .sync-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .sync {
+            text-align: left;
+        }
+
+        .planner-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .planner, .plannerDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .planner {
+            float: left;
+        }
+
+        .plannerDescription {
+            float: right;
+        }
+
+        .plannerDescription:last-child {
+            width: calc(50% - 2px);
+            margin-right: 2px;
+            clear: both;
+        }
+
+        .plannerDescriptionAditional {
+            width: 50%;
+            text-align: right; 
+            top: 88px;
+            left: 500px;
+            float: right;
+            position: absolute;
+            right: 0;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: baseline;
+            margin-top: 10px;
+            margin-left: 1px;
+        }
+
+        .checkbox-wrapper label {
+            margin-right: 5px;
+            font-size: 14px;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .checkbox-wrapper input[type="checkbox"]::before {
+            content: "";
+            display: block;
+            border: 1px solid #3a3a3a;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 18px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #fff;
+        }
+
+        .checkbox-wrapper input[type="checkbox"]:checked::before {
+            content: "\2713";
+            display: block;
+            border: 1px solid #3a3a3a;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 18px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #3a3a3a;
+        }
+
+        .segment-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .segment, .segmentDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .segment {
+            float: left;
+        }
+
+        .segmentDescription {
+            float: right;
+        }
+
+        .itemNumber-container {
+            margin-top: 20px;
+        }
+
+        .itemNumber {
+            text-align: left;
+        }
+
+        .description-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .description {
+            text-align: left;
+        }
+
+        .colorFragrance-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .colorFragrance, .colorFragranceDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .colorFragrance {
+            float: left;
+        }
+
+        .colorFragranceDescription {
+            float: right;
+        }
+
+        .wicks-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .wicks {
+            text-align: left;
+        }
+
+        .gtin-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .gtin {
+            text-align: left;
+        }
+
+        .sales-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .sales, .salesDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .sales {
+            float: left;
+        }
+
+        .salesDescription {
+            float: right;
+        }
+
+        .glClass-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .glClass, .glClassDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .glClass {
+            float: left;
+        }
+
+        .glClassDescription {
+            float: right;
+        }
+
+        .itemCategory-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .itemCategory, .itemCategoryDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .itemCategory {
+            float: left;
+        }
+
+        .itemCategoryDescription {
+            float: right;
+        }
+
+        .commodity-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .commodity, .commodityDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .commodity {
+            float: left;
+        }
+
+        .commodityDescription {
+            float: right;
+        }
+
+        .pallet-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .pallet, .palletDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .pallet {
+            float: left;
+        }
+
+        .palletDescription {
+            float: right;
+        }
+
+        .itemPrice-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .itemPrice, .itemPriceDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .itemPrice {
+            float: left;
+        }
+
+        .itemPriceDescription {
+            float: right;
+        }
+
+        .sds-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .sds, .sdsDescription {
+            text-align: left;
+            width: 50%;
+        }
+
+        .sds {
+            float: left;
+        }
+
+        .sdsDescription {
+            float: right;
+        }
+
+        .breadcrumbs {
+            margin: 20px 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .breadcrumbs a {
+            color: #E86657;
+        }
+
+        .breadcrumbs ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .breadcrumbs li:not(:last-child)::after {
+            content: "›";
+            margin: 0 10px;
+            color: #666;
+        }
+
+        .breadcrumbs li:last-child {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .img-fluid {
+            width: 40%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        {# MODAL #}
+
+        #imagemModal .imagem-modal {
+            max-width: 100%;
+            max-height: 80vh;
+        }
+
+        .close {
+            margin-left: 465px;
+            margin-top: 7px;
+        }
+
+        .descriptionTab-container {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .descriptionTab {
+            text-align: left;
+        }
+
+        table {
+			border-collapse: collapse;
+			width: 100%;
+			margin-bottom: 20px;
+			border: 1px solid #ddd;
+			font-size: 16px;
+		}
+
+		th, td {
+			text-align: left;
+			padding: 12px;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #f2f2f2;
+			color: #333;
+		}
+
+    </style>
+
+    <div id= "logo">
+        <a href="/gac-listing">
+        <img src="https://schijndel-online.nl/wp-content/uploads/2020/10/Schermafbeelding-2020-10-31-om-18.47.23.png" alt="Bolsius" >
+        </a>
+    </div>
+
+    <div id="site">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <div id = "footer">
+        <div id = "logo">
+            <a href="/gac-listing">
+                <img src="https://www.bolsius.com/assets/logo-b.svg" alt="Bolsius" >
+            </a>
+        </div>
+    <z>© 2023 Bolsiuskaarsenshop.nl</z>
+    </div>
+        {% block inlinescripts deferred %}
+         {{ pimcore_inline_script() }}
+        {% endblock %}
+</body>
+</html>
