@@ -6,18 +6,13 @@
     --dark-gray: #f03c28;
     --light-gray: #f03c28;
     --dark-orange: #f03c28;
+    --honey: #EC9706;
+    --amber: #893101;
 }
 
 /* GLOBAL */
 
-body {
-    font-family: "Hind Guntur";
-}
 
-/*p {
-    font-size: 18px;
-    line-height: 30px;
-}*/
 
 main {
     background-color: var(--light-gray);
