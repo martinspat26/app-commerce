@@ -10,6 +10,7 @@ pimcore_ecommerce_framework:
         search_attributes:
           - name
           - description
+
         attributes:
           name:
             fieldname: name
@@ -23,6 +24,12 @@ pimcore_ecommerce_framework:
             fieldname: price
             type: double
             filter_group: double
+          productType:
+            interpreter_id: Pimcore\Bundle\EcommerceFrameworkBundle\IndexService\Interpreter\DefaultObjects
+            filter_group: relation
+          localization:
+            interpreter_id: Pimcore\Bundle\EcommerceFrameworkBundle\IndexService\Interpreter\DefaultObjects
+            filter_group: relation
 
 
   filter_service:

@@ -1,37 +1,78 @@
+/* VARS */
+:root {
+    --honey: #EC9706;
+    --amber: #893101;
+}
+
 body {
-    background-color: green;
+    background-color: #EC9706;
     padding: 0;
-    /* margin-left: 50px; */
     font-family: "Lucida Sans Unicode", Arial;
     font-size: 14px;
 }
 
-header {
+
+/* Set the background color and add some padding */
+.navbar {
     background-color: white;
-    padding: 0;
-    width: 100%;
+    padding: 10px;
+  }
+  
+  /* Style the navbar brand (logo or text) */
+  .navbar-brand {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Style the navigation links */
+  .navbar-nav .nav-link {
+    font-size: 16px;
+    color: #555;
+    margin-right: 10px;
+  }
+  
+  /* Style the active navigation link */
+  .navbar-nav .nav-item.active .nav-link {
+    color: #893101;
+    align-items: center;
+  }
+  
+  /* Style the search form */
+  .form-inline {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style the search input field */
+  .form-control {
+    font-size: 14px;
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  /* Style the search button */
+  .btn-outline-success {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+.bg-light {
+    background-color: white !important;
 }
 
-#site {
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 0 0;
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 30px 0 0 0;
 }
 
 #footer {
-    margin: 0 auto;
-    width: 1400px;
-    padding: 30px 0 0 0;
-    padding: 30px 0 0;
-    background-color: white;
+    max-width: 1400px;
 }
 
-#data {
-    text-align: right;
-    font-size: 12px;
-    color: #0a0a0a;
-    padding: 0 5% 10px;
-}
 
 h1, h2 {
     font-size: 18px;
@@ -66,32 +107,11 @@ a {
     margin-top: 3%;
 }
 
-#logo {
-    text-align: left;
-    padding: 5px;
-    margin-top: 5%;
-    padding-top: 25px;
-}
-
-#logo hr {
-    display: block;
-    height: 1px;
-    overflow: hidden;
-    background: #BBB;
-    border: 0;
-    padding: 0;
-    margin: 30px 0 20px;
-}
-
 .claim {
     text-transform: uppercase;
     color: #BBB;
 }
 
-#site ul {
-    padding: 10px 0 10px 20px;
-    list-style: circle;
-}
 
 .buttons {
     margin-bottom: 100px;
@@ -100,7 +120,7 @@ a {
 
 .buttons a {
     display: inline-block;
-    background: #2a873b;
+    background: #EC9706;
     color: #fff;
     padding: 5px 10px;
     margin-right: 10px;
@@ -110,9 +130,19 @@ a {
 }
 
 .buttons a:hover {
-    background: #1C8BC1;
+    background: #893101;
 }
 
 .buttons a:last-child {
     margin: 0;
+}
+
+.page-link {
+    padding: 0.375rem 0.75rem;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--amber);
+    border-color: var(--amber);
 }

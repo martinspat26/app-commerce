@@ -14,7 +14,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Type',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1683324969,
+   'modificationDate' => 1684335992,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -86,8 +86,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
               0 => 
               array (
-                'key' => 'Hotel',
-                'value' => 'Hotel',
+                'key' => 'Restaurant',
+                'value' => 'Restaurant',
               ),
               1 => 
               array (
@@ -96,13 +96,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               ),
               2 => 
               array (
-                'key' => 'Restaurant',
-                'value' => 'Restaurant',
+                'key' => 'Hotel',
+                'value' => 'Hotel',
               ),
               3 => 
               array (
                 'key' => 'Leisure',
                 'value' => 'Leisure',
+              ),
+              4 => 
+              array (
+                'key' => 'Adventure',
+                'value' => 'Adventure',
               ),
             ),
              'width' => '',
@@ -172,6 +177,64 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
+    0 => 
+    Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+       'name' => 'categoryName',
+       'title' => 'Category Name',
+       'tooltip' => '',
+       'mandatory' => false,
+       'noteditable' => false,
+       'index' => false,
+       'locked' => false,
+       'style' => '',
+       'permissions' => NULL,
+       'datatype' => 'data',
+       'fieldtype' => 'select',
+       'relationType' => false,
+       'invisible' => false,
+       'visibleGridView' => false,
+       'visibleSearch' => false,
+       'blockedVarsForExport' => 
+      array (
+      ),
+       'options' => 
+      array (
+        0 => 
+        array (
+          'key' => 'Restaurant',
+          'value' => 'Restaurant',
+        ),
+        1 => 
+        array (
+          'key' => 'Spa',
+          'value' => 'Spa',
+        ),
+        2 => 
+        array (
+          'key' => 'Hotel',
+          'value' => 'Hotel',
+        ),
+        3 => 
+        array (
+          'key' => 'Leisure',
+          'value' => 'Leisure',
+        ),
+        4 => 
+        array (
+          'key' => 'Adventure',
+          'value' => 'Adventure',
+        ),
+      ),
+       'width' => '',
+       'defaultValue' => '',
+       'optionsProviderClass' => '',
+       'optionsProviderData' => '',
+       'queryColumnType' => 'varchar',
+       'columnType' => 'varchar',
+       'columnLength' => 190,
+       'dynamicOptions' => false,
+       'defaultValueGenerator' => '',
+    )),
   ),
    'blockedVarsForExport' => 
   array (
