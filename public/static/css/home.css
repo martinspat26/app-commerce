@@ -34,7 +34,7 @@ body {
   
   /* Style the active navigation link */
   .navbar-nav .nav-item.active .nav-link {
-    color: #893101;
+    color: var(--amber);
     align-items: center;
   }
   
@@ -120,7 +120,7 @@ a {
 
 .buttons a {
     display: inline-block;
-    background: #EC9706;
+    background: var(--honey );
     color: #fff;
     padding: 5px 10px;
     margin-right: 10px;
@@ -130,7 +130,7 @@ a {
 }
 
 .buttons a:hover {
-    background: #893101;
+    background: var(--amber);
 }
 
 .buttons a:last-child {

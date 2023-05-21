@@ -1,0 +1,37 @@
+{# @var product \App\Model\DataObject\Product #}
+
+{% extends 'layout/patLayout.html.twig' %}
+
+{% block content %}
+    <div class="breadcrumbs">
+        <ol>
+            <li><a href="/gac-listing">Products List</a></li>
+            {% if(product.name) %}
+                <li>{{ product.name }}</li>
+            {% else %}
+                <li>{{ product.description }}</li>
+            {% endif %}
+        </ol>
+    </div>
+    <form method="post" action="">
+        <div class="container">
+            <a href="#" class="expand-image">
+            {% if product.images %}
+                {% set mainImage = product.images|first %}
+                <img src="{{ mainImage }}" alt="Imagem" height="400px" width="400px">
+            {% else %}
+                <img src="static/images/noimage.jpg" alt="Imagem" height="25%" width="25%">
+            {% endif %}
+            </a>
+            <div class="text">
+                <h1>{{ product.getName() }}</h1>
+                <p>{{ product.getDescription() }}</p>
+                <p>{{ product.getPrice() }}</p>
+                <p>{{ product.getType() }}</p>
+                <p>{{ product.getLocalization() }}</p>
+            </div>
+            
+
+        </div>
+    </div>
+{% endblock %}

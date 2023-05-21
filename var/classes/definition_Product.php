@@ -5,6 +5,7 @@
  * Variants: no
  *
  * Fields Summary:
+ * - images [image]
  * - name [input]
  * - description [textarea]
  * - price [quantityValue]
@@ -19,7 +20,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1684336101,
+   'modificationDate' => 1684423349,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '\\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\AbstractProduct',
@@ -68,6 +69,30 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'children' => 
         array (
           0 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
+             'name' => 'images',
+             'title' => 'Images',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => 'float: right;',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'image',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'height' => '',
+             'uploadPath' => '',
+          )),
+          1 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
              'name' => 'name',
              'title' => 'Name',
@@ -98,7 +123,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'showCharCount' => false,
              'defaultValueGenerator' => '',
           )),
-          1 => 
+          2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
              'name' => 'description',
              'title' => 'Description',
@@ -124,7 +149,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'showCharCount' => false,
              'excludeFromSearchIndex' => false,
           )),
-          2 => 
+          3 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
              'name' => 'price',
              'title' => 'Price',
@@ -162,7 +187,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'autoConvert' => false,
              'defaultValueGenerator' => '',
           )),
-          3 => 
+          4 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
              'name' => 'localization',
              'title' => 'Localization',
@@ -202,7 +227,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
           )),
-          4 => 
+          5 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyRelation::__set_state(array(
              'name' => 'caracteristics',
              'title' => 'Caracteristics',
@@ -241,7 +266,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'enableTextSelection' => false,
           )),
-          5 => 
+          6 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
              'name' => 'productType',
              'title' => 'Product Type',

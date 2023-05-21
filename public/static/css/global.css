@@ -1,11 +1,10 @@
 /* VARS */
 :root {
-    --orange-gradient: linear-gradient(135.12deg, #f03c28, #f03c28);
-    --orange: #f03c28;
-    --light-orange: #f03c28;
-    --dark-gray: #f03c28;
-    --light-gray: #f03c28;
-    --dark-orange: #f03c28;
+    --orange: #EC9706;
+    --light-orange: #EC9706;
+    --dark-gray: #EC9706;
+    --light-gray: #EC9706;
+    --dark-orange: #EC9706;
     --honey: #EC9706;
     --amber: #893101;
 }
