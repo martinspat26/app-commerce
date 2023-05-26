@@ -1,11 +1,11 @@
 /* VARS */
 :root {
-    --orange: #EC9706;
-    --light-orange: #EC9706;
-    --dark-gray: #EC9706;
-    --light-gray: #EC9706;
-    --dark-orange: #EC9706;
-    --honey: #EC9706;
+    --orange: #da770a;
+    --light-orange: #da770a;
+    --dark-gray: #da770a;
+    --light-gray: #da770a;
+    --dark-orange: #da770a;
+    --honey: #da770a;
     --amber: #893101;
 }
 
@@ -1488,3 +1488,29 @@ section picture img {
     height: 100%;
     border: 0;
 }
+
+.login-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #da770a;
+    color: #fff; /* alterando a cor do texto para branco */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Adiciona espaçamento interno à direita do botão */
+  }
+
+  .cart-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #da770a;
+    color: #fff; /* alterando a cor do texto para branco */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Adiciona espaçamento interno à direita do botão */
+  }

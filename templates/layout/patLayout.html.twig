@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Trip and Fun</title>
@@ -28,29 +29,42 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('static/css/home.css') }}">
     {# <link rel="stylesheet" type="text/css" href="{{ asset('static/css/global.css') }}"> #}
 </head>
+
 <body>
+
+
+  <!-- MENU HOME-->
+
     <div id="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><img src="/bundles/pimcoreadmin/img/tour-Travel.jpeg" style="width: 150px;"></a>
+        <h1>TRIP & FUN &nbsp;&nbsp;&nbsp;</h1>
+        
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/listing">Products</a>
+                        <a class="nav-link" href="/listing">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about-us">About us</a>
+                        <a class="nav-link" href="/about-us">Sobre nós</a>
                     </li>
+                    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
+          
+                <button class="login-button">Login</button>
+            
+                <button class="cart-button">Carrinho</button>
+                
             </div>
         </nav>
     </div>
@@ -60,14 +74,55 @@
         {% endblock %}
     </div>
     
+      <!-- END MENU -->
+
+<!-- FOOTER -->
+
+
     <footer>
         <div id="footer">
-            <div class="buttons">
-                <a href="https://autonoma.pt/">Visit Us</a>
-                <p>© 2023 Universidade Autonoma de Lisboa. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        <div class="container">
+            <div class="row">
+                <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Contactos </h5>
+                    <!--headin5_amrc-->
+                    <p><i class="fa fa-location-arrow"></i> Palácio Dos Condes Do Redondo, R. de Santa Marta 56, 1169-023 Lisboa </p>
+                    <p><i class="fa fa-phone"></i> +351 915854962 </p>
+                    <p><i class="fa fa fa-envelope"></i> info@tripandfun.com </p>
+                </div>
+        <div class=" col-sm-4 col-md  col-6 col">
+            <h5 class="headin5_amrc col_white_amrc pt2">Acesso rápido</h5>
+        <!--headin5_amrc-->
+        <ul class="footer_ul_amrc">
+            <li><a href="#products" onclick="showPage('products');listProducts('products')">Produtos</a></li>
+            <li><a href="#about" onclick="showPage('about')">Quem somos</a></li>
+        </ul>
+        <!--footer_ul_amrc ends here-->
+    </div>
+    <div class=" col-sm-4 col-md  col-12 col">
+        <h5 class="headin5_amrc col_white_amrc pt2">Redes sociais</h5>
+        <!--headin5_amrc ends here-->
+        <ul class="footer_ul2_amrc">
+          <li><a href="https://twitter.com/tripandfun">
+              <p>Twitter</p>
+            </a></li>
+          <li><a href="https://www.instagram.com/tripandfun">
+              <p>Facebook</p>
+            </a></li>
+          <li><a href="https://www.instagram.com/tripandfun">
+              <p> Instagram</p>
+            </a></li>
+        </ul>
+      </div>
+      <div class="container">
+        <hr>
+        <p class="text-center">Trip and Fun © All rights reserved.</p>
+      </div>
+
+</footer>
+
+<!-- END FOOTER -->
+
 
     {% block inlinescripts deferred %}
          {{ pimcore_inline_script() }}
