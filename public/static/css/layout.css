@@ -1,0 +1,50 @@
+/* Basic Styling */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Source Sans 3', sans-serif !important;
+    color: #444444;
+    font-weight: 500 !important;
+  }
+   
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+  }
+
+p.main-color {
+    color: #da770a !important;
+}
+
+i.main-color {
+    color: #da770a !important;
+}
+
+section {
+    border-bottom: 1px solid #ebebeb;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+section.section-orange {
+    background-color: #da770a;
+    color: #FFFFFF;
+}
+
+section.section-white {
+    background-color: #FFFFFF;
+    color: #444444;
+}
+
+.menu-item {
+    color: #444444 !important;;
+}
+
+.menu-title {
+    font-weight: 800;
+}

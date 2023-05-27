@@ -1,11 +1,11 @@
 /* VARS */
 :root {
-    --honey: #EC9706;
+    --honey: #da770a;
     --amber: #893101;
 }
 
 body {
-    background-color: #EC9706;
+    background-color: #da770a;
     padding: 0;
     font-family: "Lucida Sans Unicode", Arial;
     font-size: 14px;

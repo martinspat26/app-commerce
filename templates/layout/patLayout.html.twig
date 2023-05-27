@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Trip and Fun</title>
@@ -19,55 +20,112 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Hind+Guntur:300,400,500,600,700&display=swap" rel="stylesheet" type="text/css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" rel="stylesheet" type="text/css">
-    <link href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" rel="stylesheet" type="text/css">
+    <link href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" rel="stylesheet" type="text/css">
     <link href="static/lib/magnific/magnific.css" rel="stylesheet" type="text/css">
     <link href="static/lib/autocompletejs/css/autoComplete.css" rel="stylesheet" type="text/css">
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" rel="stylesheet" type="text/css">
-    <link href="static/css/global.css" rel="stylesheet" type="text/css">
+    <link href="static/css/layout.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ asset('static/css/home.css') }}">
-    {# <link rel="stylesheet" type="text/css" href="{{ asset('static/css/global.css') }}"> #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
+<section class="section-orange"><div class="text-center text-white"> SALDOS - 40% OFF EM  EXPERIENCIAS SELECIONADAS  </div></section>
+  <!-- MENU HOME-->
+<section class="section-white">
     <div id="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><img src="/bundles/pimcoreadmin/img/tour-Travel.jpeg" style="width: 150px;"></a>
+        <nav class="navbar navbar-expand-lg">
+        <h1 class="mx-4 menu-title">TRIP & FUN</h1>
+        
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/home">Home</a>
+                        <a class="nav-link menu-item" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/listing">Products</a>
+                        <a class="nav-link menu-item" href="/listing">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about-us">About us</a>
+                        <a class="nav-link menu-item" href="/about-us">Sobre nós</a>
                     </li>
+                    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
+          
+                <a class="nav-link menu-item" href="/login"><i class="fa-regular fa-circle-user"></i> Login</a>
+            
+                <a class="nav-link menu-item" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                
             </div>
+            
         </nav>
+        
     </div>
+    
+</section>    
+      <!-- END MENU -->
 
-    <div id="content">
+      <div id="content">
         {% block content %}
         {% endblock %}
     </div>
-    
-    <footer>
+<!-- FOOTER -->
+
+<section class="section-white">
+<footer>
         <div id="footer">
-            <div class="buttons">
-                <a href="https://autonoma.pt/">Visit Us</a>
-                <p>© 2023 Universidade Autonoma de Lisboa. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        <div class="container">
+            <div class="row">
+                <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Contactos </h5>
+                    <!--headin5_amrc-->
+                    <p><i class="fa fa-location-arrow"></i> Palácio Dos Condes Do Redondo, R. de Santa Marta 56, 1169-023 Lisboa </p>
+                    <p><i class="fa fa-phone"></i> +351 915854962 </p>
+                    <p><i class="fa fa fa-envelope"></i> info@tripandfun.com </p>
+                </div>
+        <div class=" col-sm-4 col-md  col-6 col">
+            <h5 class="headin5_amrc col_white_amrc pt2">Acesso rápido</h5>
+        <!--headin5_amrc-->
+        <ul class="footer_ul_amrc">
+            <li><a href="#products" onclick="showPage('products');listProducts('products')">Produtos</a></li>
+            <li><a href="#about" onclick="showPage('about')">Quem somos</a></li>
+        </ul>
+        <!--footer_ul_amrc ends here-->
+    </div>
+    <div class=" col-sm-4 col-md  col-12 col">
+        <h5 class="headin5_amrc col_white_amrc pt2">Redes sociais</h5>
+        <!--headin5_amrc ends here-->
+        <ul class="footer_ul2_amrc">
+          <li><a href="https://twitter.com/tripandfun">
+              <p>Twitter</p>
+            </a></li>
+          <li><a href="https://www.instagram.com/tripandfun">
+              <p>Facebook</p>
+            </a></li>
+          <li><a href="https://www.instagram.com/tripandfun">
+              <p> Instagram</p>
+            </a></li>
+        </ul>
+      </div>
+      <div class="container">
+        <hr>
+        <p class="text-center">Trip and Fun © All rights reserved.</p>
+      </div>
+
+</footer>
+</section>
+<!-- END FOOTER -->
+
 
     {% block inlinescripts deferred %}
          {{ pimcore_inline_script() }}

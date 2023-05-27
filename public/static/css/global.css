@@ -1,11 +1,11 @@
 /* VARS */
 :root {
-    --orange: #EC9706;
-    --light-orange: #EC9706;
-    --dark-gray: #EC9706;
-    --light-gray: #EC9706;
-    --dark-orange: #EC9706;
-    --honey: #EC9706;
+    --orange: #da770a;
+    --light-orange: #da770a;
+    --dark-gray: #da770a;
+    --light-gray: #da770a;
+    --dark-orange: #da770a;
+    --honey: #da770a;
     --amber: #893101;
 }
 
@@ -1217,6 +1217,8 @@ input.form-control {
     padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
 }
+
+
 
 section img {
     max-width: 100%;
