@@ -1,37 +1,50 @@
-{# @var product \App\Model\DataObject\Product #}
-
-{% extends 'layout/patLayout.html.twig' %}
+{% extends 'layout/patLayout.html.twig' %} 
 
 {% block content %}
-    <div class="breadcrumbs">
-        <ol>
-            <li><a href="/gac-listing">Products List</a></li>
-            {% if(product.name) %}
-                <li>{{ product.name }}</li>
-            {% else %}
-                <li>{{ product.description }}</li>
-            {% endif %}
-        </ol>
-    </div>
-    <form method="post" action="">
-        <div class="container">
-            <a href="#" class="expand-image">
-            {% if product.images %}
-                {% set mainImage = product.images|first %}
-                <img src="{{ mainImage }}" alt="Imagem" height="400px" width="400px">
-            {% else %}
-                <img src="static/images/noimage.jpg" alt="Imagem" height="25%" width="25%">
-            {% endif %}
-            </a>
-            <div class="text">
-                <h1>{{ product.getName() }}</h1>
-                <p>{{ product.getDescription() }}</p>
-                <p>{{ product.getPrice() }}</p>
-                <p>{{ product.getType() }}</p>
-                <p>{{ product.getLocalization() }}</p>
-            </div>
-            
 
+<head>
+    <meta charset="UTF-8" />
+    <title>Trip and Fun</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('static/css/product-detail.css') }}"
+    />
+</head>
+
+<section class="section-white">
+    <div class="row">
+        <div class="column-left my-2">
+            {% if product.images %}
+            <img class="product-image shadow-sm" src="{{ product.images }}" alt="Imagem">
+            {% else %} 
+            <img class="shadow-sm" src="static/images/noimage.jpg" alt="Imagem">
+            {% endif %}
+        </div>
+
+        <div class="column-right my-4">
+            <p class="title my-0">{{product.name}}</p>
+            <p class="text-secondary subtitle my-0 mb-2">{{ product.getLocalization() }}</p>
+            <p class="price my-0">{{ product.getPrice() }}</p>
+            <p class="text-secondary subtitle mb-2 mt-0">IVA Incluído</h6>
+            <p class="text-secondary subtitle"><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-regular fa-star main-color"></i> (12)</p>
+            <div><button class="btn btn-default cart-button">ADD TO CART <i class="fa-solid fa-cart-shopping"></i></button></div>
+            <p class="text-secondary subtitle my-2"><i class="fa-solid fa-circle fa-2xs main-color"></i></i> Disponível</p>
+            <p class="text-secondary subtitle my-2">Validade do voucher: 1 ano e 6 meses</p>
+
+            <div>
         </div>
     </div>
+</section>
+<section class="section-white">
+<p class="title my-0">Detalhes da experiência</p>
+<p class="text-secondary subtitle my-2">{{ product.getDescription() }}</p>
+</section>
+<section class="section-white">
+    <p class="title my-0">Reviews</p>
+    <p class="text-secondary subtitle"><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-regular fa-star main-color"></i> (12) <i class="fa-solid fa-chevron-right"></i></p>
+</section>
+<section class="section-white">
+    <a href="/listing"><img class=" ads-image" src="static/images/ads.png" alt="Imagem"></a>
+</section>
 {% endblock %}

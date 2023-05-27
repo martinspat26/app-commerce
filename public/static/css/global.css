@@ -1218,6 +1218,8 @@ input.form-control {
     border-bottom: 1px solid #ccc;
 }
 
+
+
 section img {
     max-width: 100%;
 }
@@ -1488,29 +1490,3 @@ section picture img {
     height: 100%;
     border: 0;
 }
-
-.login-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #da770a;
-    color: #fff; /* alterando a cor do texto para branco */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px; /* Adiciona espaçamento interno à direita do botão */
-  }
-
-  .cart-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #da770a;
-    color: #fff; /* alterando a cor do texto para branco */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px; /* Adiciona espaçamento interno à direita do botão */
-  }
