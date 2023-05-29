@@ -69,10 +69,15 @@ services:
     #     tags:
     #         - { name: templating.helper, alias: fooBar }
 
-    # Example event listener for objects
-    # App\EventListener\TestListener:
-    #     tags:
-    #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
+    # ---------------------------------------------------------
+    # Event Listeners
+    # ---------------------------------------------------------
+
+    App\EventListener\CheckoutEventListener:
+        tags:
+            - { name: kernel.event_listener, event: pimcore.ecommerce.ordermanager.postUpdateOrder, method: onUpdateOrder }
+            - { name: kernel.event_listener, event: pimcore.ecommerce.commitorderprocessor.sendConfirmationMails, method: sendConfirmationMail }
+            - { name: kernel.event_listener, event: pimcore.ecommerce.commitorderprocessor.postCommitOrder, method: postCommitOrder }
 
     # ---------------------------------------------------------
     # Twig Extensions
@@ -80,3 +85,5 @@ services:
     App\Twig\Extension\GeneralFilterExtension:
         tags: ['twig.extension']
 
+    App\Twig\Extension\Currency:
+        tags: ['twig.extension']
