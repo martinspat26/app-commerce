@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Pimcore\Bundle\EcommerceFrameworkBundle\Factory;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use stdClass;
 
@@ -49,11 +50,14 @@ class CheckoutController extends FrontendController
             'required' => true,
             'constraints' => [new NotBlank()],
         ])
+        ->add('_submit', SubmitType::class, [
+            'label' => 'Submit',
+            'attr' => ['class' => 'btn btn-primary btn-lg btn-block mt-4'],
+        ])
         ->getForm();
         
         // Handle form submission
         $form->handleRequest($request);
-        
         if ($form->isSubmitted() && $form->isValid()) {
             // Retrieve form data
             $data = $form->getData();

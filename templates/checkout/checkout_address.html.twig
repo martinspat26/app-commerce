@@ -5,21 +5,12 @@
     <body>
 
         <h1>Checkout Address Form</h1>
-        
-        <form method="POST" action="{{ path('shop-checkout-address') }}">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="firstName">Firstname:</label>
-            <input type="text" id="firstName" name="firstName" required><br><br>
-
-            <label for="lastName">Lastname:</label>
-            <input type="text" id="lastName" name="lastName" required><br><br>
-
-            <div class="buttons">
-                <a href="/checkout-address" class="btn btn-outline-secondary">Submit</a>
-            </div>
-        </form>
+        {{ form_start(form) }}
+        {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.firstName, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form.lastName, {'attr': {'class': 'form-control'}}) }}
+        {{ form_row(form._submit, {'attr': {'class': 'btn-success btn-lg btn-block'}}) }}
+        {{ form_end(form) }}
 
         <div class="col-md-4 mb-4 mt-5 mt-md-0">
             {% include 'cart/cart_order_summary.html.twig' with {'cart': cart} %}
