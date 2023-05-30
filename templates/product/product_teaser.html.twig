@@ -1,0 +1,35 @@
+<div class="card custom-product-card mb-4 shadow-sm flex-fill" data-productid="{{ product.id }}">
+    <a href="/product-detail?id={{product.id}}" class="text-decoration-none text-dark">
+        <div class="card-body pricing">
+            <div class="card-body-top pb-3">
+                <div class="card-top-image">
+                    {# {% if product.images %}
+                        {% set mainImage = product.images|first %}
+                        <img src="{{ mainImage }}" alt="Imagem" height="100%" width="100%">
+                    {% else %} #}
+                        <img src="static/images/noimage.jpg" alt="Imagem" height="100%" width="100%">
+                    {# {% endif %} #}
+                </div>
+            </div>
+            <div class="card-body-bottom">
+                <h6 class="card-title pricing-card-title text-center">{{ product.description }}</h6>
+                <p class="card-price"></p>
+                <div class="bottom-card">
+                    <div class="bottom-number-card">
+                        {% if(product.name) %}
+                            <p class="card-price"> {{ product.name }} </p>
+                        {% else %}
+                            <p class="card-price"> N/A </p>
+                        {% endif %}
+                    </div>
+                    <div class="bottom-detail-card">
+                        <a href="/cartadd?id={{product.id}}"><button>Add to cart</button></a>
+                    </div>
+                    <div class="bottom-detail-card">
+                        <a href="/product-detail?id={{product.id}}"><button>View Details</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

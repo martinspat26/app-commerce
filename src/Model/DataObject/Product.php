@@ -6,6 +6,17 @@ namespace App\Model\DataObject;
 class Product extends \Pimcore\Model\DataObject\Product
 {
     /**
+     * This PHP function returns the name of the operating system.
+     * 
+     * @return ?string a nullable string value, which could either be a string or null. The value being
+     * returned is the value of the property `->name`.
+     */
+    public function getOSName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
      * defines if product is included into the product index. If false, product doesn't appear in product index.
      *
      * @return bool
@@ -25,6 +36,14 @@ class Product extends \Pimcore\Model\DataObject\Product
     public function getPriceSystemName(): ?string
     {
         return 'default';
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrice()
+    {
+        return $this->priceInEur;
     }
 
     /**
@@ -73,6 +92,5 @@ class Product extends \Pimcore\Model\DataObject\Product
     public function getOSParentId()
     {
         return $this->getParentId();
-
     }
 }

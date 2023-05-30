@@ -67,3 +67,68 @@ pimcore_ecommerce_framework:
                         filter_type_id: Pimcore\Bundle\EcommerceFrameworkBundle\FilterService\FilterType\SelectRelation
                         template: 'filters/object_relation.html.twig'
 
+  cart_manager:
+    tenants:
+      # defaults for all cart managers
+      _defaults:
+      # define service manager id of cart service - following value is default and can be omitted
+        cart_manager_id: Pimcore\Bundle\EcommerceFrameworkBundle\CartManager\MultiCartManager
+          # configuration for carts - the following values are set by default and can be omitted 
+          cart:
+            # service ID of a cart factory which creates individual carts at runtime                    
+            factory_id: Pimcore\Bundle\EcommerceFrameworkBundle\CartManager\CartFactory
+            
+            # options passed to cart factory, e.g. the cart class (available options vary by factory implementation)
+            factory_options:
+                cart_class_name: Pimcore\Bundle\EcommerceFrameworkBundle\CartManager\Cart
+                guest_cart_class_name: Pimcore\Bundle\EcommerceFrameworkBundle\CartManager\SessionCart
+
+      default:   
+        
+
+      # additional checkout tenant for cart manager
+      #  - active tenant is set at \Pimcore\Bundle\EcommerceFrameworkBundle\EnvironmentInterface::setCurrentCheckoutTenant()
+      noShipping: ~ # inherits from _defaults
+
+  checkout_manager:
+    tenants:
+      _defaults:
+        # the following two values are default values an can be omitted
+        # service ID of a checkout manager factory which builds cart specific checkout managers
+        factory_id: Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\CheckoutManagerFactory
+              
+        # # options passed to the factory - available options vary by implementation
+        # factory_options:
+        #   class: \Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\V7\CheckoutManager
+        #   handle_pending_payments_strategy: Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\V7\HandlePendingPayments\CancelPaymentOrRecreateOrderStrategy
+
+        # # commit order processor
+        # commit_order_processor:
+        #   # order processor service ID
+        #   id: Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\V7\CommitOrderProcessor
+                  
+        #     # options passed to the commit order processor - available options vary by implementation
+        #     options:
+        #       confirmation_mail: /en/emails/order-confirmation
+
+        steps:
+          deliveryaddress:
+            class: \Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\DeliveryAddress
+          confirm:
+            class: \App\Ecommerce\Checkout\Confirm
+
+      # default:
+      #   # define payment provider which should be used for payment.
+      #   # payment providers are defined in payment_manager section.
+      #   payment:
+      #       provider: qpay
+
+      # paypal:
+      #   payment:
+      #       provider: paypal
+
+  order_manager:
+    tenants:
+      default:
+        options:
+          parent_order_folder: /Shop/Orders/%%Y/%%m/%%d

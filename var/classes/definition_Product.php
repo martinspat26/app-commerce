@@ -8,7 +8,7 @@
  * - images [image]
  * - name [input]
  * - description [textarea]
- * - price [quantityValue]
+ * - priceInEur [numeric]
  * - localization [manyToOneRelation]
  * - caracteristics [manyToManyRelation]
  * - productType [manyToOneRelation]
@@ -20,11 +20,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1684423349,
+   'modificationDate' => 1684939665,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '\\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\AbstractProduct',
-   'implementsInterfaces' => '\\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\IndexableInterface',
+   'implementsInterfaces' => '\\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\IndexableInterface ,  \\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\CheckoutableInterface',
    'listingParentClass' => '',
    'useTraits' => '',
    'listingUseTraits' => '',
@@ -150,9 +150,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'excludeFromSearchIndex' => false,
           )),
           3 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'price',
-             'title' => 'Price',
+          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+             'name' => 'priceInEur',
+             'title' => 'Price In Eur',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -161,7 +161,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
+             'fieldtype' => 'numeric',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -170,21 +170,14 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
              'width' => '',
-             'unitWidth' => '',
              'defaultValue' => 0,
-             'defaultUnit' => 'euro',
-             'validUnits' => 
-            array (
-              0 => 'euro',
-            ),
              'integer' => false,
              'unsigned' => false,
-             'minValue' => NULL,
+             'minValue' => 1,
              'maxValue' => NULL,
              'unique' => false,
-             'decimalSize' => NULL,
-             'decimalPrecision' => NULL,
-             'autoConvert' => false,
+             'decimalSize' => 10,
+             'decimalPrecision' => 2,
              'defaultValueGenerator' => '',
           )),
           4 => 

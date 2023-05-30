@@ -111,6 +111,8 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             array (
             ),
              'fieldDefinitionsCache' => NULL,
+             'permissionView' => NULL,
+             'permissionEdit' => NULL,
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),

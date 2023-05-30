@@ -56,7 +56,9 @@ class ProductController extends FrontendController
         $params['results'] = $paginator;
         $params['paginationVariables'] = $paginator->getPaginationData();
 
-        return $this->render('gac/gac_listing.html.twig', $params);
+        // return $this->render('gac/gac_listing.html.twig', $params);
+        return $this->render('product/product_listing.html.twig', $params);
+
     }
 
     /**
