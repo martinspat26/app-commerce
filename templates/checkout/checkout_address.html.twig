@@ -3,19 +3,23 @@
 {% block content %}
 
     <body>
+        <div class="content">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Checkout Address Form</h1>
+                    {{ form_start(form) }}
+                    {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.firstName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.lastName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form._submit, {'attr': {'class': 'btn-success btn-lg btn-block'}}) }}
+                    {{ form_end(form) }}
+                </div>
 
-        <h1>Checkout Address Form</h1>
-        {{ form_start(form) }}
-        {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
-        {{ form_row(form.firstName, {'attr': {'class': 'form-control'}}) }}
-        {{ form_row(form.lastName, {'attr': {'class': 'form-control'}}) }}
-        {{ form_row(form._submit, {'attr': {'class': 'btn-success btn-lg btn-block'}}) }}
-        {{ form_end(form) }}
-
-        <div class="col-md-4 mb-4 mt-5 mt-md-0">
-            {% include 'cart/cart_order_summary.html.twig' with {'cart': cart} %}
+                <div class="col-md-4 mb-4 mt-5 mt-md-0">
+                    {% include 'cart/cart_order_summary.html.twig' %}
+                </div>
+            </div>
         </div>
-
     </body>
 
 {% endblock content%}
