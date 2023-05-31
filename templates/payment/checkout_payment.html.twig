@@ -3,18 +3,18 @@
 
 {% extends 'layout/patLayout.html.twig' %}
 
-{% do pimcore_head_script().appendFile(SDKUrl) %}
+{% do pimcore_inline_script().appendFile(SDKUrl) %}
 
 {% block content %}
 
     <div class="py-5 bg-light">
-        <div class="container">
+        <div class="content">
 
             <div class="row">
 
                 <div class="col-md-8">
-                    <h4 class="mb-3">{{ 'checkout.payment' | trans }}</h4>
-
+                    <h4 class="mb-3">{{ 'Checkout Payment' | trans }}</h4>
+                    
                     <div id="paypal-button-container"></div>
 
                     <!-- Form to submit successful payment result to Pimcore -->
@@ -122,6 +122,6 @@
         </div>
     </div>
 
-{% endblock %}
+{% endblock content %}
 
 {% do pimcore_inline_script().appendFile(asset('static/js/payment.js')) %}

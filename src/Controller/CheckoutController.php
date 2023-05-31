@@ -36,6 +36,7 @@ class CheckoutController extends FrontendController
         $checkoutManager = $factory->getCheckoutManager($cart);
         $deliveryAddress = $checkoutManager->getCheckoutStep('deliveryaddress');
 
+        
         // Create the form
         $form = $this->createFormBuilder()
         ->add('email', EmailType::class, [
@@ -68,7 +69,6 @@ class CheckoutController extends FrontendController
             $address->firstName = $data['firstName'];
             $address->lastName = $data['lastName'];
             
-            // Commit address step
             $checkoutManager->commitStep($deliveryAddress, $address);
             $cart->save();
 
@@ -77,7 +77,7 @@ class CheckoutController extends FrontendController
 
             return $this->redirectToRoute('shop-checkout-payment');
         }
-        
+
         return $this->render('checkout/checkout_address.html.twig', [
             'cart' => $cart,
             'form' => $form->createView(),
@@ -97,10 +97,9 @@ class CheckoutController extends FrontendController
         $orderId = $session->get('last_order_id');
 
         $order = OnlineShopOrder::getById($orderId);
-
+        
         return $this->render('checkout/checkout_completed.html.twig', [
-            'order' => $order,
-            'hideBreadcrumbs' => true
+            'order' => $order
         ]);
     }
     

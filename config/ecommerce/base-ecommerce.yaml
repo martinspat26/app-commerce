@@ -92,12 +92,12 @@ pimcore_ecommerce_framework:
 
   checkout_manager:
     tenants:
-      _defaults:
+      # _defaults:
         # the following two values are default values an can be omitted
         # service ID of a checkout manager factory which builds cart specific checkout managers
-        factory_id: Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\CheckoutManagerFactory
+        # factory_id: Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\CheckoutManagerFactory
               
-        # # options passed to the factory - available options vary by implementation
+        # # # options passed to the factory - available options vary by implementation
         # factory_options:
         #   class: \Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\V7\CheckoutManager
         #   handle_pending_payments_strategy: Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\V7\HandlePendingPayments\CancelPaymentOrRecreateOrderStrategy
@@ -110,25 +110,44 @@ pimcore_ecommerce_framework:
         #     # options passed to the commit order processor - available options vary by implementation
         #     options:
         #       confirmation_mail: /en/emails/order-confirmation
-
+      default:
+        payment:
+          provider: paypal
         steps:
           deliveryaddress:
             class: \Pimcore\Bundle\EcommerceFrameworkBundle\CheckoutManager\DeliveryAddress
           confirm:
-            class: \App\Ecommerce\Checkout\Confirm
+            class: \App\Ecommerce\CheckoutManager\Confirm
 
-      # default:
-      #   # define payment provider which should be used for payment.
-      #   # payment providers are defined in payment_manager section.
-      #   payment:
-      #       provider: qpay
-
-      # paypal:
-      #   payment:
-      #       provider: paypal
 
   order_manager:
     tenants:
       default:
         options:
           parent_order_folder: /Shop/Orders/%%Y/%%m/%%d
+  
+  
+  payment_manager:
+    #payment_manager_id: Pimcore\Bundle\EcommerceFrameworkBundle\PaymentManager\PaymentManager
+    providers:
+      paypal:
+        provider_id: Pimcore\Bundle\EcommerceFrameworkBundle\PaymentManager\Payment\PayPalSmartPaymentButton
+        profile: sandbox
+        profiles:
+          sandbox:
+            client_id: 'AWZqIhnCwX4TarxqWeJnhnsiwbzEf0h34zxW45GQKK_peQ5c0zzA-4HVo_2_ePMeGfItyX8EFO_gWhc_'
+            client_secret: 'EPDQNlp_8KiADVFGppsFGGm6wQy81iAqAkYU6300PWaPMNUGPMpd3myyN9ET8VLUAJsbVMFz9Uek1OPS'
+
+            # defines, if payment caputure should take place automatic or manual, default is automatic
+            capture_strategy: automatic
+
+            # defines mode of PayPal API, default value is sandbox
+            mode: sandbox
+
+            # defines PayPal application context for shipping, default value is NO_SHIPPING
+            # see https://developer.paypal.com/docs/api/orders/v2/#definition-application_context
+            shipping_preference: NO_SHIPPING
+
+            # defines PayPal application context for user action, default value is PAY_NOW
+            # see https://developer.paypal.com/docs/api/orders/v2/#definition-application_context
+            user_action: PAY_NOW

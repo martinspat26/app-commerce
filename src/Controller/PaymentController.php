@@ -3,20 +3,20 @@
 
 namespace App\Controller;
 
-use App\Ecommerce\CheckoutManager\Confirm;
-use Pimcore\Bundle\EcommerceFrameworkBundle\Exception\UnsupportedException;
-use Pimcore\Bundle\EcommerceFrameworkBundle\Factory;
-use Pimcore\Bundle\EcommerceFrameworkBundle\PaymentManager\Payment\PayPalSmartPaymentButton;
-use Pimcore\Bundle\EcommerceFrameworkBundle\PaymentManager\V7\Payment\StartPaymentRequest\AbstractRequest;
-use Pimcore\Controller\FrontendController;
-use Pimcore\Translation\Translator;
+
 use Psr\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Pimcore\Translation\Translator;
+use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Pimcore\Bundle\EcommerceFrameworkBundle\Factory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Pimcore\Bundle\EcommerceFrameworkBundle\Exception\UnsupportedException;
+use Pimcore\Bundle\EcommerceFrameworkBundle\PaymentManager\Payment\PayPalSmartPaymentButton;
+use Pimcore\Bundle\EcommerceFrameworkBundle\PaymentManager\V7\Payment\StartPaymentRequest\AbstractRequest;
 
 class PaymentController extends FrontendController
 {
@@ -40,15 +40,14 @@ class PaymentController extends FrontendController
         $checkoutManager = $factory->getCheckoutManager($cart);
         $paymentProvider = $checkoutManager->getPayment();
 
-        // $SDKUrl = '';
-        // if ($paymentProvider instanceof PayPalSmartPaymentButton) {
-        //     $SDKUrl = $paymentProvider->buildPaymentSDKLink();
-        // }
-
+        $SDKUrl = '';
+        if ($paymentProvider instanceof PayPalSmartPaymentButton) {
+            $SDKUrl = $paymentProvider->buildPaymentSDKLink();
+        }
 
         return $this->render('payment/checkout_payment.html.twig', [
             'cart' => $cart,
-            // 'SDKUrl' => $SDKUrl
+            'SDKUrl' => $SDKUrl
         ]);
     }
 
@@ -70,11 +69,11 @@ class PaymentController extends FrontendController
         $order = $paymentInformation->getObject();
 
         $config = [
-                'return_url' => '',
-                'cancel_url' => 'https://app-commerce.test/payment-error',
-                'OrderDescription' => 'My Order ' . $order->getOrdernumber() . ' tripandfun.test',
-                'InternalPaymentId' => $paymentInformation->getInternalPaymentId()
-            ];
+            'return_url' => '',
+            'cancel_url' => 'https://app-commerce.test/payment-error',
+            'OrderDescription' => 'My Order ' . $order->getOrdernumber() . ' tripandfun.test',
+            'InternalPaymentId' => $paymentInformation->getInternalPaymentId()
+        ];
 
         $paymentConfig = new AbstractRequest($config);
 
@@ -109,6 +108,7 @@ class PaymentController extends FrontendController
      */
     public function commitOrderAction(Request $request, Factory $factory, LoggerInterface $logger, Translator $translator, SessionInterface $session)
     {
+
         $cartManager = $factory->getCartManager();
         $cart = $cartManager->getOrCreateCartByName('cart');
 
