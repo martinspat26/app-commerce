@@ -1,107 +1,50 @@
 {% extends 'layout/patLayout.html.twig' %} 
 
 {% block content %}
-    <div class="breadcrumbs">
-        <ol>
-            <li><a href="/product-listing">Products List</a></li>
-            {% if(product.name) %}
-                <li>{{ product.name }}</li>
-            {% else %}
-                <li>{{ product.description }}</li>
-            {% endif %}
-        </ol>
-    </div>
-    <form method="post" action="">
-        <div class="container">
-            <a href="#" class="expand-image">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Trip and Fun</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('static/css/product-detail.css') }}"
+    />
+</head>
+
+<section class="section-grey">
+    <div class="row">
+        <div class="column-left my-2">
             {% if product.images %}
-                {% set mainImage = product.images|first %}
-                <img src="{{ mainImage }}" alt="Imagem" height="400px" width="400px">
-            {% else %}
-                <img src="static/images/noimage.jpg" alt="Imagem" height="25%" width="25%">
+            <img class="product-image shadow-sm" src="{{ product.images }}" alt="Imagem">
+            {% else %} 
+            <img class="shadow-sm" src="static/images/noimage.jpg" alt="Imagem">
             {% endif %}
-            </a>
-            <div class="text">
-                <h1>{{ product.getName() }}</h1>
-                <p>{{ product.getDescription() }}</p>
-                <p>{{ product.getPrice() }}</p>
-                <p>{{ product.getType() }}</p>
-                <p>{{ product.getLocalization() }}</p>
-            </div>
-            <div class="imagens-menores">
-            {% set gallery = product.images %}
-            {% for image in gallery %}
-                <input type="hidden" name="images[]" value="{{ image }}">
-                {% if not loop.first %}
-                    <div class="imagem-menor">
-                        <img src="{{ image }}" alt="Imagem">
-                    </div>
-                {% endif %}
-            {% endfor %}
-            </div>
         </div>
-    </form>
 
+        <div class="column-right my-4">
+            <p class="title my-0">{{product.name}}</p>
+            <p class="text-secondary subtitle my-0 mb-2">{{ product.getLocalization() }}</p>
+            <p class="price my-0">{{ product.getPrice() }} €</p>
+            <p class="text-secondary subtitle mb-2 mt-0">IVA Incluído</h6>
+            <p class="text-secondary subtitle"><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-regular fa-star main-color"></i> (12)</p>
+            <div><a href="/cartadd?id={{product.id}}"><button class="btn btn-default orange-button"> ADICIONAR NO CARRINHO <i class="fa-solid fa-cart-shopping"></i></button></a></div>
+            <p class="text-secondary subtitle my-2"><i class="fa-solid fa-circle fa-2xs main-color"></i></i> Disponível</p>
+            <p class="text-secondary subtitle my-2">Validade do voucher: 1 ano e 6 meses</p>
 
-    <div class="buttons a">
-        <a href="/cartadd?id={{product.id}}">Add to cart</a>
-    </div>
-
-    <div class="modal fade" id="imagemModal" tabindex="-1" role="dialog" aria-labelledby="imagemModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <div class="modal-body">
-                    <img src="" alt="Imagem" class="imagem-modal" style="max-height: auto; max-width: auto;">
-                </div>
-            </div>
+            <div>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-        $('.expandir-imagem').click(function(event) {
-            event.preventDefault(); 
-            var image = $(this).find('img').attr('src'); 
-            $('#imagemModal').find('.imagem-modal').attr('src', image);
-            $('#imagemModal').modal('show');
-        });
-        });
-
-        $(document).ready(function() {
-        $('.imagem-menor').click(function(event) {
-            event.preventDefault(); 
-            var image = $(this).find('img').attr('src'); 
-            $('#imagemModal').find('.imagem-modal').attr('src', image); 
-            $('#imagemModal').modal('show'); 
-        });
-        });
-
-        var tabs = document.querySelectorAll('.nav-link');
-        tabs.forEach(function(tab) {
-        var title = tab.querySelector('.nav-link');
-        title.addEventListener('click', function() {
-            // remover a classe "active" de todas as tabs
-            tabs.forEach(function(tab) {
-            tab.querySelector('.nav-link').classList.remove('active');
-            });
-            // adicionar a classe "active" apenas na tab clicada
-            title.classList.add('active');
-        });
-        });
-
-
-        var tabs = document.querySelectorAll('.nav-link');
-        tabs.forEach(function(tab) {
-        var title = tab.querySelector('.nav-link');
-        title.addEventListener('click', function() {
-            // remover a classe "active" de todas as tabs
-            tabs.forEach(function(tab) {
-            tab.querySelector('.nav-link').classList.remove('active');
-            });
-            // adicionar a classe "active" apenas na tab clicada
-            title.classList.add('active');
-        });
-        });
-
-    </script>
+</section>
+<section class="section-grey">
+    <p class="title my-0">Detalhes da experiência</p>
+    <p class="text-secondary subtitle my-2">{{ product.getDescription() }}</p>
+</section>
+<section class="section-grey">
+    <p class="title my-0">Reviews</p>
+    <p class="text-secondary subtitle"><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-regular fa-star main-color"></i> (12) <i class="fa-solid fa-chevron-right"></i></p>
+</section>
+<section class="section-grey">
+    <a href="/listing"><img class=" ads-image" src="static/images/ads.png" alt="Imagem"></a>
+</section>
 {% endblock %}

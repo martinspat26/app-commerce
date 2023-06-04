@@ -2,17 +2,26 @@
 
 {% block content %}
 
-    <div class="py-5 bg-light">
-        <div class="container">
+<head>
+    <meta charset="UTF-8" />
+    <title>Trip and Fun</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('static/css/cart.css') }}"
+    />
+</head>
 
-            <h1 class="mb-3">Your Cart is currently empty!</h1>
+<section class="section-grey text-center">
+    <p class="title text-center my-0">Seu carrinho está vazio.</p>
+    <p class="text-secondary text-center subtitle my-0 mb-2">
+        Encontre as melhores experiências na nossa lista de produtos.
+    </p>
 
-            <div class="text-center">
-
-                <a href="/listing" class="btn btn-outline-secondary">Continue Shopping</a>
-            </div>
-
-        </div>
-    </div>
+    <a href="/listing"><button class="btn btn-default orange-button orange-button">
+                        ENCONTRAR A EXPERIÊNCIA IDEAL PARA VOCÊ
+                        <i class="fa-solid fa-store"></i></button
+                ></a>
+</section>
 
 {% endblock %}

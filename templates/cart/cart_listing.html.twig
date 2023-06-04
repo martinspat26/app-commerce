@@ -1,24 +1,93 @@
-{% extends 'layout/patlayout.html.twig' %}
+{% extends 'layout/patlayout.html.twig' %} {% block content %}
+<head>
+    <meta charset="UTF-8" />
+    <title>Trip and Fun</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('static/css/cart.css') }}"
+    />
+</head>
 
-{% block content %}
-    <h1>YOUR CART</h1>
-    <div class="product-info">
-    {% include 'cart/cart_order_summary.html.twig' %}
-            {%  for product in products %}
-                {% if product %} 
-                    <h2>{{ product.name }}</h2>
-                    <div>
-                    Number of items: {{ product.count|raw }}
-                    <br>Price per unit: {{ product.price }}
+<section class="section-grey">
+    <p class="title text-center my-0">Carrinho</p>
+    <p class="text-secondary text-center subtitle my-0 mb-2">
+        O prazo de envio do voucher e os códigos de desconto são confirmados no
+        checkout.
+    </p>
+    <div class="row">
+        <div class="column-left my-2">
+            <p class="my-1 cart-title">Experiências selecionadas:</p>
+            {% for product in products %}
+            <div class="card shadow-sm card-cart p-2 my-2">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <p class="card-title font-weight-bold m-1">
+                            {{ product.name }}
+                        </p>
                     </div>
-                    <div class="buttons a">
-                        <a href="/cartremove?id={{product.id}}" class="btn btn-outline-secondary">Delete all</a>
+                    <div class="col text-right">
+                        <p class="subtitle my-1 mx-1">
+                            <a
+                                href="/cartremove?id={{ product.id }}"
+                                class="text-secondary"
+                                ><i class="fa-solid fa-trash-can"></i
+                            ></a>
+                        </p>
                     </div>
-                {% endif %}
-            {% endfor %}
-            <div class="buttons a">
-                <a href="/checkout-address" class="btn btn-outline-secondary">Continue to Checkout</a>
-                <a href="/listing" class="btn btn-outline-secondary">Continue Shopping</a>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col">
+                        <p
+                            class="subtitle text-secondary m-1"
+                            style="white-space: nowrap"
+                        >
+                            Quantidade: {{ product.count }}
+                        </p>
+                    </div>
+                    <div class="col text-right">
+                        <p class="subtitle mt-3 mb-0 mx-3 font-weight-bold">
+                            {{ product.price }} X {{ product.count }}
+                        </p>
+                    </div>
+                </div>
             </div>
+
+            {% endfor %}
+        </div>
+        <div class="column-right my-2">
+            {% include 'cart/cart_order_summary.html.twig' %}
+            <div class="" >
+                <a href="/checkout-address"
+                    ><button
+                        class="btn btn-default orange-button orange-button-100"
+                    >
+                        CHECKOUT
+                        <i class="fa-solid fa-money-check-dollar"></i></button
+                ></a>
+            </div>
+        </div>
     </div>
+</section>
+
+<section class="section-grey">
+    <p class="section-title mt-3">
+        Compre suas experiências de forma fácil e segura
+    </p>
+    <p class="section-text mt-3">
+        <i class="fa-solid fa-arrow-rotate-left"></i> Cancelamento gratuito em
+        30 dias
+    </p>
+    <hr />
+    <p class="section-text mt-3">
+        <i class="fa-solid fa-credit-card"></i> Métodos de pagamento
+        convenientes
+    </p>
+    <hr />
+    <p class="section-text mt-3">
+        <i class="fa-solid fa-envelope-open-text"></i> Envio do voucher por
+        e-mail
+    </p>
+</section>
 {% endblock %}

@@ -40,19 +40,22 @@ class CheckoutController extends FrontendController
         // Create the form
         $form = $this->createFormBuilder()
         ->add('email', EmailType::class, [
+            'label' => 'E-mail',
             'required' => true,
             'constraints' => [new NotBlank()],
         ])
         ->add('firstName', TextType::class, [
+            'label' => 'Nome',
             'required' => true,
             'constraints' => [new NotBlank()],
         ])
         ->add('lastName', TextType::class, [
+            'label' => 'Apelido',
             'required' => true,
             'constraints' => [new NotBlank()],
         ])
         ->add('_submit', SubmitType::class, [
-            'label' => 'Submit',
+            'label' => 'AVANÇAR',
             'attr' => ['class' => 'btn btn-primary btn-lg btn-block mt-4'],
         ])
         ->getForm();

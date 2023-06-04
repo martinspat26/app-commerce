@@ -7,32 +7,41 @@
 
 {% block content %}
 
-    <div class="py-5 bg-light">
-        <div class="content">
+<head>
+    <meta charset="UTF-8" />
+    <title>Trip and Fun</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('static/css/cart.css') }}"
+    />
+</head>
 
-            <div class="row">
+<section class="section-grey">
 
-                <div class="col-md-8">
-                    <h4 class="mb-3">{{ 'Checkout Payment' | trans }}</h4>
-                    
-                    <div id="paypal-button-container"></div>
+    <p class="title text-center my-0">Pagamento</p>
+    <p class="text-secondary text-center subtitle my-0 mb-2">Para concluir o pedido, finalize o pagamento nesta página.</p>
 
-                    <!-- Form to submit successful payment result to Pimcore -->
+    <div class="row">
+        <div class="column-left my-2">
+            <p class="my-1 cart-title">Selecione o método de pagamento:</p>
+            <div class="card shadow-sm card-cart my-2">
+                <div id="paypal-button-container" class="m-3"></div>
+
                     <form id="js-submit-payment-result" action="{{ path('shop-checkout-start-payment') }}">
                         <input type="hidden" name="paymentMethod" class="js-payment-method-hidden" value=""/>
                         <input type="hidden" name="paymentId" class="js-payment-id-hidden" value=""/>
                     </form>
-
-                </div>
-
-                <div class="col-md-4 mb-4 mt-5 mt-md-0">
-                    {% include 'cart/cart_order_summary.html.twig' %}
-                </div>
-
-
             </div>
 
-            <div class="row mt-5">
+        </div>
+
+        <div class="column-right my-2">
+            {% include 'cart/cart_order_summary.html.twig' %}
+        </div>
+</section>
+
+            <!-- <div class="row mt-5">
 
                 <div class="col-12">
 
@@ -120,7 +129,7 @@
 
 
         </div>
-    </div>
+    </div> -->
 
 {% endblock content %}
 
