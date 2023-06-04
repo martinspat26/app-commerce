@@ -4,13 +4,19 @@
 {# @var filterService \Pimcore\Bundle\EcommerceFrameworkBundle\FilterService\FilterService #}
 {# @var filterDefinition \Pimcore\Model\DataObject\FilterDefinition #}
 
-{# {% extends 'layout/layout.html.twig' %} #}
 {% extends 'layout/patLayout.html.twig' %}
-
-
 	{% block content %}
-		<div id="main-content" class="main-content"> 
-		<div class="album bg-light">
+	<head>
+    <meta charset="UTF-8" />
+    <title>Trip and Fun</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('static/css/product-detail.css') }}"
+    />
+
+</head>
+		<section class="section-grey">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
@@ -46,12 +52,12 @@
 						</div>
 					</div>
 				</div>
+			</div>
 				<div class="pt-5">
 					{% include 'includes/pagination.html.twig' %}
 				</div>
-			</div>
-		</div>
-	</div>
+			
+</section>
 {%  endblock %}
 
 {% do pimcore_inline_script().appendScript("

@@ -1,44 +1,39 @@
-<h4 class="d-flex justify-content-between align-items-center mb-3">
-    <span class=""> Your order summary</span>
-    {# <span class="badge badge-secondary badge-pill">{{ cart.itemAmount }}</span> #}
-</h4>
-<ul class="list-group mb-3">
-    <li class="list-group-item d-flex justify-content-between">
-        <div>
-            <p class="mb-0"><strong class="my-0">Products</strong></p>
-            <small class="text-muted">
-
-                {% for cartItem in cart.items %}
-                    <div>{{ cartItem.name }}</div>     
-                    <div class="text-muted">Quantity: {{ cartItem.count }}</div>
-                    <div class="text-muted">Price: {{ cartItem.price }} x {{ cartItem.count }}</div>
-                {% endfor %}
-
-            </small>
+<p class="my-1 cart-title">Sumário:</p>
+<div class="card shadow-sm card-cart my-2">
+    <div class="row align-items-center">
+        <div class="col">
+            <p class="subtitle mt-3 mb-0 mx-3" style="white-space: nowrap">
+                Itens no carrinho:
+            </p>
         </div>
-        <span class="text-muted text-nowrap text-right">{{ cart.priceCalculator.subTotal }}</span>
-    </li>
-
-    {% for name, modification in cart.priceCalculator.priceModifications %}
-
-        <li class="list-group-item d-flex justify-content-between">
-            <div>
-                <strong class="my-0">
-                    {% if(modification.description) %}
-                        {{ modification.description }}
-                    {% else %}
-                        {{ name }}
-                    {% endif %}
-                </strong>
-            </div>
-            <span class="text-muted text-nowrap text-right">{{ modification }}</span>
-        </li>
-
-
-    {% endfor %}
-
-    <li class="list-group-item d-flex justify-content-between" style="border-top: 2px solid">
-        <h6><span>Total</span></h6>
-        <h6 class="text-nowrap text-right">{{ cart.priceCalculator.grandTotal }}</h6>
-    </li>
-</ul>
+        <div class="col text-right">
+            <p class="subtitle mt-3 mb-0 mx-3 font-weight-bold">
+                {{ cart.priceCalculator.grandTotal }}
+            </p>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col">
+            <p
+                class="subtitle mx-3 mb-0 text-secondary"
+                style="white-space: nowrap"
+            >
+                Descontos aplicados:
+            </p>
+        </div>
+        <div class="col text-right">
+            <p class="subtitle mx-3 mb-0 text-secondary">00.00 €</p>
+        </div>
+    </div>
+    <hr class="mx-3" />
+    <div class="row align-items-center">
+        <div class="col">
+            <p class="cart-title mx-3" style="white-space: nowrap">Total:</p>
+        </div>
+        <div class="col text-right">
+            <p class="cart-title mx-3 font-weight-bold">
+                {{ cart.priceCalculator.grandTotal }}
+            </p>
+        </div>
+    </div>
+</div>

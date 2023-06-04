@@ -23,6 +23,11 @@ i.main-color {
     color: #da770a !important;
 }
 
+a.main-color {
+    color: #da770a !important;
+    text-decoration: none;
+}
+
 img.ads-image {
     width: 100%; 
     height: 100%;
@@ -48,10 +53,20 @@ section.section-white {
     color: #444444;
 }
 
+section.section-grey {
+    background-color: #f6f6f6;
+    color: #444444;
+}
+
 .section-title {
     font-size: 18px;
     font-weight: 800;
     text-transform: uppercase;
+}
+
+.section-text {
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .menu-item {
@@ -61,3 +76,34 @@ section.section-white {
 .menu-title {
     font-weight: 800;
 }
+
+button.orange-button {
+    width: 80%;
+    height: 80%;
+    background: #da770a;
+    color: #ffffff;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px 4px 4px 4px;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    border-color: #ffffff;
+}
+
+button.orange-button-100 {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* FOOTER */
+
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center
+  }
+  
+  .column {
+    padding: 10px;
+  }

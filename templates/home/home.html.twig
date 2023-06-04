@@ -12,12 +12,11 @@
 		<p class="text-white home-subtitle my-0">Descubra agora o mundo de experiências que está à sua espera.</p>
 		<p class="text-white home-subtitle my-0">Obtenha Evoucher instantâneo +  Validade de 3 anos </p>
 		<div class="row d-flex justify-content-center">
-			<button class="home-button mx-1 my-3" type="submit" >SALDOS</button>
 			<button class="home-button mx-1 my-3" type="submit">TODOS OS PRODUTOS</button>
 		</div>
 	</section>
 
-	<section class="section-white">
+	<section class="section-grey">
 		<div class="row my-2 d-flex justify-content-center">
 			<div class="card m-2 shadow">
 				<a href="/listing?productType=30">
@@ -59,26 +58,115 @@
 					</div>
 				</a>
 			</div>
+			<div class="card m-2 shadow">
+				<a href="/listing?productType=29">
+					<div class="card-img-div">
+						<img src="static/images/aventura.jpg" class="card-img" alt="...">
+					</div>
+					<div class="card-img-overlay row">
+				  		<p class="card-text align-self-center">AVENTURA</p>
+					</div>
+				</a>
+			</div>
 		</div>
 	</section>
 
-	<section class="section-white">
+	<section class="section-grey py-4">
 		<p class="section-title">Novas experiências</p>
+		<div class="row my-2 d-flex">
+			<div class="card-products m-2">
+				<a href="/product-detail?id=51" class="text-decoration-none text-dark">
+						<div class="card-body-top pb-3">
+							<div class="product-list-image-div">
+									<img class="product-list-image shadow-sm" src="static/images/hotelportadosol.jpg" alt="Imagem" height="100%" width="100%">
+							</div>
+						</div>
+						<div class="card-body-bottom">
+							<p class="product-title my-0">Hotel Porta do Sol </p>
+							<p class="product-subtitle text-secondary my-0">Sintra - Portugal</p>
+							<p class="product-price">88.00 €</p>
+						</div>
+				</a>
+			</div>
+			<div class="card-products m-2">
+				<a href="/product-detail?id=54" class="text-decoration-none text-dark">
+						<div class="card-body-top pb-3">
+							<div class="product-list-image-div">
+									<img class="product-list-image shadow-sm" src="static/images/resort.jpg" alt="Imagem" height="100%" width="100%">
+							</div>
+						</div>
+						<div class="card-body-bottom">
+							<p class="product-title my-0">Resort Island							</p>
+							<p class="product-subtitle text-secondary my-0">Algarve - Portugal</p>
+							<p class="product-price">179.00 €</p>
+						</div>
+				</a>
+			</div>
+			<div class="card-products m-2">
+				<a href="/product-detail?id=48" class="text-decoration-none text-dark">
+						<div class="card-body-top pb-3">
+							<div class="product-list-image-div">
+									<img class="product-list-image shadow-sm" src="static/images/corridadekart.jpg" alt="Imagem" height="100%" width="100%">
+							</div>
+						</div>
+						<div class="card-body-bottom">
+							<p class="product-title my-0">Aluguer de kart </p>
+							<p class="product-subtitle text-secondary my-0">Santo André - Portugal</p>
+							<p class="product-price">19.00 €</p>
+						</div>
+				</a>
+			</div>
+			<div class="card-products m-2">
+				<a href="/product-detail?id=78" class="text-decoration-none text-dark">
+						<div class="card-body-top pb-3">
+							<div class="product-list-image-div">
+									<img class="product-list-image shadow-sm" src="static/images/massagem.jpg" alt="Imagem" height="100%" width="100%">
+							</div>
+						</div>
+						<div class="card-body-bottom">
+							<p class="product-title my-0">Massagem à escolha </p>
+							<p class="product-subtitle text-secondary my-0">Lisboa - Portugal</p>
+							<p class="product-price">19.99 €</p>
+						</div>
+				</a>
+			</div>
+			<div class="card-products m-2">
+				<a href="/product-detail?id=59" class="text-decoration-none text-dark">
+						<div class="card-body-top pb-3">
+							<div class="product-list-image-div">
+									<img class="product-list-image shadow-sm" src="static/images/sushi.jpg" alt="Imagem" height="100%" width="100%">
+							</div>
+						</div>
+						<div class="card-body-bottom">
+							<p class="product-title my-0">Hotel Porta do Sol </p>
+							<p class="product-subtitle text-secondary my-0">Sintra - Portugal</p>
+							<p class="product-price">25.99 €</p>
+						</div>
+				</a>
+			</div>
+		</div>
+		
 	</section>
 
-	<!-- {{ pimcore_wysiwyg('contentdescription')}}
-
-	<h3>{{ pimcore_link ('linkHtml') }}</h3>
-	<p>{{ pimcore_areablock ('twigTeste') }}</p>
-
-	<h3>{{ pimcore_link ('link') }}</h3>
-	<p>{{ pimcore_areablock ('twigIfBlock') }}</p>
-
-	<h3>{{ pimcore_link ('mylink') }}</h3>
-	<p>{{ pimcore_areablock ('twigForBlock') }}</p> -->
-
-	<section class="section-white">
+	<section class="section-grey">
 		<a href="/listing"><img class="ads-image" src="static/images/ads.png" alt="Imagem"></a>
+	</section>
+
+	<section class="section-orange">
+		<div class="row">
+			<div class="column-left my-2">
+				<p class="section-title mt-3 pl-5">Tenha 5% de desconto extra</p>
+				<p class="section-text pl-5">Subscreva a nossa newsletter para receber novidades sobre as expriências adicionadas e promoções.</p>
+			</div>
+			<div class="column-right my-4">
+				<div class="container"> 
+				<input type="email" class="form-control" placeholder="E-mail"> </input>
+				<button class="home-button mx-1 my-3" type="submit" >SUBSCREVA</button>
+				</div>
+			</div>
+			</div>
+		</div>
+	
 	</section>
 	
 {% endblock %}
