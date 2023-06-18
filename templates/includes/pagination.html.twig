@@ -1,25 +1,25 @@
 <nav aria-label="Pagination">
     <ul class="pagination justify-content-center">
         {%  if(paginationVariables.previous is defined) %}
-            <li class="page-item">
+            <li class="page-item main-color">
                 <a class="page-link prev" href="{{  pimcore_url({'page': paginationVariables.previous}) }}" aria-label="Previous">
-                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"> <i class="fa-solid fa-arrow-left main-color"></i> </span>
                 </a>
             </li>
         {%  endif %}
         {%  for page in paginationVariables.pagesInRange %}
             {%  if(paginationVariables.current == page) %}
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">{{  page }}<span class="sr-only"></span></span>
+                <li class="page-item active " aria-current="page">
+                    <p class="page-link secondary-color main-color-bg">{{ page }}</p>
                 </li>
             {%  else %}
-                <li class="page-item"><a class="page-link" href="{{  pimcore_url({'page': page}) }}">{{ page }}</a></li>
+                <li class="page-item main-color"><a class="page-link main-color" href="{{  pimcore_url({'page': page}) }}">{{ page }}</a></li>
             {%  endif %}
         {% endfor %}
         {%  if(paginationVariables.next is defined) %}
             <li class="page-item">
                 <a class="page-link next" href="{{  pimcore_url({'page': paginationVariables.next}) }}" aria-label="Next">
-                    <span class="flip" aria-hidden="true"></span>
+                    <span class="flip" aria-hidden="true"><i class="fa-solid fa-arrow-right main-color"></i></span>
                 </a>
             </li>
         {%  endif %}
