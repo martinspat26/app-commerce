@@ -1,0 +1,39 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>Trip and Fun</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('static/css/login.css') }}"
+    />
+</head>
+
+<section class="section-grey">
+    <p class="title text-center my-0">Login</p>
+    <p class="text-secondary text-center subtitle my-0 mb-2">
+        Faça seu login colocando seu email e senha
+    </p>
+
+    <div class="my-2 container">
+         <div class="login-card card shadow-sm my-2 text-center">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">E-mail</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@address.com">                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Senha</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Manter sessão ativa</label>
+                </div>
+                <button type="submit" class="btn orange-button orange-button-100 my-3">Log in</button>
+              </form>
+              <hr>
+              <button class="btn orange-button orange-button-100 my-3">Register</button>
+
+        </div>
+
+    </div>
+</section>

@@ -1,17 +1,16 @@
-<!-- <div class="card custom-product-card mb-4 shadow-sm flex-fill" data-productid="{{ product.id }}"> -->
-<div class="mb-4 flex-fill" data-productid="{{ product.id }}">
+<div class="card-products m-2" data-productid="{{ product.id }}">
     <a href="/product-detail?id={{product.id}}" class="text-decoration-none text-dark">
             <div class="card-body-top pb-3">
                 <div class="product-list-image-div">
                     {% if product.images %}
-                        <img class="product-list-image shadow-sm" src="{{ product.images }}" alt="Imagem">
-                    {% else %}
-                        <img class="product-list-image shadow-sm" src="static/images/noimage.jpg" alt="Imagem" height="100%" width="100%">
-                    {% endif %} 
+                    <img class="product-list-image shadow-sm" src="{{ product.images }}" alt="Imagem">
+                {% else %}
+                    <img class="product-list-image shadow-sm" src="static/images/noimage.jpg" alt="Imagem" height="100%" width="100%">
+                {% endif %} 
                 </div>
             </div>
             <div class="card-body-bottom">
-            <p class="title my-0">{{ product.name }}</p>
+                <p class="title my-0">{{ product.name }}</p>
             <p class="subtitle text-secondary my-0">{{ product.getLocalization() }}</p>
             <p class="title my-0">{{ product.getPrice() }} €</p>
             </div>
