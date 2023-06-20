@@ -18,12 +18,13 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
    'id' => '1',
    'name' => 'Product',
+   'title' => '',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1684939665,
+   'modificationDate' => 1687283765,
    'userOwner' => 2,
    'userModification' => 2,
-   'parentClass' => '\\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\AbstractProduct',
+   'parentClass' => 'App\\Model\\DataObject\\AbstractProduct',
    'implementsInterfaces' => '\\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\IndexableInterface ,  \\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\CheckoutableInterface',
    'listingParentClass' => '',
    'useTraits' => '',
@@ -35,9 +36,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'allowInherit' => false,
    'allowVariants' => false,
    'showVariants' => false,
-   'fieldDefinitions' => 
-  array (
-  ),
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
@@ -50,7 +48,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
@@ -65,7 +62,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
@@ -79,8 +75,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => 'float: right;',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'image',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -88,9 +83,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'uploadPath' => '',
              'width' => '',
              'height' => '',
-             'uploadPath' => '',
           )),
           1 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
@@ -103,8 +98,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'input',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -112,7 +106,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
              'regex' => '',
@@ -121,6 +114,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
+             'width' => '',
              'defaultValueGenerator' => '',
           )),
           2 => 
@@ -134,8 +128,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'textarea',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -143,11 +136,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'height' => '',
              'maxLength' => NULL,
              'showCharCount' => false,
              'excludeFromSearchIndex' => false,
+             'height' => '',
+             'width' => '',
           )),
           3 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
@@ -160,8 +153,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'numeric',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -169,15 +161,15 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
              'defaultValue' => 0,
              'integer' => false,
              'unsigned' => false,
-             'minValue' => 1,
+             'minValue' => 1.0,
              'maxValue' => NULL,
              'unique' => false,
              'decimalSize' => 10,
              'decimalPrecision' => 2,
+             'width' => '',
              'defaultValueGenerator' => '',
           )),
           4 => 
@@ -191,8 +183,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'manyToOneRelation',
+             'fieldtype' => '',
              'relationType' => true,
              'invisible' => false,
              'visibleGridView' => false,
@@ -207,9 +198,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 'classes' => 'Localization',
               ),
             ),
+             'displayMode' => NULL,
              'pathFormatterClass' => '',
-             'width' => '',
+             'assetInlineDownloadAllowed' => false,
              'assetUploadPath' => '',
+             'allowToClearRelation' => true,
              'objectsAllowed' => true,
              'assetsAllowed' => false,
              'assetTypes' => 
@@ -219,6 +212,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'documentTypes' => 
             array (
             ),
+             'width' => '',
           )),
           5 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyRelation::__set_state(array(
@@ -231,8 +225,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'manyToManyRelation',
+             'fieldtype' => '',
              'relationType' => true,
              'invisible' => false,
              'visibleGridView' => false,
@@ -243,11 +236,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'classes' => 
             array (
             ),
+             'displayMode' => NULL,
              'pathFormatterClass' => '',
-             'width' => '',
-             'height' => '',
              'maxItems' => NULL,
+             'assetInlineDownloadAllowed' => false,
              'assetUploadPath' => '',
+             'allowToClearRelation' => true,
              'objectsAllowed' => false,
              'assetsAllowed' => false,
              'assetTypes' => 
@@ -258,6 +252,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
              'enableTextSelection' => false,
+             'width' => '',
+             'height' => '',
           )),
           6 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
@@ -270,8 +266,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'manyToOneRelation',
+             'fieldtype' => '',
              'relationType' => true,
              'invisible' => false,
              'visibleGridView' => false,
@@ -286,9 +281,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 'classes' => 'Type',
               ),
             ),
+             'displayMode' => NULL,
              'pathFormatterClass' => '',
-             'width' => '',
+             'assetInlineDownloadAllowed' => false,
              'assetUploadPath' => '',
+             'allowToClearRelation' => true,
              'objectsAllowed' => true,
              'assetsAllowed' => false,
              'assetTypes' => 
@@ -298,6 +295,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'documentTypes' => 
             array (
             ),
+             'width' => '',
           )),
         ),
          'locked' => false,
@@ -324,7 +322,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'labelAlign' => 'left',
   )),
    'icon' => '',
-   'previewUrl' => '',
    'group' => '',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => '',
@@ -332,7 +329,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'compositeIndices' => 
   array (
   ),
-   'generateTypeDeclarations' => true,
    'showFieldLookup' => false,
    'propertyVisibility' => 
   array (
@@ -360,6 +356,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
   array (
   ),
    'blockedVarsForExport' => 
+  array (
+  ),
+   'fieldDefinitionsCache' => 
   array (
   ),
    'activeDispatchingEvents' => 

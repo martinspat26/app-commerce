@@ -13,23 +13,23 @@
  * @license    http://www.pimcore.org/license     GPLv3 and PEL
  */
 
-namespace App;
+ namespace App;
 
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
-use Pimcore\Kernel as PimcoreKernel;
-
-class Kernel extends PimcoreKernel
-{
-    /**
-     * Adds bundles to register to the bundle collection. The collection is able
-     * to handle priorities and environment specific bundles.
-     *
-     * @param BundleCollection $collection
-     */
-    public function registerBundlesToCollection(BundleCollection $collection)
-    {
-        if (class_exists('\\AppBundle\\AppBundle')) {
-            $collection->addBundle(new \AppBundle\AppBundle);
-        }
-    }
+ use Pimcore\Bundle\AdminBundle\PimcoreAdminBundle;
+ use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+ use Pimcore\Kernel as PimcoreKernel;
+ 
+ class Kernel extends PimcoreKernel
+ {
+     /**
+      * Adds bundles to register to the bundle collection. The collection is able
+      * to handle priorities and environment specific bundles.
+      *
+      * @param BundleCollection $collection
+      */
+     public function registerBundlesToCollection(BundleCollection $collection): void
+     {
+         // pimcore bundles
+         $collection->addBundle(new PimcoreAdminBundle(), 60);
+     }
 }
