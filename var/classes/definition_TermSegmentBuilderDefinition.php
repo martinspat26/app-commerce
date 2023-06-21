@@ -6,21 +6,23 @@
  *
  * Fields Summary:
  * - name [input]
- * - tokenSettings [fieldcollections]
+ * - terms [block]
+ * -- term [input]
+ * -- phrases [table]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
-   'id' => 'EF_OSVS',
-   'name' => 'OnlineShopVoucherSeries',
+   'id' => '7',
+   'name' => 'TermSegmentBuilderDefinition',
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1687291077,
+   'modificationDate' => 1687291250,
    'userOwner' => NULL,
    'userModification' => 0,
-   'parentClass' => '\\Pimcore\\Bundle\\EcommerceFrameworkBundle\\Model\\AbstractVoucherSeries',
-   'implementsInterfaces' => '',
+   'parentClass' => 'CustomerManagementFrameworkBundle\\Model\\AbstractTermSegmentBuilderDefinition',
+   'implementsInterfaces' => NULL,
    'listingParentClass' => '',
    'useTraits' => '',
    'listingUseTraits' => '',
@@ -60,35 +62,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'children' => 
         array (
           0 => 
-          Pimcore\Model\DataObject\ClassDefinition\Layout\Text::__set_state(array(
-             'name' => 'Layout',
-             'type' => NULL,
-             'region' => NULL,
-             'title' => '',
-             'width' => 0,
-             'height' => 0,
-             'collapsible' => false,
-             'collapsed' => false,
-             'bodyStyle' => 'padding: 10px; background-color: #d9edf7; border-color: #bce8f1 !important; color: #31708f;',
-             'datatype' => 'layout',
-             'children' => 
-            array (
-            ),
-             'locked' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'fieldtype' => 'text',
-             'html' => '<b>VoucherSeries </b>to set up valid voucher tokens.&nbsp;<div>- Name: Specify a name for this voucher series. Just for finding it again ;-)&nbsp;</div><div>-&nbsp;Token Settings: Specify a token calculation type and define specific settings for token generation.&nbsp;</div><div>Actual tokens are available in additional tab \'Voucher Service\'&nbsp;</div>',
-             'renderingClass' => '',
-             'border' => false,
-          )),
-          1 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
              'name' => 'name',
              'title' => 'Name',
              'tooltip' => '',
-             'mandatory' => false,
+             'mandatory' => true,
              'noteditable' => false,
              'index' => NULL,
              'locked' => false,
@@ -97,26 +75,26 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
-             'visibleGridView' => true,
-             'visibleSearch' => true,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
              'blockedVarsForExport' => 
             array (
             ),
              'defaultValue' => NULL,
-             'columnLength' => 255,
+             'columnLength' => 190,
              'regex' => '',
              'regexFlags' => 
             array (
             ),
              'unique' => false,
              'showCharCount' => false,
-             'width' => 400,
+             'width' => NULL,
              'defaultValueGenerator' => '',
           )),
-          2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Fieldcollections::__set_state(array(
-             'name' => 'tokenSettings',
-             'title' => 'Token Settings',
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Block::__set_state(array(
+             'name' => 'terms',
+             'title' => 'Terms',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -132,18 +110,82 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'allowedTypes' => 
-            array (
-              0 => 'VoucherTokenTypePattern',
-              1 => 'VoucherTokenTypeSingle',
-            ),
              'lazyLoading' => false,
-             'maxItems' => 1,
              'disallowAddRemove' => false,
-             'disallowReorder' => true,
-             'collapsed' => false,
+             'disallowReorder' => false,
              'collapsible' => false,
-             'border' => false,
+             'collapsed' => false,
+             'maxItems' => NULL,
+             'styleElement' => '',
+             'children' => 
+            array (
+              0 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'name' => 'term',
+                 'title' => 'Term',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => NULL,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'width' => NULL,
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Table::__set_state(array(
+                 'name' => 'phrases',
+                 'title' => 'phrases',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => NULL,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'cols' => 1,
+                 'colsFixed' => true,
+                 'rows' => NULL,
+                 'rowsFixed' => false,
+                 'data' => '',
+                 'columnConfigActivated' => false,
+                 'columnConfig' => 
+                array (
+                ),
+                 'height' => '',
+                 'width' => '',
+              )),
+            ),
+             'layout' => NULL,
+             'referencedFields' => 
+            array (
+            ),
+             'fieldDefinitionsCache' => NULL,
           )),
         ),
          'locked' => false,
@@ -154,7 +196,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'layout' => NULL,
          'border' => false,
          'icon' => NULL,
-         'labelWidth' => 150,
+         'labelWidth' => 200,
          'labelAlign' => 'left',
       )),
     ),
@@ -169,10 +211,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'icon' => '/bundles/pimcoreadmin/img/flat-color-icons/vip.svg',
-   'group' => 'E-Commerce',
+   'icon' => '/bundles/pimcoreadmin/img/flat-color-icons/data_configuration.svg',
+   'group' => 'CustomerManagement',
    'showAppLoggerTab' => false,
-   'linkGeneratorReference' => '',
+   'linkGeneratorReference' => NULL,
    'previewGeneratorReference' => NULL,
    'compositeIndices' => 
   array (
@@ -183,20 +225,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
     'grid' => 
     array (
       'id' => true,
-      'key' => false,
       'path' => true,
       'published' => true,
-      'modificationDate' => false,
-      'creationDate' => false,
+      'modificationDate' => true,
+      'creationDate' => true,
     ),
     'search' => 
     array (
       'id' => true,
-      'key' => false,
       'path' => true,
       'published' => true,
-      'modificationDate' => false,
-      'creationDate' => false,
+      'modificationDate' => true,
+      'creationDate' => true,
     ),
   ),
    'enableGridLocking' => false,

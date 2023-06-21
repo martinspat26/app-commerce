@@ -8,7 +8,9 @@ If you are new to Pimcore, it's better to start with our demo package, listed be
 - Clone repository 
 - Open in fork 
 - Create new blank DataBase
+  - `mysql -u root -p -e "CREATE DATABASE app-ecommerce charset=utf8mb4;"`
 - Install Pimcore on project
+  - `./vendor/bin/pimcore-install --admin-username admin --admin-password admin  --mysql-username root --mysql-password --mysql-database app-ecommerce --no-interaction `
 - Point your virtual host to `app-commerce/public`
 - Point local host to `127.0.0.1   app-commerce.loc`
 - Open http://app-commerce.loc/admin/ in your browser
@@ -17,7 +19,6 @@ If you are new to Pimcore, it's better to start with our demo package, listed be
 
 ## Installing e-commerce bundle framework
 ```bash
-php bin/console pimcore:bundle:enable PimcoreEcommerceFrameworkBundle
 php bin/console pimcore:bundle:install PimcoreEcommerceFrameworkBundle
 php bin/console p:b:l
 

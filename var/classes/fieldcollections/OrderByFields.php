@@ -2,7 +2,7 @@
 
 /**
  * Fields Summary:
- * - field [indexFieldSelectionCombo]
+ * - field [select]
  * - direction [select]
  */
 
@@ -25,7 +25,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
@@ -40,7 +39,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => '',
          'children' => 
         array (
           0 => 
@@ -50,11 +48,10 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
-             'permissions' => '',
-             'datatype' => 'data',
+             'permissions' => NULL,
              'fieldtype' => 'indexFieldSelectionCombo',
              'relationType' => false,
              'invisible' => false,
@@ -161,13 +158,13 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                 'value' => 'technologies',
               ),
             ),
-             'width' => 300,
              'defaultValue' => NULL,
              'optionsProviderClass' => NULL,
              'optionsProviderData' => NULL,
              'columnLength' => 190,
              'dynamicOptions' => false,
              'defaultValueGenerator' => '',
+             'width' => 300,
              'specificPriceField' => false,
              'showAllFields' => false,
              'considerTenants' => true,
@@ -179,12 +176,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
-             'permissions' => '',
-             'datatype' => 'data',
-             'fieldtype' => 'select',
+             'permissions' => NULL,
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -205,13 +201,13 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
                 'value' => 'desc',
               ),
             ),
-             'width' => 500,
              'defaultValue' => '',
              'optionsProviderClass' => NULL,
              'optionsProviderData' => NULL,
              'columnLength' => 190,
              'dynamicOptions' => false,
              'defaultValueGenerator' => '',
+             'width' => 500,
           )),
         ),
          'locked' => false,
@@ -237,7 +233,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'generateTypeDeclarations' => true,
+   'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
   array (
   ),

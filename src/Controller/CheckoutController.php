@@ -26,7 +26,7 @@ class CheckoutController extends FrontendController
      *
      * @return Response|RedirectResponse
      */
-    public function checkoutAddressAction(Factory $factory, Request $request)
+    public function checkoutAddressAction(Factory $factory, Request $request): RedirectResponse|Response
     {
         $data = $request->request->all();
 
@@ -36,7 +36,7 @@ class CheckoutController extends FrontendController
         $checkoutManager = $factory->getCheckoutManager($cart);
         $deliveryAddress = $checkoutManager->getCheckoutStep('deliveryaddress');
 
-        
+
         // Create the form
         $form = $this->createFormBuilder()
         ->add('email', EmailType::class, [
@@ -59,19 +59,19 @@ class CheckoutController extends FrontendController
             'attr' => ['class' => 'btn btn-primary btn-lg btn-block mt-4'],
         ])
         ->getForm();
-        
+
         // Handle form submission
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // Retrieve form data
             $data = $form->getData();
-            
+
             // Create the address object
             $address = new stdClass();
             $address->email = $data['email'];
             $address->firstName = $data['firstName'];
             $address->lastName = $data['lastName'];
-            
+
             $checkoutManager->commitStep($deliveryAddress, $address);
             $cart->save();
 
@@ -95,24 +95,24 @@ class CheckoutController extends FrontendController
      *
      * @return Response
      */
-    public function checkoutCompletedAction(SessionInterface $session)
+    public function checkoutCompletedAction(SessionInterface $session): Response
     {
         $orderId = $session->get('last_order_id');
 
         $order = OnlineShopOrder::getById($orderId);
-        
+
         return $this->render('checkout/checkout_completed.html.twig', [
             'order' => $order
         ]);
     }
-    
+
 
     /**
      * @param Request $request
      *
      * @return Response
      */
-    public function confirmationMailAction(Request $request)
+    public function confirmationMailAction(Request $request): Response
     {
         $order = $request->get('order');
 

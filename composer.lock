@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec6a9d3ad081e62d952a92f2775d34e7",
+    "content-hash": "515a3bc113cfe993f94e6ce1cb3173f1",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1780,16 +1780,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v6.7.0",
+            "version": "v6.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "71278f20b0a623389beefe87a641d03948a38870"
+                "reference": "48b0210c51718d682e53210c24d25c5a10a2299b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/71278f20b0a623389beefe87a641d03948a38870",
-                "reference": "71278f20b0a623389beefe87a641d03948a38870",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/48b0210c51718d682e53210c24d25c5a10a2299b",
+                "reference": "48b0210c51718d682e53210c24d25c5a10a2299b",
                 "shasum": ""
             },
             "require": {
@@ -1837,9 +1837,9 @@
             ],
             "support": {
                 "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/v6.7.0"
+                "source": "https://github.com/firebase/php-jwt/tree/v6.8.0"
             },
-            "time": "2023-06-14T15:29:26+00:00"
+            "time": "2023-06-20T16:45:35+00:00"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
@@ -5532,6 +5532,40 @@
                 "source": "https://github.com/pimcore/admin-ui-classic-bundle/tree/v1.0.1"
             },
             "time": "2023-05-25T12:15:08+00:00"
+        },
+        {
+            "name": "pimcore/compatibility-bridge-v10",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pimcore/compatibility-bridge-v10.git",
+                "reference": "598c018fc74f56e6580904db8c7b2ac17375a9af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pimcore/compatibility-bridge-v10/zipball/598c018fc74f56e6580904db8c7b2ac17375a9af",
+                "reference": "598c018fc74f56e6580904db8c7b2ac17375a9af",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
+            },
+            "type": "pimcore-bundle",
+            "autoload": {
+                "files": [
+                    "src/autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "description": "Pimcore Compatibility Bridge provides class aliases for the classes which were moved/updated and are necessary for backwards compatibility.",
+            "support": {
+                "issues": "https://github.com/pimcore/compatibility-bridge-v10/issues",
+                "source": "https://github.com/pimcore/compatibility-bridge-v10/tree/v1.0.0"
+            },
+            "time": "2023-04-12T07:23:40+00:00"
         },
         {
             "name": "pimcore/customer-management-framework-bundle",

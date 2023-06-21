@@ -22,13 +22,12 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'type' => NULL,
      'region' => NULL,
      'title' => NULL,
-     'width' => NULL,
-     'height' => NULL,
+     'width' => 0,
+     'height' => 0,
      'collapsible' => false,
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
@@ -37,13 +36,12 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
          'type' => NULL,
          'region' => NULL,
          'title' => '',
-         'width' => NULL,
-         'height' => NULL,
+         'width' => 0,
+         'height' => 0,
          'collapsible' => false,
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
@@ -52,13 +50,12 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'type' => NULL,
              'region' => NULL,
              'title' => '',
-             'width' => NULL,
-             'height' => NULL,
+             'width' => 0,
+             'height' => 0,
              'collapsible' => false,
              'collapsed' => false,
              'bodyStyle' => 'padding: 10px; background-color: #d9edf7; border-color: #bce8f1 !important; color: #31708f;',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
             ),
@@ -79,12 +76,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
-             'permissions' => '',
-             'datatype' => 'data',
-             'fieldtype' => 'input',
+             'permissions' => NULL,
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -92,7 +88,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 400,
              'defaultValue' => NULL,
              'columnLength' => 255,
              'regex' => '',
@@ -101,6 +96,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
+             'width' => 400,
              'defaultValueGenerator' => '',
           )),
           2 => 
@@ -110,30 +106,17 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'indexFieldSelection',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
              'blockedVarsForExport' => 
             array (
-            ),
-             'queryColumnType' => 
-            array (
-              'tenant' => 'varchar(100)',
-              'field' => 'varchar(200)',
-              'preSelect' => 'text',
-            ),
-             'columnType' => 
-            array (
-              'tenant' => 'varchar(100)',
-              'field' => 'varchar(200)',
-              'preSelect' => 'text',
             ),
              'width' => 400,
              'considerTenants' => true,
@@ -153,12 +136,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
-             'permissions' => '',
-             'datatype' => 'data',
-             'fieldtype' => 'input',
+             'permissions' => NULL,
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -166,7 +148,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 400,
              'defaultValue' => NULL,
              'columnLength' => 255,
              'regex' => '',
@@ -175,6 +156,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
+             'width' => 400,
              'defaultValueGenerator' => '',
           )),
           4 => 
@@ -184,12 +166,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'textarea',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -197,11 +178,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 400,
-             'height' => 100,
              'maxLength' => NULL,
              'showCharCount' => false,
              'excludeFromSearchIndex' => false,
+             'height' => 100,
+             'width' => 400,
           )),
           5 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
@@ -210,12 +191,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'textarea',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -223,11 +203,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 400,
-             'height' => 100,
              'maxLength' => NULL,
              'showCharCount' => false,
              'excludeFromSearchIndex' => false,
+             'height' => 100,
+             'width' => 400,
           )),
         ),
          'locked' => false,
@@ -253,7 +233,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'generateTypeDeclarations' => true,
+   'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
   array (
   ),

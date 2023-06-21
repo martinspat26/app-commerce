@@ -1,10 +1,14 @@
 imports:
     - { resource: 'local/' }
     - { resource: ecommerce/base-ecommerce.yaml }
-
+    - { resource: cmf.yaml }
 
 pimcore:
 
+    security:
+        # the encoder factory as shipped by the CMF
+        password_hasher_factories:
+            Pimcore\Model\DataObject\Customer: cmf.security.user_password_hasher_factory
 # IMPORTANT Notice!
 # Following there are only some examples listed, for a full list of possible options, please run the following command:
 # ./bin/console debug:config pimcore
@@ -113,6 +117,20 @@ pimcore:
 #            mail_receiver: ''
 #        archive_treshold: '30'
 #        archive_alternative_database: ''
+
+#### Pimcore ADMIN
+pimcore_admin:
+    admin_csp_header:
+        enabled: true
+        exclude_paths:
+            - '@^/admin/external_opcache@'
+
+    config_location:
+        admin_system_settings:
+            write_target:
+                type: 'settings-store'
+            read_target:
+                type: 'settings-store'
 
 #### SYMFONY OVERRIDES
 framework:

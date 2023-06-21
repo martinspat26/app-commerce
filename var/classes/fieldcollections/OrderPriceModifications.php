@@ -27,7 +27,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
@@ -42,7 +41,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
@@ -52,12 +50,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'input',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -65,7 +62,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 300,
              'defaultValue' => NULL,
              'columnLength' => 255,
              'regex' => '',
@@ -74,6 +70,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
+             'width' => 300,
              'defaultValueGenerator' => '',
           )),
           1 => 
@@ -83,12 +80,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => true,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'numeric',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -96,7 +92,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 300,
              'defaultValue' => NULL,
              'integer' => false,
              'unsigned' => false,
@@ -105,6 +100,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'unique' => false,
              'decimalSize' => 19,
              'decimalPrecision' => 4,
+             'width' => 300,
              'defaultValueGenerator' => '',
           )),
           2 => 
@@ -118,8 +114,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'numeric',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -127,7 +122,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => NULL,
              'defaultValue' => NULL,
              'integer' => true,
              'unsigned' => false,
@@ -136,6 +130,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'unique' => false,
              'decimalSize' => NULL,
              'decimalPrecision' => NULL,
+             'width' => NULL,
              'defaultValueGenerator' => '',
           )),
           3 => 
@@ -145,12 +140,11 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => true,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'numeric',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -158,7 +152,6 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 300,
              'defaultValue' => NULL,
              'integer' => false,
              'unsigned' => false,
@@ -167,6 +160,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
              'unique' => false,
              'decimalSize' => 19,
              'decimalPrecision' => 4,
+             'width' => 300,
              'defaultValueGenerator' => '',
           )),
         ),
@@ -193,7 +187,7 @@ return Pimcore\Model\DataObject\Fieldcollection\Definition::__set_state(array(
      'labelWidth' => 100,
      'labelAlign' => 'left',
   )),
-   'generateTypeDeclarations' => true,
+   'fieldDefinitionsCache' => NULL,
    'blockedVarsForExport' => 
   array (
   ),

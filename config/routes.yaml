@@ -4,9 +4,6 @@ _pimcore:
 app_localized:
     resource: "../src/Controller/"
     type:     annotation
-    prefix:
-        en: /en
-        de: /de
 
 app:
     resource: "../src/Controller/"

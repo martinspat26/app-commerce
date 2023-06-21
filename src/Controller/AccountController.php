@@ -62,8 +62,8 @@ class AccountController extends BaseController
         AuthenticationUtils $authenticationUtils,
         Request $request,
         UserInterface $user = null
-    ) {
-
+    ): RedirectResponse|Response
+    {
         //redirect user to index page if logged in
         if ($user && $this->isGranted('ROLE_USER')) {
             return $this->redirectToRoute('account-index');
@@ -126,7 +126,8 @@ class AccountController extends BaseController
         UrlGeneratorInterface $urlGenerator,
         NewsletterDoubleOptInService $newsletterDoubleOptInService,
         UserInterface $user = null
-    ) {
+    ): RedirectResponse|Response
+    {
 
         //redirect user to index page if logged in
         if ($user && $this->isGranted('ROLE_USER')) {
@@ -212,7 +213,7 @@ class AccountController extends BaseController
      * @return Response
      */
     #[IsGranted('ROLE_USER')]
-    public function indexAction(UserInterface $user = null)
+    public function indexAction(UserInterface $user = null): Response
     {
         $orderManager = Factory::getInstance()->getOrderManager();
         $orderList = $orderManager->createOrderList();
@@ -239,7 +240,7 @@ class AccountController extends BaseController
      * @throws \Exception
      */
     #[IsGranted('ROLE_USER')]
-    public function updateMarketingPermissionAction(Request $request, Service $consentService, Translator $translator, NewsletterDoubleOptInService $newsletterDoubleOptInService, UserInterface $user = null)
+    public function updateMarketingPermissionAction(Request $request, Service $consentService, Translator $translator, NewsletterDoubleOptInService $newsletterDoubleOptInService, UserInterface $user = null): RedirectResponse
     {
         if ($user instanceof Customer) {
             $currentNewsletterPermission = $user->getNewsletter()->getConsent();
@@ -299,7 +300,7 @@ class AccountController extends BaseController
      *
      * @throws \Exception
      */
-    public function sendPasswordRecoveryMailAction(Request $request, PasswordRecoveryService $service, Translator $translator)
+    public function sendPasswordRecoveryMailAction(Request $request, PasswordRecoveryService $service, Translator $translator): Response
     {
         if ($request->isMethod(Request::METHOD_POST)) {
             try {
@@ -331,7 +332,7 @@ class AccountController extends BaseController
      *
      * @return Response|RedirectResponse
      */
-    public function resetPasswordAction(Request $request, PasswordRecoveryService $service, Translator $translator)
+    public function resetPasswordAction(Request $request, PasswordRecoveryService $service, Translator $translator): RedirectResponse|Response
     {
         $token = $request->get('token');
         $customer = $service->getCustomerByToken($token);
