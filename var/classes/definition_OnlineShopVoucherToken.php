@@ -14,10 +14,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
    'id' => 'EF_OSVT',
    'name' => 'OnlineShopVoucherToken',
+   'title' => '',
    'description' => '',
-   'creationDate' => 0,
-   'modificationDate' => 1684939665,
-   'userOwner' => 0,
+   'creationDate' => NULL,
+   'modificationDate' => 1687291077,
+   'userOwner' => NULL,
    'userModification' => 0,
    'parentClass' => '',
    'implementsInterfaces' => '',
@@ -31,9 +32,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'allowInherit' => false,
    'allowVariants' => false,
    'showVariants' => false,
-   'fieldDefinitions' => 
-  array (
-  ),
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
@@ -46,7 +44,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'collapsed' => false,
      'bodyStyle' => NULL,
      'datatype' => 'layout',
-     'permissions' => NULL,
      'children' => 
     array (
       0 => 
@@ -55,13 +52,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'type' => NULL,
          'region' => '',
          'title' => '',
-         'width' => NULL,
-         'height' => NULL,
+         'width' => 0,
+         'height' => 0,
          'collapsible' => false,
          'collapsed' => false,
          'bodyStyle' => '',
          'datatype' => 'layout',
-         'permissions' => NULL,
          'children' => 
         array (
           0 => 
@@ -70,13 +66,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'type' => NULL,
              'region' => NULL,
              'title' => '',
-             'width' => NULL,
-             'height' => NULL,
+             'width' => 0,
+             'height' => 0,
              'collapsible' => false,
              'collapsed' => false,
              'bodyStyle' => 'padding: 10px; background-color: #d9edf7; border-color: #bce8f1 !important; color: #31708f;',
              'datatype' => 'layout',
-             'permissions' => NULL,
              'children' => 
             array (
             ),
@@ -86,8 +81,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'fieldtype' => 'text',
              'html' => '<b>VoucherToken </b>that are actually used with orders.&nbsp;',
-             'renderingClass' => NULL,
-             'renderingData' => NULL,
+             'renderingClass' => '',
              'border' => false,
           )),
           1 => 
@@ -97,12 +91,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'tooltip' => '',
              'mandatory' => true,
              'noteditable' => true,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'numeric',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => true,
@@ -110,7 +103,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 500,
              'defaultValue' => NULL,
              'integer' => false,
              'unsigned' => false,
@@ -119,6 +111,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'unique' => false,
              'decimalSize' => NULL,
              'decimalPrecision' => NULL,
+             'width' => 500,
              'defaultValueGenerator' => '',
           )),
           2 => 
@@ -128,12 +121,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'tooltip' => '',
              'mandatory' => true,
              'noteditable' => true,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'input',
+             'fieldtype' => '',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => true,
@@ -141,7 +133,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => 500,
              'defaultValue' => NULL,
              'columnLength' => 255,
              'regex' => '',
@@ -150,6 +141,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
+             'width' => 500,
              'defaultValueGenerator' => '',
           )),
           3 => 
@@ -159,12 +151,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'tooltip' => '',
              'mandatory' => true,
              'noteditable' => true,
-             'index' => false,
+             'index' => NULL,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'manyToOneRelation',
+             'fieldtype' => '',
              'relationType' => true,
              'invisible' => false,
              'visibleGridView' => false,
@@ -179,9 +170,11 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 'classes' => 'OnlineShopVoucherSeries',
               ),
             ),
+             'displayMode' => NULL,
              'pathFormatterClass' => NULL,
-             'width' => 500,
+             'assetInlineDownloadAllowed' => false,
              'assetUploadPath' => '',
+             'allowToClearRelation' => true,
              'objectsAllowed' => true,
              'assetsAllowed' => false,
              'assetTypes' => 
@@ -191,6 +184,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'documentTypes' => 
             array (
             ),
+             'width' => 500,
           )),
         ),
          'locked' => false,
@@ -217,7 +211,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'labelAlign' => 'left',
   )),
    'icon' => '',
-   'previewUrl' => '',
    'group' => 'E-Commerce',
    'showAppLoggerTab' => false,
    'linkGeneratorReference' => '',
@@ -225,7 +218,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'compositeIndices' => 
   array (
   ),
-   'generateTypeDeclarations' => true,
    'showFieldLookup' => false,
    'propertyVisibility' => 
   array (
@@ -253,6 +245,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
   array (
   ),
    'blockedVarsForExport' => 
+  array (
+  ),
+   'fieldDefinitionsCache' => 
   array (
   ),
    'activeDispatchingEvents' => 

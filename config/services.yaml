@@ -1,6 +1,8 @@
 parameters:
     secret: hAu1vUNuj4LJBy1U6DuuxTF23Yn/dyjOIL7qgb6Nkt4=
 
+    app_encryption_secret: "nh/12v1TnxPuqsdxgMdvEG5qCu9YLOtKbY4iGhIt7Uo="
+
     # customize the full path to external executables
     # normally they are auto-detected by `which program` or auto-discovered in the configured path in
     # System Settings -> General -> Additional $PATH variable
@@ -60,6 +62,29 @@ services:
         tags: [ 'console.command' ]
 
 
+    # ---------------------------------------------------------
+    # Forms
+    # ---------------------------------------------------------
+    App\Form\DeliveryAddressFormType: ~
+    App\Form\LoginFormType: ~
+    App\Form\RegistrationFormType: ~
+    App\Form\RegistrationFormHandler: ~
+    App\Form\CarSubmitFormType: ~
+
+    # ---------------------------------------------------------
+    # Misc Services
+    # ---------------------------------------------------------
+    App\Services\PasswordRecoveryService: ~
+    App\Services\NewsletterDoubleOptInService: ~
+    App\Services\SegmentTrackingHelperService: ~
+    App\Services\Workflow\CustomHtmlService: ~
+    App\Website\Navigation\BreadcrumbHelperService: ~
+
+    App\Model\Product\CalculatedValue\QualityCalculator:
+        public: true
+
+    App\Model\Product\CalculatedValue\AccessoryPartName:
+        public: true
 
     # Example custom templating helper
     # App\Templating\Helper\Example:
@@ -78,6 +103,14 @@ services:
             - { name: kernel.event_listener, event: pimcore.ecommerce.ordermanager.postUpdateOrder, method: onUpdateOrder }
             - { name: kernel.event_listener, event: pimcore.ecommerce.commitorderprocessor.sendConfirmationMails, method: sendConfirmationMail }
             - { name: kernel.event_listener, event: pimcore.ecommerce.commitorderprocessor.postCommitOrder, method: postCommitOrder }
+
+    # authentication login listener for updating e-commerce framework environment after login
+    App\EventListener\AuthenticationLoginListener: ~
+
+    # authentication login listener for updating e-commerce framework environment after logout
+    App\EventListener\AuthenticationLogoutListener:
+        tags:
+            - { name: 'kernel.event_subscriber', dispatcher: 'security.event_dispatcher.pimcore_admin' }
 
     # ---------------------------------------------------------
     # Twig Extensions

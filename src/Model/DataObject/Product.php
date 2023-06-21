@@ -33,7 +33,7 @@ class Product extends \Pimcore\Model\DataObject\Product
      *
      * @return string
      */
-    public function getPriceSystemName(): ?string
+    public function getPriceSystemName(): string
     {
         return 'default';
     }
@@ -78,7 +78,7 @@ class Product extends \Pimcore\Model\DataObject\Product
      *
      * @return string
      */
-    public function getOSIndexType(): ?string
+    public function getOSIndexType(): string
     {
         return $this->getType();
     }
@@ -89,7 +89,7 @@ class Product extends \Pimcore\Model\DataObject\Product
      *
      * @return int
      */
-    public function getOSParentId()
+    public function getOSParentId():?int
     {
         return $this->getParentId();
     }

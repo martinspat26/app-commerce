@@ -22,7 +22,7 @@ class MySqlConfig extends DefaultMysql
     /**
      * @return string
      */
-    public function getTablename()
+    public function getTablename(): string
     {
         return 'product_index';
     }
@@ -30,7 +30,7 @@ class MySqlConfig extends DefaultMysql
     /**
      * @return string
      */
-    public function getRelationTablename()
+    public function getRelationTablename(): string
     {
         return 'product_index_relations';
     }

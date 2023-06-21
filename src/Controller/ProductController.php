@@ -10,16 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Pimcore\Model\DataObject\FilterDefinition;
 use Symfony\Component\Routing\Annotation\Route;
 use Pimcore\Bundle\EcommerceFrameworkBundle\Factory;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Pimcore\Bundle\EcommerceFrameworkBundle\FilterService\ListHelper;
 use Pimcore\Bundle\EcommerceFrameworkBundle\IndexService\ProductList\ProductListInterface;
 
 class ProductController extends FrontendController
 {
     /**
-     * @Route("listing", name="listing")
-     *
-     * @Template
+     * @Route("/listing", name="listing")
      *
      * @param Request $request
      * @param Factory $ecommerceFactory
@@ -63,8 +60,6 @@ class ProductController extends FrontendController
 
     /**
      * @Route ("product-detail", name="product-detail")
-     *
-     * @Template
      *
      * @param Request $request
      *
