@@ -63,7 +63,7 @@ class LoginFormType extends AbstractType
             ])
             ->add('_target_path', HiddenType::class)
             ->add('_submit', SubmitType::class, [
-                'label' => 'general.login'
+                'label' => 'Log in'
             ]);
     }
 
