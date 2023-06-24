@@ -1,43 +1,54 @@
-{% extends 'layout/patLayout.html.twig' %}
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
-
+{% extends ('layout/patLayout.html.twig') %}
 
 {% block content %}
 
-    <div class="text-center">
-
-        <div class="form-signin mb-5">
-
-
-            {% if error %}
-                <div class="alert alert-danger">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Trip and Fun</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ asset('static/css/login.css') }}"
+        />
+    </head>
+    
+    <section class="section-grey">
+        <p class="title text-center my-0">Login</p>
+        <p class="text-secondary text-center subtitle my-0 mb-2">
+            Faça seu login colocando seu email e senha
+        </p>
+    
+        <div class="my-2 container">
+             <div class="login-card card shadow-sm my-2 text-center">
+                <form>
+                    {{ form_start(form) }}
+                    {% if error %}
+                        <div class="alert alert-danger">
                     {{ error.getMessage() }}
-                </div>
-            {% endif %}
-
-            {{ form_start(form) }}
-            <h1 class="display-3 mb-3 font-weight-normal">{{ 'general.please-sign-in' | trans }}</h1>
-            {{ form_widget(form._username, { 'attr': {'placeholder': 'Username'}}) }}
-            {{ form_widget(form._password, { 'attr': {'placeholder': 'Password'}}) }}
-
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
-
-            <div class="custom-control custom-checkbox mb-3">
-                <input name="_remember_me" type="checkbox" class="custom-control-input" id="rememberMe">
-                <label class="custom-control-label" for="rememberMe">Remember me</label>
+                        </div>
+                    {% endif %}
+                    <div class="form-group">
+                      <label for="Email">E-mail</label>
+                      {{ form_widget(form._username, { 'attr': {'placeholder': 'email@address.com', 'class': 'form-control', 'type': 'email'}}) }}
+                      <label for="Password">Senha</label>
+                      {{ form_widget(form._password, { 'attr': {'placeholder': 'Password', 'class': 'form-control', 'type': 'password'}}) }}
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <div class="form-group form-check">
+                      <input type="checkbox" name="_remember_me" class="form-check-input" id="rememberMe">
+                      <label class="form-check-label" for="exampleCheck1">Manter sessão ativa</label>
+                    </div>
+                    {{ form_row(form._submit, {'attr': {'class': 'btn orange-button orange-button-100 my-3', 'type': 'submit'}}) }}
+                    {{ form_end(form) }}
+                  </form>
+                  
+                  <hr>
+                  <button class="btn orange-button orange-button-100 mb-1"><a href="/account/send-password-recovery" class="white-color">Esqueci meu password</button></a>
+                  <button class="btn orange-button orange-button-100 mb-1"><a href="/account/register" class="white-color">Fazer Registo</button></a>
+                  
+    
             </div>
-
-            {{ form_row(form._submit, {'attr': {'class': 'btn-success btn-lg btn-block mt-4'}}) }}
-
-            {{ form_end(form) }}
-
-            <p>{{ 'account.forgot-password' | trans }} <a href="{{ path('account-password-send-recovery') }}">{{ 'account.password-recovery' | trans }}</a></p>
-            <p>{{ 'general.no-account' | trans }} <a href="{{ path('account-register') }}">{{ 'general.register-now' | trans }}</a></p>
-
-
+    
         </div>
-    </div>
-
+    </section>
 {% endblock %}

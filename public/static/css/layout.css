@@ -28,6 +28,11 @@ a.main-color {
     text-decoration: none;
 }
 
+a.white-color {
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
 a.secondary-color {
     color: #444444 !important;
     text-decoration: none;

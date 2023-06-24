@@ -71,15 +71,15 @@ class RegistrationFormType extends AbstractType
 
         $builder
             ->add('newsletter', CheckboxType::class, [
-                'label' => 'general.newsletter',
+                'label' => 'Autoriza envio de campanhas para o e-mail de registo?',
                 'required' => false,
                 'label_attr' => [
                     'class' => 'checkbox-custom'
                 ]
             ])
             ->add('profiling', CheckboxType::class, [
-                'label' => 'general.profiling',
-                'required' => false,
+                'label' => 'Autoriza tratamento dos dados?',
+                'required' => true,
                 'label_attr' => [
                     'class' => 'checkbox-custom'
                 ]
