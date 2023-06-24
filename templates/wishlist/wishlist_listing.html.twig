@@ -10,14 +10,13 @@
 </head>
 
 <section class="section-grey">
-    <p class="title text-center my-0">Carrinho</p>
+    <p class="title text-center my-0">Wishlist</p>
     <p class="text-secondary text-center subtitle my-0 mb-2">
-        O prazo de envio do voucher e os códigos de desconto são confirmados no
-        checkout.
+        Não guarde para depois, o que pode comprar agora. Usufrua das nossas ofertas exclusivas.
     </p>
     <div class="row">
         <div class="column-left my-2">
-            <p class="my-1 cart-title">Experiências selecionadas:</p>
+            <p class="my-1 cart-title">Experiências guardadas na sua Wishlist:</p>
             {% for product in products %}
             <div class="card shadow-sm card-cart p-2 my-2">
                 <div class="row align-items-center">
@@ -26,10 +25,11 @@
                             {{ product.name }}
                         </p>
                     </div>
+                    <div><a href="/cartadd?id={{product.id}}"><button class="btn btn-default orange-button"> ADICIONAR NO CARRINHO <i class="fa-solid fa-cart-shopping"></i></button></a></div>
                     <div class="col text-right">
                         <p class="subtitle my-1 mx-1">
                             <a
-                                href="/cartremove?id={{ product.id }}"
+                                href="/wishlistremove?id={{ product.id }}"
                                 class="text-secondary"
                                 ><i class="fa-solid fa-trash-can"></i
                             ></a>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div class="row align-items-center">
+                {# <div class="row align-items-center">
                     <div class="col">
                         <p
                             class="subtitle text-secondary m-1"
@@ -51,23 +51,10 @@
                             {{ product.price }} X {{ product.count }}
                         </p>
                     </div>
-                </div>
+                </div> #}
             </div>
-            {% endfor %}
-            <p class="my-1 cart-title"><a href="/listing"><button class="btn btn-default orange-button orange-button">CONTINUE A COMPRAR<i class="fa-solid fa-store"></i></button></a></p>
 
-        </div>
-        <div class="column-right my-2">
-            {% include 'cart/cart_order_summary.html.twig' %}
-            <div class="" >
-                <a href="/checkout-address"
-                    ><button
-                        class="btn btn-default orange-button orange-button-100"
-                    >
-                        CHECKOUT
-                        <i class="fa-solid fa-money-check-dollar"></i></button
-                ></a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
