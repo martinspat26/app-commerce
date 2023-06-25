@@ -23,7 +23,7 @@ class DefaultController extends FrontendController
      *
      * @return array
      */
-    #[Template('default/default.html.twig')]
+    #[Template('home/home.html.twig')]
     public function defaultAction(): array
     {
         return [];

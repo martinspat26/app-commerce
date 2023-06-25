@@ -64,6 +64,7 @@
           
                 {% if app.user %}
                     <a class="nav-link menu-item" href="/account/index"><i class="fa-regular fa-circle-user"></i> {{ app.user.firstname }}</a>
+                    <a class="nav-link menu-item" href="{{ path('account-logout') }}"class="dropdown-item">Logout</a>
                 {% else %}    
                 <a class="nav-link menu-item" href="/account/login"><i class="fa-regular fa-circle-user"></i> Login</a>
                 {% endif %}
