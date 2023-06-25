@@ -10,6 +10,7 @@ use Pimcore\Bundle\EcommerceFrameworkBundle\Factory;
 use Pimcore\Bundle\EcommerceFrameworkBundle\CartManager\CartInterface;
 use Pimcore\Bundle\EcommerceFrameworkBundle\Model\ProductInterface;
 use Pimcore\Bundle\EcommerceFrameworkBundle\Model\CheckoutableInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class WishlistController extends FrontendController
 {
@@ -37,9 +38,11 @@ class WishlistController extends FrontendController
     
     /**
      * @Route("/wishlistadd", name="wishlistadd")
+     * 
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
+    #[IsGranted('ROLE_USER')]
     public function addToWishlistAction(Request $request) {
         $productId = $request->get("id");
         $quantity = 1;
@@ -77,6 +80,7 @@ class WishlistController extends FrontendController
      * 
      * @return Response
      */
+    #[IsGranted('ROLE_USER')]
     public function wishListAction(Request $request) {
         $wishCartItems = [];
 
