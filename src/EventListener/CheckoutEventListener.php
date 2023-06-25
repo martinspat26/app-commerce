@@ -37,7 +37,7 @@ class CheckoutEventListener
      * @param Factory $ecommerceFactory
      * @param ActivityManagerInterface $activityManager
      */
-    public function __construct(Factory $ecommerceFactory, LocaleServiceInterface $localeService)
+    public function __construct(Factory $ecommerceFactory,ActivityManagerInterface $activityManager, LocaleServiceInterface $localeService)
     {
         $this->ecommerceFactory = $ecommerceFactory;
         $this->activityManager = $activityManager;
@@ -49,7 +49,7 @@ class CheckoutEventListener
      *
      * @throws \Exception
      */
-    public function onUpdateOrder(OrderManagerEvent $event)
+    public function onUpdateOrder(OrderManagerEvent $event): void
     {
         $cart = $event->getCart();
 
@@ -87,20 +87,8 @@ class CheckoutEventListener
     /**
      * @param SendConfirmationMailEvent $event
      */
-    public function sendConfirmationMail(SendConfirmationMailEvent $event)
+    public function sendConfirmationMail(SendConfirmationMailEvent $event): void
     {
-        $order = $event->getOrder();
-
-        $mail = new Mail();
-        $mail->setDocument(Email::getByPath('/' . $this->localeService->getLocale() . '/mails/confirmation-mail'));
-        $mail->setParams([
-            'ordernumber' => $order->getOrdernumber(),
-            'order' => $order
-        ]);
-
-        $mail->addTo($order->getCustomerEMail());
-        $mail->send();
-
         $event->setSkipDefaultBehaviour(true);
     }
 
@@ -109,7 +97,7 @@ class CheckoutEventListener
      *
      * @throws \Pimcore\Bundle\EcommerceFrameworkBundle\Exception\UnsupportedException
      */
-    public function postCommitOrder(CommitOrderProcessorEvent $event)
+    public function postCommitOrder(CommitOrderProcessorEvent $event): void
     {
         $order = $event->getOrder();
         $order->getCustomer();
