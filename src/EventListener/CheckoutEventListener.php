@@ -3,11 +3,12 @@
 
 namespace App\EventListener;
 
+use App\Model\CustomerManagementFramework\Activity\OrderActivity;
 use CustomerManagementFrameworkBundle\ActivityManager\ActivityManagerInterface;
 use Pimcore\Bundle\EcommerceFrameworkBundle\Factory;
-use Pimcore\Event\Model\Ecommerce\CommitOrderProcessorEvent;
-use Pimcore\Event\Model\Ecommerce\OrderManagerEvent;
-use Pimcore\Event\Model\Ecommerce\SendConfirmationMailEvent;
+use Pimcore\Bundle\EcommerceFrameworkBundle\Event\Model\CommitOrderProcessorEvent;
+use Pimcore\Bundle\EcommerceFrameworkBundle\Event\Model\OrderManagerEvent;
+use Pimcore\Bundle\EcommerceFrameworkBundle\Event\Model\SendConfirmationMailEvent;
 use Pimcore\Localization\LocaleServiceInterface;
 use Pimcore\Mail;
 use Pimcore\Model\DataObject\OnlineShopOrder;
@@ -20,7 +21,10 @@ class CheckoutEventListener
      */
     protected $ecommerceFactory;
 
-
+    /**
+     * @var ActivityManagerInterface
+     */
+    protected $activityManager;
 
     /**
      * @var LocaleServiceInterface
@@ -36,6 +40,7 @@ class CheckoutEventListener
     public function __construct(Factory $ecommerceFactory, LocaleServiceInterface $localeService)
     {
         $this->ecommerceFactory = $ecommerceFactory;
+        $this->activityManager = $activityManager;
         $this->localeService = $localeService;
     }
 
@@ -108,8 +113,8 @@ class CheckoutEventListener
     {
         $order = $event->getOrder();
         $order->getCustomer();
-        // if ($this->activityManager && $order->getCustomer()) {
-        //     $this->activityManager->trackActivity(new OrderActivity($order->getCustomer(), $order));
-        // }
+         if ($this->activityManager && $order->getCustomer()) {
+             $this->activityManager->trackActivity(new OrderActivity($order->getCustomer(), $order));
+         }
     }
 }
