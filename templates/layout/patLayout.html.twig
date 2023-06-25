@@ -63,7 +63,7 @@
                 </form>
           
                 {% if app.user %}
-                    <a class="nav-link menu-item" href="/account/index"><i class="fa-regular fa-circle-user"></i> {{ app.user.firstname }} {{ app.user.lastname }}</a>
+                    <a class="nav-link menu-item" href="/account/index"><i class="fa-regular fa-circle-user"></i> {{ app.user.firstname }}</a>
                 {% else %}    
                 <a class="nav-link menu-item" href="/account/login"><i class="fa-regular fa-circle-user"></i> Login</a>
                 {% endif %}
