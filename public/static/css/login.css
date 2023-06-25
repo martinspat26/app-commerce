@@ -26,3 +26,12 @@ p.cart-title {
     justify-content: center;
     align-items: center;
   }
+
+  .column-left {
+    width: 50%;
+    margin-top: 10px;
+}
+
+.column-right {
+    width: 50%;
+}

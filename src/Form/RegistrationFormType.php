@@ -79,7 +79,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('profiling', CheckboxType::class, [
                 'label' => 'Autoriza tratamento dos dados?',
-                'required' => true,
+                'required' => false,
                 'label_attr' => [
                     'class' => 'checkbox-custom'
                 ]
