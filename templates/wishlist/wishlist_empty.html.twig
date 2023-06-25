@@ -1,0 +1,27 @@
+{% extends 'layout/patLayout.html.twig' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Trip and Fun</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ asset('static/css/cart.css') }}"
+    />
+</head>
+
+<section class="section-grey text-center">
+    <p class="title text-center my-0">A sua wishlist está vazia.</p>
+    <p class="text-secondary text-center subtitle my-0 mb-2">
+        Encontre as melhores experiências na nossa lista de produtos.
+    </p>
+
+    <a href="/listing"><button class="btn btn-default orange-button orange-button">
+                        ENCONTRAR A EXPERIÊNCIA IDEAL PARA VOCÊ
+                        <i class="fa-solid fa-store"></i></button
+                ></a>
+</section>
+
+{% endblock %}

@@ -4,9 +4,11 @@
                 <div class="product-list-image-div">
                     {% if product.images %}
                     <img class="product-list-image shadow-sm" src="{{ product.images }}" alt="Imagem">
-                {% else %}
+                    {% else %}
                     <img class="product-list-image shadow-sm" src="static/images/noimage.jpg" alt="Imagem" height="100%" width="100%">
-                {% endif %} 
+                    {% endif %} 
+                    <a class="btn btn-primary button-inside-image" href="/wishlistadd?id={{product.id}}"><i class="fa-solid fa-heart"></i></a>
+                    <a class="btn btn-primary button-inside-image" href="/cartadd?id={{product.id}}"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
             </div>
             <div class="card-body-bottom">
@@ -16,3 +18,4 @@
             </div>
     </a>
 </div>
+

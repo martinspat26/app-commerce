@@ -28,6 +28,11 @@
             <p class="price my-0">{{ product.getPrice() }} €</p>
             <p class="text-secondary subtitle mb-2 mt-0">IVA Incluído</h6>
             <p class="text-secondary subtitle"><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-solid fa-star main-color"></i><i class="fa-regular fa-star main-color"></i> (12)</p>
+            <div>
+                <a href="/wishlistadd?id={{product.id}}">
+                    <button class="btn btn-default orange-button"> ADICIONAR À WISHLIST <i class="fa-solid fa-heart"></i></button>
+                </a>
+            </div>
             <div><a href="/cartadd?id={{product.id}}"><button class="btn btn-default orange-button"> ADICIONAR NO CARRINHO <i class="fa-solid fa-cart-shopping"></i></button></a></div>
             <p class="text-secondary subtitle my-2"><i class="fa-solid fa-circle fa-2xs main-color"></i></i> Disponível</p>
             <p class="text-secondary subtitle my-2">Validade do voucher: 1 ano e 6 meses</p>
