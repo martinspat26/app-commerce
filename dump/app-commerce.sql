@@ -15,11 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- A despejar estrutura da base de dados para app-ecommerce
-CREATE DATABASE IF NOT EXISTS `app-ecommerce` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
-USE `app-ecommerce`;
+-- A despejar estrutura da base de dados para app-commerce
+CREATE DATABASE IF NOT EXISTS `app-commerce` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+USE `app-commerce`;
 
--- A despejar estrutura para tabela app-ecommerce.application_logs
+-- A despejar estrutura para tabela app-commerce.application_logs
 CREATE TABLE IF NOT EXISTS `application_logs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(11) DEFAULT NULL,
@@ -41,10 +41,10 @@ CREATE TABLE IF NOT EXISTS `application_logs` (
   KEY `maintenanceChecked` (`maintenanceChecked`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.application_logs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.application_logs: ~0 rows (aproximadamente)
 DELETE FROM `application_logs`;
 
--- A despejar estrutura para tabela app-ecommerce.assets
+-- A despejar estrutura para tabela app-commerce.assets
 CREATE TABLE IF NOT EXISTS `assets` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parentId` int(11) unsigned DEFAULT NULL,
@@ -66,12 +66,12 @@ CREATE TABLE IF NOT EXISTS `assets` (
   KEY `modificationDate` (`modificationDate`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.assets: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.assets: ~0 rows (aproximadamente)
 DELETE FROM `assets`;
 INSERT INTO `assets` (`id`, `parentId`, `type`, `filename`, `path`, `mimetype`, `creationDate`, `modificationDate`, `userOwner`, `userModification`, `customSettings`, `hasMetaData`, `versionCount`) VALUES
 	(1, 0, 'folder', '', '/', NULL, 1687462672, 1687462672, 1, 1, NULL, 0, 0);
 
--- A despejar estrutura para tabela app-ecommerce.assets_image_thumbnail_cache
+-- A despejar estrutura para tabela app-commerce.assets_image_thumbnail_cache
 CREATE TABLE IF NOT EXISTS `assets_image_thumbnail_cache` (
   `cid` int(11) unsigned NOT NULL,
   `name` varchar(190) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
@@ -84,10 +84,10 @@ CREATE TABLE IF NOT EXISTS `assets_image_thumbnail_cache` (
   CONSTRAINT `FK_assets_image_thumbnail_cache_assets` FOREIGN KEY (`cid`) REFERENCES `assets` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.assets_image_thumbnail_cache: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.assets_image_thumbnail_cache: ~0 rows (aproximadamente)
 DELETE FROM `assets_image_thumbnail_cache`;
 
--- A despejar estrutura para tabela app-ecommerce.assets_metadata
+-- A despejar estrutura para tabela app-commerce.assets_metadata
 CREATE TABLE IF NOT EXISTS `assets_metadata` (
   `cid` int(11) unsigned NOT NULL,
   `name` varchar(190) NOT NULL,
@@ -99,10 +99,10 @@ CREATE TABLE IF NOT EXISTS `assets_metadata` (
   CONSTRAINT `FK_assets_metadata_assets` FOREIGN KEY (`cid`) REFERENCES `assets` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.assets_metadata: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.assets_metadata: ~0 rows (aproximadamente)
 DELETE FROM `assets_metadata`;
 
--- A despejar estrutura para tabela app-ecommerce.cache_items
+-- A despejar estrutura para tabela app-commerce.cache_items
 CREATE TABLE IF NOT EXISTS `cache_items` (
   `item_id` varbinary(255) NOT NULL,
   `item_data` mediumblob NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `cache_items` (
   PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- A despejar dados para tabela app-ecommerce.cache_items: ~158 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.cache_items: ~158 rows (aproximadamente)
 DELETE FROM `cache_items`;
 INSERT INTO `cache_items` (`item_id`, `item_data`, `item_lifetime`, `item_time`) VALUES
 	(_binary 0x61737365745f31, _binary 0x4f3a313a22a9223a323a7b733a363a22ffffff7fc01e223b4f3a32363a2250696d636f72655c4d6f64656c5c41737365745c466f6c646572223a32303a7b733a31353a22002a00646570656e64656e63696573223b4e3b733a32353a22002a005f5f6461746156657273696f6e54696d657374616d70223b693a313638373436323637323b733a373a22002a0070617468223b733a313a222f223b733a353a22002a006964223b693a313b733a31353a22002a006372656174696f6e44617465223b693a313638373436323637323b733a31393a22002a006d6f64696669636174696f6e44617465223b693a313638373436323637323b733a31353a22002a0076657273696f6e436f756e74223b693a303b733a31323a22002a00757365724f776e6572223b693a313b733a393a22002a006c6f636b6564223b4e3b733a31393a22002a00757365724d6f64696669636174696f6e223b693a313b733a31313a22002a00706172656e744964223b693a303b733a31323a22002a005f66756c6c64756d70223b623a303b733a373a22002a0074797065223b733a363a22666f6c646572223b733a31313a22002a0066696c656e616d65223b733a303a22223b733a31313a22002a006d696d6574797065223b4e3b733a31313a22002a006d65746164617461223b613a303a7b7d733a31373a22002a00637573746f6d53657474696e6773223b613a303a7b7d733a31343a22002a006861734d65746144617461223b623a303b733a31313a22002a007369626c696e6773223b4e3b733a31343a22002a00646174614368616e676564223b623a303b7d733a373a2261737365745f31223b733a363a2251c504dcea8e223b7d, 31536000, 1687566494),
@@ -273,7 +273,7 @@ INSERT INTO `cache_items` (`item_id`, `item_data`, `item_lifetime`, `item_time`)
 	(_binary 0x7472616e736c61746f72017461677301, _binary 0x733a363a2230233bd81569223b, NULL, 1687711335),
 	(_binary 0x7472616e736c61746f725f77656273697465017461677301, _binary 0x733a363a22ca7f451fd603223b, NULL, 1687566491);
 
--- A despejar estrutura para tabela app-ecommerce.classes
+-- A despejar estrutura para tabela app-commerce.classes
 CREATE TABLE IF NOT EXISTS `classes` (
   `id` varchar(50) NOT NULL,
   `name` varchar(190) NOT NULL DEFAULT '',
@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.classes: ~18 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.classes: ~18 rows (aproximadamente)
 DELETE FROM `classes`;
 INSERT INTO `classes` (`id`, `name`) VALUES
 	('4', 'Caracteristics'),
@@ -303,7 +303,7 @@ INSERT INTO `classes` (`id`, `name`) VALUES
 	('7', 'TermSegmentBuilderDefinition'),
 	('3', 'Type');
 
--- A despejar estrutura para tabela app-ecommerce.classificationstore_collectionrelations
+-- A despejar estrutura para tabela app-commerce.classificationstore_collectionrelations
 CREATE TABLE IF NOT EXISTS `classificationstore_collectionrelations` (
   `colId` int(11) unsigned NOT NULL,
   `groupId` int(11) unsigned NOT NULL,
@@ -313,10 +313,10 @@ CREATE TABLE IF NOT EXISTS `classificationstore_collectionrelations` (
   CONSTRAINT `FK_classificationstore_collectionrelations_groups` FOREIGN KEY (`groupId`) REFERENCES `classificationstore_groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.classificationstore_collectionrelations: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.classificationstore_collectionrelations: ~0 rows (aproximadamente)
 DELETE FROM `classificationstore_collectionrelations`;
 
--- A despejar estrutura para tabela app-ecommerce.classificationstore_collections
+-- A despejar estrutura para tabela app-commerce.classificationstore_collections
 CREATE TABLE IF NOT EXISTS `classificationstore_collections` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `storeId` int(11) DEFAULT NULL,
@@ -328,10 +328,10 @@ CREATE TABLE IF NOT EXISTS `classificationstore_collections` (
   KEY `storeId` (`storeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.classificationstore_collections: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.classificationstore_collections: ~0 rows (aproximadamente)
 DELETE FROM `classificationstore_collections`;
 
--- A despejar estrutura para tabela app-ecommerce.classificationstore_groups
+-- A despejar estrutura para tabela app-commerce.classificationstore_groups
 CREATE TABLE IF NOT EXISTS `classificationstore_groups` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `storeId` int(11) DEFAULT NULL,
@@ -345,10 +345,10 @@ CREATE TABLE IF NOT EXISTS `classificationstore_groups` (
   KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.classificationstore_groups: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.classificationstore_groups: ~0 rows (aproximadamente)
 DELETE FROM `classificationstore_groups`;
 
--- A despejar estrutura para tabela app-ecommerce.classificationstore_keys
+-- A despejar estrutura para tabela app-commerce.classificationstore_keys
 CREATE TABLE IF NOT EXISTS `classificationstore_keys` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `storeId` int(11) DEFAULT NULL,
@@ -367,10 +367,10 @@ CREATE TABLE IF NOT EXISTS `classificationstore_keys` (
   KEY `storeId` (`storeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.classificationstore_keys: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.classificationstore_keys: ~0 rows (aproximadamente)
 DELETE FROM `classificationstore_keys`;
 
--- A despejar estrutura para tabela app-ecommerce.classificationstore_relations
+-- A despejar estrutura para tabela app-commerce.classificationstore_relations
 CREATE TABLE IF NOT EXISTS `classificationstore_relations` (
   `groupId` int(11) unsigned NOT NULL,
   `keyId` int(11) unsigned NOT NULL,
@@ -383,10 +383,10 @@ CREATE TABLE IF NOT EXISTS `classificationstore_relations` (
   CONSTRAINT `FK_classificationstore_relations_classificationstore_keys` FOREIGN KEY (`keyId`) REFERENCES `classificationstore_keys` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.classificationstore_relations: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.classificationstore_relations: ~0 rows (aproximadamente)
 DELETE FROM `classificationstore_relations`;
 
--- A despejar estrutura para tabela app-ecommerce.classificationstore_stores
+-- A despejar estrutura para tabela app-commerce.classificationstore_stores
 CREATE TABLE IF NOT EXISTS `classificationstore_stores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(190) DEFAULT NULL,
@@ -395,10 +395,10 @@ CREATE TABLE IF NOT EXISTS `classificationstore_stores` (
   KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.classificationstore_stores: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.classificationstore_stores: ~0 rows (aproximadamente)
 DELETE FROM `classificationstore_stores`;
 
--- A despejar estrutura para tabela app-ecommerce.dependencies
+-- A despejar estrutura para tabela app-commerce.dependencies
 CREATE TABLE IF NOT EXISTS `dependencies` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `sourcetype` enum('document','asset','object') NOT NULL DEFAULT 'document',
@@ -410,7 +410,7 @@ CREATE TABLE IF NOT EXISTS `dependencies` (
   KEY `targettype_targetid` (`targettype`,`targetid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.dependencies: ~34 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.dependencies: ~34 rows (aproximadamente)
 DELETE FROM `dependencies`;
 INSERT INTO `dependencies` (`id`, `sourcetype`, `sourceid`, `targettype`, `targetid`) VALUES
 	(5, 'object', 17, 'object', 5),
@@ -448,7 +448,7 @@ INSERT INTO `dependencies` (`id`, `sourcetype`, `sourceid`, `targettype`, `targe
 	(37, 'object', 67, 'object', 66),
 	(38, 'object', 68, 'object', 49);
 
--- A despejar estrutura para tabela app-ecommerce.documents
+-- A despejar estrutura para tabela app-commerce.documents
 CREATE TABLE IF NOT EXISTS `documents` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parentId` int(11) unsigned DEFAULT NULL,
@@ -470,14 +470,14 @@ CREATE TABLE IF NOT EXISTS `documents` (
   KEY `modificationDate` (`modificationDate`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.documents: ~3 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents: ~3 rows (aproximadamente)
 DELETE FROM `documents`;
 INSERT INTO `documents` (`id`, `parentId`, `type`, `key`, `path`, `index`, `published`, `creationDate`, `modificationDate`, `userOwner`, `userModification`, `versionCount`) VALUES
 	(1, 0, 'page', '', '/', 999999, 1, 1687462672, 1687462672, 1, 1, 0),
 	(2, 1, 'page', 'Main-Page', '/', 1, 1, 1687698329, 1687698766, 2, 2, 15),
 	(3, 1, 'page', 'About-Us', '/', 2, 1, 1687698505, 1687698612, 2, 2, 6);
 
--- A despejar estrutura para tabela app-ecommerce.documents_editables
+-- A despejar estrutura para tabela app-commerce.documents_editables
 CREATE TABLE IF NOT EXISTS `documents_editables` (
   `documentId` int(11) unsigned NOT NULL DEFAULT 0,
   `name` varchar(750) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT '',
@@ -487,10 +487,10 @@ CREATE TABLE IF NOT EXISTS `documents_editables` (
   CONSTRAINT `fk_documents_editables_documents` FOREIGN KEY (`documentId`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.documents_editables: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents_editables: ~0 rows (aproximadamente)
 DELETE FROM `documents_editables`;
 
--- A despejar estrutura para tabela app-ecommerce.documents_email
+-- A despejar estrutura para tabela app-commerce.documents_email
 CREATE TABLE IF NOT EXISTS `documents_email` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `controller` varchar(500) DEFAULT NULL,
@@ -506,10 +506,10 @@ CREATE TABLE IF NOT EXISTS `documents_email` (
   CONSTRAINT `fk_documents_email_documents` FOREIGN KEY (`id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.documents_email: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents_email: ~0 rows (aproximadamente)
 DELETE FROM `documents_email`;
 
--- A despejar estrutura para tabela app-ecommerce.documents_hardlink
+-- A despejar estrutura para tabela app-commerce.documents_hardlink
 CREATE TABLE IF NOT EXISTS `documents_hardlink` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `sourceId` int(11) DEFAULT NULL,
@@ -520,10 +520,10 @@ CREATE TABLE IF NOT EXISTS `documents_hardlink` (
   CONSTRAINT `fk_documents_hardlink_documents` FOREIGN KEY (`id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.documents_hardlink: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents_hardlink: ~0 rows (aproximadamente)
 DELETE FROM `documents_hardlink`;
 
--- A despejar estrutura para tabela app-ecommerce.documents_link
+-- A despejar estrutura para tabela app-commerce.documents_link
 CREATE TABLE IF NOT EXISTS `documents_link` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `internalType` enum('document','asset','object') DEFAULT NULL,
@@ -534,10 +534,10 @@ CREATE TABLE IF NOT EXISTS `documents_link` (
   CONSTRAINT `fk_documents_link_documents` FOREIGN KEY (`id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.documents_link: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents_link: ~0 rows (aproximadamente)
 DELETE FROM `documents_link`;
 
--- A despejar estrutura para tabela app-ecommerce.documents_newsletter
+-- A despejar estrutura para tabela app-commerce.documents_newsletter
 CREATE TABLE IF NOT EXISTS `documents_newsletter` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `controller` varchar(500) DEFAULT NULL,
@@ -555,10 +555,10 @@ CREATE TABLE IF NOT EXISTS `documents_newsletter` (
   CONSTRAINT `fk_documents_newsletter_documents` FOREIGN KEY (`id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.documents_newsletter: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents_newsletter: ~0 rows (aproximadamente)
 DELETE FROM `documents_newsletter`;
 
--- A despejar estrutura para tabela app-ecommerce.documents_page
+-- A despejar estrutura para tabela app-commerce.documents_page
 CREATE TABLE IF NOT EXISTS `documents_page` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `controller` varchar(500) DEFAULT NULL,
@@ -576,14 +576,14 @@ CREATE TABLE IF NOT EXISTS `documents_page` (
   CONSTRAINT `fk_documents_page_documents` FOREIGN KEY (`id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.documents_page: ~3 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents_page: ~3 rows (aproximadamente)
 DELETE FROM `documents_page`;
 INSERT INTO `documents_page` (`id`, `controller`, `template`, `title`, `description`, `prettyUrl`, `contentMainDocumentId`, `targetGroupIds`, `missingRequiredEditable`, `staticGeneratorEnabled`, `staticGeneratorLifetime`) VALUES
 	(1, 'App\\Controller\\DefaultController::defaultAction', '', '', '', NULL, NULL, '', NULL, NULL, NULL),
 	(2, 'App\\Controller\\DefaultController::defaultAction', 'home\\home.html.twig', 'MainPage', '', '/home', NULL, '', NULL, 0, NULL),
 	(3, 'App\\Controller\\DefaultController::defaultAction', 'aboutus\\aboutus.html.twig', 'About-Us', '', '/about-us', NULL, '', NULL, 0, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.documents_snippet
+-- A despejar estrutura para tabela app-commerce.documents_snippet
 CREATE TABLE IF NOT EXISTS `documents_snippet` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `controller` varchar(500) DEFAULT NULL,
@@ -594,10 +594,10 @@ CREATE TABLE IF NOT EXISTS `documents_snippet` (
   CONSTRAINT `fk_documents_snippet_documents` FOREIGN KEY (`id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.documents_snippet: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents_snippet: ~0 rows (aproximadamente)
 DELETE FROM `documents_snippet`;
 
--- A despejar estrutura para tabela app-ecommerce.documents_translations
+-- A despejar estrutura para tabela app-commerce.documents_translations
 CREATE TABLE IF NOT EXISTS `documents_translations` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `sourceId` int(11) unsigned NOT NULL DEFAULT 0,
@@ -608,10 +608,10 @@ CREATE TABLE IF NOT EXISTS `documents_translations` (
   CONSTRAINT `fk_documents_translations_documents` FOREIGN KEY (`id`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.documents_translations: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.documents_translations: ~0 rows (aproximadamente)
 DELETE FROM `documents_translations`;
 
--- A despejar estrutura para tabela app-ecommerce.ecommerceframework_cart
+-- A despejar estrutura para tabela app-commerce.ecommerceframework_cart
 CREATE TABLE IF NOT EXISTS `ecommerceframework_cart` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `userid` int(20) NOT NULL,
@@ -622,7 +622,7 @@ CREATE TABLE IF NOT EXISTS `ecommerceframework_cart` (
   KEY `ecommerceframework_cart_userid_index` (`userid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- A despejar dados para tabela app-ecommerce.ecommerceframework_cart: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.ecommerceframework_cart: ~5 rows (aproximadamente)
 DELETE FROM `ecommerceframework_cart`;
 INSERT INTO `ecommerceframework_cart` (`id`, `userid`, `name`, `creationDateTimestamp`, `modificationDateTimestamp`) VALUES
 	(1, 42, 'cart', 1687692074, 0),
@@ -631,7 +631,7 @@ INSERT INTO `ecommerceframework_cart` (`id`, `userid`, `name`, `creationDateTime
 	(5, 51, 'cart', 1687711867, 1687712406),
 	(7, 66, 'cart', 1687712363, 0);
 
--- A despejar estrutura para tabela app-ecommerce.ecommerceframework_cartcheckoutdata
+-- A despejar estrutura para tabela app-commerce.ecommerceframework_cartcheckoutdata
 CREATE TABLE IF NOT EXISTS `ecommerceframework_cartcheckoutdata` (
   `cartId` int(20) NOT NULL,
   `key` varchar(150) NOT NULL,
@@ -639,10 +639,10 @@ CREATE TABLE IF NOT EXISTS `ecommerceframework_cartcheckoutdata` (
   PRIMARY KEY (`cartId`,`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- A despejar dados para tabela app-ecommerce.ecommerceframework_cartcheckoutdata: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.ecommerceframework_cartcheckoutdata: ~0 rows (aproximadamente)
 DELETE FROM `ecommerceframework_cartcheckoutdata`;
 
--- A despejar estrutura para tabela app-ecommerce.ecommerceframework_cartitem
+-- A despejar estrutura para tabela app-commerce.ecommerceframework_cartitem
 CREATE TABLE IF NOT EXISTS `ecommerceframework_cartitem` (
   `productId` int(20) NOT NULL,
   `cartId` int(20) NOT NULL,
@@ -656,7 +656,7 @@ CREATE TABLE IF NOT EXISTS `ecommerceframework_cartitem` (
   KEY `cartId_parentItemKey` (`cartId`,`parentItemKey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- A despejar dados para tabela app-ecommerce.ecommerceframework_cartitem: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.ecommerceframework_cartitem: ~5 rows (aproximadamente)
 DELETE FROM `ecommerceframework_cartitem`;
 INSERT INTO `ecommerceframework_cartitem` (`productId`, `cartId`, `count`, `itemKey`, `parentItemKey`, `comment`, `addedDateTimestamp`, `sortIndex`) VALUES
 	(18, 4, 1, '18', '', '', 1687711861469794, 0),
@@ -665,7 +665,7 @@ INSERT INTO `ecommerceframework_cartitem` (`productId`, `cartId`, `count`, `item
 	(26, 4, 1, '26', '', '', 1687711865184362, 0),
 	(27, 4, 1, '27', '', '', 1687712391862137, 0);
 
--- A despejar estrutura para tabela app-ecommerce.ecommerceframework_pricing_rule
+-- A despejar estrutura para tabela app-commerce.ecommerceframework_pricing_rule
 CREATE TABLE IF NOT EXISTS `ecommerceframework_pricing_rule` (
   `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -681,10 +681,10 @@ CREATE TABLE IF NOT EXISTS `ecommerceframework_pricing_rule` (
   KEY `active` (`active`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.ecommerceframework_pricing_rule: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.ecommerceframework_pricing_rule: ~0 rows (aproximadamente)
 DELETE FROM `ecommerceframework_pricing_rule`;
 
--- A despejar estrutura para tabela app-ecommerce.ecommerceframework_vouchertoolkit_reservations
+-- A despejar estrutura para tabela app-commerce.ecommerceframework_vouchertoolkit_reservations
 CREATE TABLE IF NOT EXISTS `ecommerceframework_vouchertoolkit_reservations` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `token` varchar(250) NOT NULL,
@@ -694,10 +694,10 @@ CREATE TABLE IF NOT EXISTS `ecommerceframework_vouchertoolkit_reservations` (
   KEY `token` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.ecommerceframework_vouchertoolkit_reservations: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.ecommerceframework_vouchertoolkit_reservations: ~0 rows (aproximadamente)
 DELETE FROM `ecommerceframework_vouchertoolkit_reservations`;
 
--- A despejar estrutura para tabela app-ecommerce.ecommerceframework_vouchertoolkit_statistics
+-- A despejar estrutura para tabela app-commerce.ecommerceframework_vouchertoolkit_statistics
 CREATE TABLE IF NOT EXISTS `ecommerceframework_vouchertoolkit_statistics` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `voucherSeriesId` bigint(20) NOT NULL,
@@ -705,10 +705,10 @@ CREATE TABLE IF NOT EXISTS `ecommerceframework_vouchertoolkit_statistics` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.ecommerceframework_vouchertoolkit_statistics: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.ecommerceframework_vouchertoolkit_statistics: ~0 rows (aproximadamente)
 DELETE FROM `ecommerceframework_vouchertoolkit_statistics`;
 
--- A despejar estrutura para tabela app-ecommerce.ecommerceframework_vouchertoolkit_tokens
+-- A despejar estrutura para tabela app-commerce.ecommerceframework_vouchertoolkit_tokens
 CREATE TABLE IF NOT EXISTS `ecommerceframework_vouchertoolkit_tokens` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `voucherSeriesId` bigint(20) DEFAULT NULL,
@@ -721,10 +721,10 @@ CREATE TABLE IF NOT EXISTS `ecommerceframework_vouchertoolkit_tokens` (
   UNIQUE KEY `token` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.ecommerceframework_vouchertoolkit_tokens: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.ecommerceframework_vouchertoolkit_tokens: ~0 rows (aproximadamente)
 DELETE FROM `ecommerceframework_vouchertoolkit_tokens`;
 
--- A despejar estrutura para tabela app-ecommerce.edit_lock
+-- A despejar estrutura para tabela app-commerce.edit_lock
 CREATE TABLE IF NOT EXISTS `edit_lock` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) unsigned NOT NULL DEFAULT 0,
@@ -737,7 +737,7 @@ CREATE TABLE IF NOT EXISTS `edit_lock` (
   KEY `cidtype` (`cid`,`ctype`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.edit_lock: ~8 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.edit_lock: ~8 rows (aproximadamente)
 DELETE FROM `edit_lock`;
 INSERT INTO `edit_lock` (`id`, `cid`, `ctype`, `userId`, `sessionId`, `date`) VALUES
 	(1, 5, 'object', 2, 'qcfht7bpig2l7nidqhtbr0m0mc', 1687566985),
@@ -749,7 +749,7 @@ INSERT INTO `edit_lock` (`id`, `cid`, `ctype`, `userId`, `sessionId`, `date`) VA
 	(34, 2, 'document', 2, '4e49928cdehdjlldhq115nmkrk', 1687710396),
 	(35, 3, 'document', 2, '4e49928cdehdjlldhq115nmkrk', 1687710398);
 
--- A despejar estrutura para tabela app-ecommerce.element_workflow_state
+-- A despejar estrutura para tabela app-commerce.element_workflow_state
 CREATE TABLE IF NOT EXISTS `element_workflow_state` (
   `cid` int(10) NOT NULL DEFAULT 0,
   `ctype` enum('document','asset','object') NOT NULL,
@@ -758,10 +758,10 @@ CREATE TABLE IF NOT EXISTS `element_workflow_state` (
   PRIMARY KEY (`cid`,`ctype`,`workflow`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.element_workflow_state: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.element_workflow_state: ~0 rows (aproximadamente)
 DELETE FROM `element_workflow_state`;
 
--- A despejar estrutura para tabela app-ecommerce.email_blocklist
+-- A despejar estrutura para tabela app-commerce.email_blocklist
 CREATE TABLE IF NOT EXISTS `email_blocklist` (
   `address` varchar(190) NOT NULL DEFAULT '',
   `creationDate` int(11) unsigned DEFAULT NULL,
@@ -769,10 +769,10 @@ CREATE TABLE IF NOT EXISTS `email_blocklist` (
   PRIMARY KEY (`address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.email_blocklist: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.email_blocklist: ~0 rows (aproximadamente)
 DELETE FROM `email_blocklist`;
 
--- A despejar estrutura para tabela app-ecommerce.email_log
+-- A despejar estrutura para tabela app-commerce.email_log
 CREATE TABLE IF NOT EXISTS `email_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `documentId` int(11) unsigned DEFAULT NULL,
@@ -793,10 +793,10 @@ CREATE TABLE IF NOT EXISTS `email_log` (
   CONSTRAINT `fk_email_log_documents` FOREIGN KEY (`documentId`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.email_log: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.email_log: ~0 rows (aproximadamente)
 DELETE FROM `email_log`;
 
--- A despejar estrutura para tabela app-ecommerce.gridconfigs
+-- A despejar estrutura para tabela app-commerce.gridconfigs
 CREATE TABLE IF NOT EXISTS `gridconfigs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ownerId` int(11) DEFAULT NULL,
@@ -816,10 +816,10 @@ CREATE TABLE IF NOT EXISTS `gridconfigs` (
   KEY `shareGlobally` (`shareGlobally`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.gridconfigs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.gridconfigs: ~0 rows (aproximadamente)
 DELETE FROM `gridconfigs`;
 
--- A despejar estrutura para tabela app-ecommerce.gridconfig_favourites
+-- A despejar estrutura para tabela app-commerce.gridconfig_favourites
 CREATE TABLE IF NOT EXISTS `gridconfig_favourites` (
   `ownerId` int(11) NOT NULL,
   `classId` varchar(50) NOT NULL,
@@ -834,10 +834,10 @@ CREATE TABLE IF NOT EXISTS `gridconfig_favourites` (
   CONSTRAINT `fk_gridconfig_favourites_gridconfigs` FOREIGN KEY (`gridConfigId`) REFERENCES `gridconfigs` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.gridconfig_favourites: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.gridconfig_favourites: ~0 rows (aproximadamente)
 DELETE FROM `gridconfig_favourites`;
 
--- A despejar estrutura para tabela app-ecommerce.gridconfig_shares
+-- A despejar estrutura para tabela app-commerce.gridconfig_shares
 CREATE TABLE IF NOT EXISTS `gridconfig_shares` (
   `gridConfigId` int(11) NOT NULL,
   `sharedWithUserId` int(11) NOT NULL,
@@ -847,10 +847,10 @@ CREATE TABLE IF NOT EXISTS `gridconfig_shares` (
   CONSTRAINT `fk_gridconfig_shares_gridconfigs` FOREIGN KEY (`gridConfigId`) REFERENCES `gridconfigs` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.gridconfig_shares: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.gridconfig_shares: ~0 rows (aproximadamente)
 DELETE FROM `gridconfig_shares`;
 
--- A despejar estrutura para tabela app-ecommerce.importconfigs
+-- A despejar estrutura para tabela app-commerce.importconfigs
 CREATE TABLE IF NOT EXISTS `importconfigs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ownerId` int(11) DEFAULT NULL,
@@ -867,10 +867,10 @@ CREATE TABLE IF NOT EXISTS `importconfigs` (
   KEY `shareGlobally` (`shareGlobally`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.importconfigs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.importconfigs: ~0 rows (aproximadamente)
 DELETE FROM `importconfigs`;
 
--- A despejar estrutura para tabela app-ecommerce.importconfig_shares
+-- A despejar estrutura para tabela app-commerce.importconfig_shares
 CREATE TABLE IF NOT EXISTS `importconfig_shares` (
   `importConfigId` int(11) NOT NULL,
   `sharedWithUserId` int(11) NOT NULL,
@@ -878,10 +878,10 @@ CREATE TABLE IF NOT EXISTS `importconfig_shares` (
   KEY `sharedWithUserId` (`sharedWithUserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.importconfig_shares: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.importconfig_shares: ~0 rows (aproximadamente)
 DELETE FROM `importconfig_shares`;
 
--- A despejar estrutura para tabela app-ecommerce.lock_keys
+-- A despejar estrutura para tabela app-commerce.lock_keys
 CREATE TABLE IF NOT EXISTS `lock_keys` (
   `key_id` varchar(64) NOT NULL,
   `key_token` varchar(44) NOT NULL,
@@ -889,10 +889,10 @@ CREATE TABLE IF NOT EXISTS `lock_keys` (
   PRIMARY KEY (`key_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.lock_keys: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.lock_keys: ~0 rows (aproximadamente)
 DELETE FROM `lock_keys`;
 
--- A despejar estrutura para tabela app-ecommerce.messenger_messages
+-- A despejar estrutura para tabela app-commerce.messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `body` longtext NOT NULL,
@@ -907,13 +907,13 @@ CREATE TABLE IF NOT EXISTS `messenger_messages` (
   KEY `IDX_75EA56E016BA31DB` (`delivered_at`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.messenger_messages: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.messenger_messages: ~2 rows (aproximadamente)
 DELETE FROM `messenger_messages`;
 INSERT INTO `messenger_messages` (`id`, `body`, `headers`, `queue_name`, `created_at`, `available_at`, `delivered_at`) VALUES
 	(1, 'O:36:\\"Symfony\\\\Component\\\\Messenger\\\\Envelope\\":2:{s:44:\\"\\0Symfony\\\\Component\\\\Messenger\\\\Envelope\\0stamps\\";a:1:{s:46:\\"Symfony\\\\Component\\\\Messenger\\\\Stamp\\\\BusNameStamp\\";a:1:{i:0;O:46:\\"Symfony\\\\Component\\\\Messenger\\\\Stamp\\\\BusNameStamp\\":1:{s:55:\\"\\0Symfony\\\\Component\\\\Messenger\\\\Stamp\\\\BusNameStamp\\0busName\\";s:26:\\"messenger.bus.pimcore-core\\";}}}s:45:\\"\\0Symfony\\\\Component\\\\Messenger\\\\Envelope\\0message\\";O:38:\\"Pimcore\\\\Messenger\\\\VersionDeleteMessage\\":2:{s:14:\\"\\0*\\0elementType\\";s:6:\\"object\\";s:12:\\"\\0*\\0elementId\\";i:9;}}', '[]', 'pimcore_core', '2023-06-24 11:39:33', '2023-06-24 11:39:33', NULL),
 	(2, 'O:36:\\"Symfony\\\\Component\\\\Messenger\\\\Envelope\\":2:{s:44:\\"\\0Symfony\\\\Component\\\\Messenger\\\\Envelope\\0stamps\\";a:1:{s:46:\\"Symfony\\\\Component\\\\Messenger\\\\Stamp\\\\BusNameStamp\\";a:1:{i:0;O:46:\\"Symfony\\\\Component\\\\Messenger\\\\Stamp\\\\BusNameStamp\\":1:{s:55:\\"\\0Symfony\\\\Component\\\\Messenger\\\\Stamp\\\\BusNameStamp\\0busName\\";s:26:\\"messenger.bus.pimcore-core\\";}}}s:45:\\"\\0Symfony\\\\Component\\\\Messenger\\\\Envelope\\0message\\";O:38:\\"Pimcore\\\\Messenger\\\\VersionDeleteMessage\\":2:{s:14:\\"\\0*\\0elementType\\";s:6:\\"object\\";s:12:\\"\\0*\\0elementId\\";i:10;}}', '[]', 'pimcore_core', '2023-06-24 11:39:36', '2023-06-24 11:39:36', NULL);
 
--- A despejar estrutura para tabela app-ecommerce.migration_versions
+-- A despejar estrutura para tabela app-commerce.migration_versions
 CREATE TABLE IF NOT EXISTS `migration_versions` (
   `version` varchar(1024) NOT NULL,
   `executed_at` datetime DEFAULT NULL,
@@ -921,7 +921,7 @@ CREATE TABLE IF NOT EXISTS `migration_versions` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- A despejar dados para tabela app-ecommerce.migration_versions: ~102 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.migration_versions: ~102 rows (aproximadamente)
 DELETE FROM `migration_versions`;
 INSERT INTO `migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 	('CustomerManagementFrameworkBundle\\Migrations\\PimcoreX\\Version20210305134111', NULL, NULL),
@@ -1028,7 +1028,7 @@ INSERT INTO `migration_versions` (`version`, `executed_at`, `execution_time`) VA
 	('Pimcore\\Bundle\\CoreBundle\\Migrations\\Version22020614115124', NULL, NULL),
 	('Pimcore\\Bundle\\EcommerceFrameworkBundle\\Migrations\\Version20210430124911', '2023-06-25 14:07:30', 380);
 
--- A despejar estrutura para tabela app-ecommerce.notes
+-- A despejar estrutura para tabela app-commerce.notes
 CREATE TABLE IF NOT EXISTS `notes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
@@ -1045,7 +1045,7 @@ CREATE TABLE IF NOT EXISTS `notes` (
   KEY `user` (`user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.notes: ~9 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.notes: ~9 rows (aproximadamente)
 DELETE FROM `notes`;
 INSERT INTO `notes` (`id`, `type`, `cid`, `ctype`, `date`, `user`, `title`, `description`, `locked`) VALUES
 	(1, 'cmf.SegmentManager', 42, 'object', 1687692038, NULL, 'Segment(s) added (GenderSegmentBuilder)', '/Customer Management/segments/calculated/Gender/not-set', 1),
@@ -1058,7 +1058,7 @@ INSERT INTO `notes` (`id`, `type`, `cid`, `ctype`, `date`, `user`, `title`, `des
 	(8, 'cmf.SegmentManager', 66, 'object', 1687711904, NULL, 'Segment(s) added (GenderSegmentBuilder)', '/Customer Management/segments/calculated/Gender/not-set', 1),
 	(9, 'cmf.SegmentManager', 68, 'object', 1687712437, NULL, 'Segment(s) added (GenderSegmentBuilder)', '/Customer Management/segments/calculated/Gender/not-set', 1);
 
--- A despejar estrutura para tabela app-ecommerce.notes_data
+-- A despejar estrutura para tabela app-commerce.notes_data
 CREATE TABLE IF NOT EXISTS `notes_data` (
   `auto_id` int(11) NOT NULL AUTO_INCREMENT,
   `id` int(11) NOT NULL,
@@ -1069,7 +1069,7 @@ CREATE TABLE IF NOT EXISTS `notes_data` (
   UNIQUE KEY `UNIQ_E5A8E5E2BF3967505E237E06` (`id`,`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.notes_data: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.notes_data: ~5 rows (aproximadamente)
 DELETE FROM `notes_data`;
 INSERT INTO `notes_data` (`auto_id`, `id`, `name`, `type`, `data`) VALUES
 	(1, 1, 'segment1', 'object', '49'),
@@ -1078,7 +1078,7 @@ INSERT INTO `notes_data` (`auto_id`, `id`, `name`, `type`, `data`) VALUES
 	(4, 8, 'segment1', 'object', '49'),
 	(5, 9, 'segment1', 'object', '49');
 
--- A despejar estrutura para tabela app-ecommerce.notifications
+-- A despejar estrutura para tabela app-commerce.notifications
 CREATE TABLE IF NOT EXISTS `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(20) NOT NULL DEFAULT 'info',
@@ -1095,10 +1095,10 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   KEY `recipient` (`recipient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.notifications: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.notifications: ~0 rows (aproximadamente)
 DELETE FROM `notifications`;
 
--- A despejar estrutura para tabela app-ecommerce.objects
+-- A despejar estrutura para tabela app-commerce.objects
 CREATE TABLE IF NOT EXISTS `objects` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parentId` int(11) unsigned DEFAULT NULL,
@@ -1127,7 +1127,7 @@ CREATE TABLE IF NOT EXISTS `objects` (
   KEY `classId` (`classId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.objects: ~64 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.objects: ~64 rows (aproximadamente)
 DELETE FROM `objects`;
 INSERT INTO `objects` (`id`, `parentId`, `type`, `key`, `path`, `index`, `published`, `creationDate`, `modificationDate`, `userOwner`, `userModification`, `classId`, `className`, `childrenSortBy`, `childrenSortOrder`, `versionCount`) VALUES
 	(1, 0, 'folder', '', '/', 999999, 1, 1687462672, 1687462672, 1, 1, NULL, NULL, NULL, NULL, 0),
@@ -1195,7 +1195,7 @@ INSERT INTO `objects` (`id`, `parentId`, `type`, `key`, `path`, `index`, `publis
 	(67, 52, 'object', 'ord_64987232e27ae', '/Shop/Orders/2023/06/25/', 0, 1, 1687712306, 1687712360, 0, 0, 'EF_OSO', 'OnlineShopOrder', NULL, NULL, 7),
 	(68, 16, 'object', 'teste-teste', '/Customer Management/customers/--/--/', 0, 1, 1687712437, 1687712437, 0, 0, 'CU', 'Customer', NULL, NULL, 1);
 
--- A despejar estrutura para vista app-ecommerce.object_1
+-- A despejar estrutura para vista app-commerce.object_1
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_1` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1228,7 +1228,7 @@ CREATE TABLE `object_1` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_2
+-- A despejar estrutura para vista app-commerce.object_2
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_2` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1253,7 +1253,7 @@ CREATE TABLE `object_2` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_3
+-- A despejar estrutura para vista app-commerce.object_3
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_3` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1278,7 +1278,7 @@ CREATE TABLE `object_3` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_4
+-- A despejar estrutura para vista app-commerce.object_4
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_4` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1303,7 +1303,7 @@ CREATE TABLE `object_4` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_5
+-- A despejar estrutura para vista app-commerce.object_5
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_5` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1333,7 +1333,7 @@ CREATE TABLE `object_5` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_6
+-- A despejar estrutura para vista app-commerce.object_6
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_6` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1364,7 +1364,7 @@ CREATE TABLE `object_6` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_7
+-- A despejar estrutura para vista app-commerce.object_7
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_7` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1389,7 +1389,7 @@ CREATE TABLE `object_7` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_8
+-- A despejar estrutura para vista app-commerce.object_8
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_8` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1423,7 +1423,7 @@ CREATE TABLE `object_8` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para tabela app-ecommerce.object_brick_query_paymentproviderpaypalsmartbutton_ef_oso
+-- A despejar estrutura para tabela app-commerce.object_brick_query_paymentproviderpaypalsmartbutton_ef_oso
 CREATE TABLE IF NOT EXISTS `object_brick_query_paymentproviderpaypalsmartbutton_ef_oso` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `fieldname` varchar(190) NOT NULL DEFAULT '',
@@ -1439,7 +1439,7 @@ CREATE TABLE IF NOT EXISTS `object_brick_query_paymentproviderpaypalsmartbutton_
   CONSTRAINT `fk_object_brick_query_PaymentProviderPayPalSmartButton__0b38eabf` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_brick_query_paymentproviderpaypalsmartbutton_ef_oso: ~13 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_brick_query_paymentproviderpaypalsmartbutton_ef_oso: ~13 rows (aproximadamente)
 DELETE FROM `object_brick_query_paymentproviderpaypalsmartbutton_ef_oso`;
 INSERT INTO `object_brick_query_paymentproviderpaypalsmartbutton_ef_oso` (`id`, `fieldname`, `configurationKey`, `auth_orderID`, `auth_payerID`, `auth_email_address`, `auth_given_name`, `auth_surname`) VALUES
 	(38, 'paymentProvider', 'paypal', '72M10782YS5521331', 'GA9PYRQ4FSTB4', 'hakohuco@mailinator.com', 'Rachel', 'Camacho'),
@@ -1456,7 +1456,7 @@ INSERT INTO `object_brick_query_paymentproviderpaypalsmartbutton_ef_oso` (`id`, 
 	(64, 'paymentProvider', 'paypal', '4PY77946CP756344E', 'CQLPS2B375MRS', 'catypi@mailinator.com', 'Russell Cotton', 'Tamekah Mosley'),
 	(67, 'paymentProvider', 'paypal', '73Y08300CV579324W', '8L5HD8HM6Z7KS', 'teste@mail.com', 'Teste', 'Teste');
 
--- A despejar estrutura para tabela app-ecommerce.object_brick_store_paymentproviderpaypalsmartbutton_ef_oso
+-- A despejar estrutura para tabela app-commerce.object_brick_store_paymentproviderpaypalsmartbutton_ef_oso
 CREATE TABLE IF NOT EXISTS `object_brick_store_paymentproviderpaypalsmartbutton_ef_oso` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `fieldname` varchar(190) NOT NULL DEFAULT '',
@@ -1472,7 +1472,7 @@ CREATE TABLE IF NOT EXISTS `object_brick_store_paymentproviderpaypalsmartbutton_
   CONSTRAINT `fk_object_brick_store_PaymentProviderPayPalSmartButton__af2ec936` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_brick_store_paymentproviderpaypalsmartbutton_ef_oso: ~13 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_brick_store_paymentproviderpaypalsmartbutton_ef_oso: ~13 rows (aproximadamente)
 DELETE FROM `object_brick_store_paymentproviderpaypalsmartbutton_ef_oso`;
 INSERT INTO `object_brick_store_paymentproviderpaypalsmartbutton_ef_oso` (`id`, `fieldname`, `configurationKey`, `auth_orderID`, `auth_payerID`, `auth_email_address`, `auth_given_name`, `auth_surname`) VALUES
 	(38, 'paymentProvider', 'paypal', '72M10782YS5521331', 'GA9PYRQ4FSTB4', 'hakohuco@mailinator.com', 'Rachel', 'Camacho'),
@@ -1489,7 +1489,7 @@ INSERT INTO `object_brick_store_paymentproviderpaypalsmartbutton_ef_oso` (`id`, 
 	(64, 'paymentProvider', 'paypal', '4PY77946CP756344E', 'CQLPS2B375MRS', 'catypi@mailinator.com', 'Russell Cotton', 'Tamekah Mosley'),
 	(67, 'paymentProvider', 'paypal', '73Y08300CV579324W', '8L5HD8HM6Z7KS', 'teste@mail.com', 'Teste', 'Teste');
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filtercategorymultiselect_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filtercategorymultiselect_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filtercategorymultiselect_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1504,10 +1504,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filtercategorymultiselect_ef_fd` (
   CONSTRAINT `fk_object_collection_FilterCategoryMultiselect_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filtercategorymultiselect_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filtercategorymultiselect_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filtercategorymultiselect_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filtercategory_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filtercategory_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filtercategory_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1521,10 +1521,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filtercategory_ef_fd` (
   CONSTRAINT `fk_object_collection_FilterCategory_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filtercategory_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filtercategory_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filtercategory_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filterinputfield_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filterinputfield_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filterinputfield_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1541,10 +1541,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filterinputfield_ef_fd` (
   CONSTRAINT `fk_object_collection_FilterInputfield_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filterinputfield_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filterinputfield_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filterinputfield_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filtermultirelation_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filtermultirelation_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filtermultirelation_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1561,10 +1561,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filtermultirelation_ef_fd` (
   CONSTRAINT `fk_object_collection_FilterMultiRelation_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filtermultirelation_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filtermultirelation_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filtermultirelation_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filtermultiselectfrommultiselect_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filtermultiselectfrommultiselect_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filtermultiselectfrommultiselect_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1581,10 +1581,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filtermultiselectfrommultiselect_e
   CONSTRAINT `fk_object_collection_FilterMultiSelectFromMultiSelect_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filtermultiselectfrommultiselect_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filtermultiselectfrommultiselect_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filtermultiselectfrommultiselect_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filtermultiselect_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filtermultiselect_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filtermultiselect_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1601,10 +1601,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filtermultiselect_ef_fd` (
   CONSTRAINT `fk_object_collection_FilterMultiSelect_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filtermultiselect_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filtermultiselect_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filtermultiselect_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filternumberrangeselection_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filternumberrangeselection_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filternumberrangeselection_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1631,10 +1631,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filternumberrangeselection_ef_fd` 
   CONSTRAINT `fk_object_collection_FilterNumberRangeSelection_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filternumberrangeselection_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filternumberrangeselection_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filternumberrangeselection_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filternumberrange_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filternumberrange_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filternumberrange_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1654,10 +1654,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filternumberrange_ef_fd` (
   CONSTRAINT `fk_object_collection_FilterNumberRange_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filternumberrange_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filternumberrange_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filternumberrange_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filterrelation_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filterrelation_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filterrelation_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1673,13 +1673,13 @@ CREATE TABLE IF NOT EXISTS `object_collection_filterrelation_ef_fd` (
   CONSTRAINT `fk_object_collection_FilterRelation_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filterrelation_ef_fd: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filterrelation_ef_fd: ~2 rows (aproximadamente)
 DELETE FROM `object_collection_filterrelation_ef_fd`;
 INSERT INTO `object_collection_filterrelation_ef_fd` (`id`, `index`, `fieldname`, `label`, `field__tenant`, `field__field`, `field__preSelect`, `scriptPath`) VALUES
 	(12, 0, 'filters', 'Local', NULL, 'localization', NULL, NULL),
 	(12, 1, 'filters', 'Tipo', NULL, 'productType', NULL, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filterselectfrommultiselect_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filterselectfrommultiselect_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filterselectfrommultiselect_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1695,10 +1695,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filterselectfrommultiselect_ef_fd`
   CONSTRAINT `fk_object_collection_FilterSelectFromMultiSelect_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filterselectfrommultiselect_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filterselectfrommultiselect_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filterselectfrommultiselect_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_filterselect_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_filterselect_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_filterselect_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1714,10 +1714,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_filterselect_ef_fd` (
   CONSTRAINT `fk_object_collection_FilterSelect_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_filterselect_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_filterselect_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_filterselect_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_orderbyfields_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_orderbyfields_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_orderbyfields_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1730,10 +1730,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_orderbyfields_ef_fd` (
   CONSTRAINT `fk_object_collection_OrderByFields_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_orderbyfields_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_orderbyfields_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_orderbyfields_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_orderpricemodifications_ef_oso
+-- A despejar estrutura para tabela app-commerce.object_collection_orderpricemodifications_ef_oso
 CREATE TABLE IF NOT EXISTS `object_collection_orderpricemodifications_ef_oso` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1748,10 +1748,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_orderpricemodifications_ef_oso` (
   CONSTRAINT `fk_object_collection_OrderPriceModifications_EF_OSO__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_orderpricemodifications_ef_oso: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_orderpricemodifications_ef_oso: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_orderpricemodifications_ef_oso`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_paymentinfo_ef_oso
+-- A despejar estrutura para tabela app-commerce.object_collection_paymentinfo_ef_oso
 CREATE TABLE IF NOT EXISTS `object_collection_paymentinfo_ef_oso` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1769,7 +1769,7 @@ CREATE TABLE IF NOT EXISTS `object_collection_paymentinfo_ef_oso` (
   CONSTRAINT `fk_object_collection_PaymentInfo_EF_OSO__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_paymentinfo_ef_oso: ~17 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_paymentinfo_ef_oso: ~17 rows (aproximadamente)
 DELETE FROM `object_collection_paymentinfo_ef_oso`;
 INSERT INTO `object_collection_paymentinfo_ef_oso` (`id`, `index`, `fieldname`, `paymentStart`, `paymentFinish`, `paymentReference`, `paymentState`, `internalPaymentId`, `message`, `providerData`) VALUES
 	(38, 0, 'paymentInfo', 1687611986, NULL, NULL, 'cancelled', 'payment_29332580-1~38', 'Payment cancelled by \'cancelStartedOrderPayment\'', NULL),
@@ -1790,7 +1790,7 @@ INSERT INTO `object_collection_paymentinfo_ef_oso` (`id`, `index`, `fieldname`, 
 	(64, 0, 'paymentInfo', 1687711782, 1687711824, '4PY77946CP756344E', 'committed', 'payment_1765105990-1~64', ' ', '{"transactionId":"53784628P4492871H"}'),
 	(67, 0, 'paymentInfo', 1687712312, 1687712360, '73Y08300CV579324W', 'committed', 'payment_587211175-1~67', ' ', '{"transactionId":"5KD58710KG4872619"}');
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_pricingrule_ef_osoi
+-- A despejar estrutura para tabela app-commerce.object_collection_pricingrule_ef_osoi
 CREATE TABLE IF NOT EXISTS `object_collection_pricingrule_ef_osoi` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1802,10 +1802,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_pricingrule_ef_osoi` (
   CONSTRAINT `fk_object_collection_PricingRule_EF_OSOI__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_pricingrule_ef_osoi: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_pricingrule_ef_osoi: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_pricingrule_ef_osoi`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_pricingrule_localized_ef_osoi
+-- A despejar estrutura para tabela app-commerce.object_collection_pricingrule_localized_ef_osoi
 CREATE TABLE IF NOT EXISTS `object_collection_pricingrule_localized_ef_osoi` (
   `ooo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1819,10 +1819,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_pricingrule_localized_ef_osoi` (
   CONSTRAINT `fk_object_collection_PricingRule_localized_EF_OSOI__ooo_id` FOREIGN KEY (`ooo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_pricingrule_localized_ef_osoi: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_pricingrule_localized_ef_osoi: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_pricingrule_localized_ef_osoi`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_similarityfield_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_collection_similarityfield_ef_fd
 CREATE TABLE IF NOT EXISTS `object_collection_similarityfield_ef_fd` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1835,10 +1835,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_similarityfield_ef_fd` (
   CONSTRAINT `fk_object_collection_SimilarityField_EF_FD__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_similarityfield_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_similarityfield_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_similarityfield_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_taxentry_ef_ostc
+-- A despejar estrutura para tabela app-commerce.object_collection_taxentry_ef_ostc
 CREATE TABLE IF NOT EXISTS `object_collection_taxentry_ef_ostc` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1850,10 +1850,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_taxentry_ef_ostc` (
   CONSTRAINT `fk_object_collection_TaxEntry_EF_OSTC__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_taxentry_ef_ostc: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_taxentry_ef_ostc: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_taxentry_ef_ostc`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_taxentry_localized_ef_ostc
+-- A despejar estrutura para tabela app-commerce.object_collection_taxentry_localized_ef_ostc
 CREATE TABLE IF NOT EXISTS `object_collection_taxentry_localized_ef_ostc` (
   `ooo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1867,10 +1867,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_taxentry_localized_ef_ostc` (
   CONSTRAINT `fk_object_collection_TaxEntry_localized_EF_OSTC__ooo_id` FOREIGN KEY (`ooo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_taxentry_localized_ef_ostc: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_taxentry_localized_ef_ostc: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_taxentry_localized_ef_ostc`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_vouchertokentypepattern_ef_osvs
+-- A despejar estrutura para tabela app-commerce.object_collection_vouchertokentypepattern_ef_osvs
 CREATE TABLE IF NOT EXISTS `object_collection_vouchertokentypepattern_ef_osvs` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1889,10 +1889,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_vouchertokentypepattern_ef_osvs` (
   CONSTRAINT `fk_object_collection_VoucherTokenTypePattern_EF_OSVS__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_vouchertokentypepattern_ef_osvs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_vouchertokentypepattern_ef_osvs: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_vouchertokentypepattern_ef_osvs`;
 
--- A despejar estrutura para tabela app-ecommerce.object_collection_vouchertokentypesingle_ef_osvs
+-- A despejar estrutura para tabela app-commerce.object_collection_vouchertokentypesingle_ef_osvs
 CREATE TABLE IF NOT EXISTS `object_collection_vouchertokentypesingle_ef_osvs` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `index` int(11) NOT NULL DEFAULT 0,
@@ -1906,10 +1906,10 @@ CREATE TABLE IF NOT EXISTS `object_collection_vouchertokentypesingle_ef_osvs` (
   CONSTRAINT `fk_object_collection_VoucherTokenTypeSingle_EF_OSVS__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_collection_vouchertokentypesingle_ef_osvs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_collection_vouchertokentypesingle_ef_osvs: ~0 rows (aproximadamente)
 DELETE FROM `object_collection_vouchertokentypesingle_ef_osvs`;
 
--- A despejar estrutura para vista app-ecommerce.object_cu
+-- A despejar estrutura para vista app-commerce.object_cu
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_cu` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1955,7 +1955,7 @@ CREATE TABLE `object_cu` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_fd
+-- A despejar estrutura para vista app-commerce.object_ef_fd
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_fd` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -1991,7 +1991,7 @@ CREATE TABLE `object_ef_fd` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_oso
+-- A despejar estrutura para vista app-commerce.object_ef_oso
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_oso` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -2051,7 +2051,7 @@ CREATE TABLE `object_ef_oso` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_osoi
+-- A despejar estrutura para vista app-commerce.object_ef_osoi
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_osoi` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -2086,7 +2086,7 @@ CREATE TABLE `object_ef_osoi` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_ostc
+-- A despejar estrutura para vista app-commerce.object_ef_ostc
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_ostc` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -2111,7 +2111,7 @@ CREATE TABLE `object_ef_ostc` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_osvs
+-- A despejar estrutura para vista app-commerce.object_ef_osvs
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_osvs` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -2136,7 +2136,7 @@ CREATE TABLE `object_ef_osvs` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_osvt
+-- A despejar estrutura para vista app-commerce.object_ef_osvt
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_osvt` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -2164,7 +2164,7 @@ CREATE TABLE `object_ef_osvt` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_otcp
+-- A despejar estrutura para vista app-commerce.object_ef_otcp
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_otcp` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -2192,7 +2192,7 @@ CREATE TABLE `object_ef_otcp` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_oto
+-- A despejar estrutura para vista app-commerce.object_ef_oto
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_oto` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -2226,7 +2226,7 @@ CREATE TABLE `object_ef_oto` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para vista app-ecommerce.object_ef_otoi
+-- A despejar estrutura para vista app-commerce.object_ef_otoi
 -- A criar tabela temporária para vencer erros de dependências VIEW
 CREATE TABLE `object_ef_otoi` (
 	`oo_id` INT(11) UNSIGNED NOT NULL,
@@ -2262,7 +2262,7 @@ CREATE TABLE `object_ef_otoi` (
 	`versionCount` INT(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM;
 
--- A despejar estrutura para tabela app-ecommerce.object_metadata_cu
+-- A despejar estrutura para tabela app-commerce.object_metadata_cu
 CREATE TABLE IF NOT EXISTS `object_metadata_cu` (
   `id` int(11) unsigned NOT NULL DEFAULT 0,
   `dest_id` int(11) NOT NULL DEFAULT 0,
@@ -2285,7 +2285,7 @@ CREATE TABLE IF NOT EXISTS `object_metadata_cu` (
   CONSTRAINT `fk_object_metadata_CU__id` FOREIGN KEY (`id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_metadata_cu: ~10 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_metadata_cu: ~10 rows (aproximadamente)
 DELETE FROM `object_metadata_cu`;
 INSERT INTO `object_metadata_cu` (`id`, `dest_id`, `type`, `fieldname`, `column`, `data`, `ownertype`, `ownername`, `position`, `index`) VALUES
 	(42, 49, 'object', 'calculatedSegments', 'application_counter', NULL, 'object', '', '0', 1),
@@ -2299,7 +2299,7 @@ INSERT INTO `object_metadata_cu` (`id`, `dest_id`, `type`, `fieldname`, `column`
 	(68, 49, 'object', 'calculatedSegments', 'application_counter', NULL, 'object', '', '0', 1),
 	(68, 49, 'object', 'calculatedSegments', 'created_timestamp', NULL, 'object', '', '0', 1);
 
--- A despejar estrutura para tabela app-ecommerce.object_query_1
+-- A despejar estrutura para tabela app-commerce.object_query_1
 CREATE TABLE IF NOT EXISTS `object_query_1` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT '1',
@@ -2319,7 +2319,7 @@ CREATE TABLE IF NOT EXISTS `object_query_1` (
   CONSTRAINT `fk_object_query_1__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_1: ~12 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_1: ~12 rows (aproximadamente)
 DELETE FROM `object_query_1`;
 INSERT INTO `object_query_1` (`oo_id`, `oo_classId`, `oo_className`, `images`, `name`, `description`, `priceInEur`, `localization__id`, `localization__type`, `caracteristics`, `productType__id`, `productType__type`) VALUES
 	(17, '1', 'Product', NULL, 'Banho Turco', 'Banho turco', 59.00, 5, 'object', NULL, 8, 'object'),
@@ -2335,7 +2335,7 @@ INSERT INTO `object_query_1` (`oo_id`, `oo_classId`, `oo_className`, `images`, `
 	(31, '1', 'Product', NULL, 'Scubadiving', 'Na zona costeira do algarve', 40.00, 5, 'object', NULL, 19, 'object'),
 	(32, '1', 'Product', NULL, 'Workshop de Costura', 'Workshop de costura, aprenda a arte da costura.', 15.00, 22, 'object', NULL, 20, 'object');
 
--- A despejar estrutura para tabela app-ecommerce.object_query_2
+-- A despejar estrutura para tabela app-commerce.object_query_2
 CREATE TABLE IF NOT EXISTS `object_query_2` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT '2',
@@ -2345,14 +2345,14 @@ CREATE TABLE IF NOT EXISTS `object_query_2` (
   CONSTRAINT `fk_object_query_2__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_2: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_2: ~2 rows (aproximadamente)
 DELETE FROM `object_query_2`;
 INSERT INTO `object_query_2` (`oo_id`, `oo_classId`, `oo_className`, `local`) VALUES
 	(5, '2', 'Localization', 'South'),
 	(6, '2', 'Localization', 'North'),
 	(22, '2', 'Localization', 'Center');
 
--- A despejar estrutura para tabela app-ecommerce.object_query_3
+-- A despejar estrutura para tabela app-commerce.object_query_3
 CREATE TABLE IF NOT EXISTS `object_query_3` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT '3',
@@ -2362,7 +2362,7 @@ CREATE TABLE IF NOT EXISTS `object_query_3` (
   CONSTRAINT `fk_object_query_3__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_3: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_3: ~5 rows (aproximadamente)
 DELETE FROM `object_query_3`;
 INSERT INTO `object_query_3` (`oo_id`, `oo_classId`, `oo_className`, `typeName`) VALUES
 	(7, '3', 'Type', 'Restaurant'),
@@ -2371,7 +2371,7 @@ INSERT INTO `object_query_3` (`oo_id`, `oo_classId`, `oo_className`, `typeName`)
 	(20, '3', 'Type', 'Leisure'),
 	(21, '3', 'Type', 'Hotel');
 
--- A despejar estrutura para tabela app-ecommerce.object_query_4
+-- A despejar estrutura para tabela app-commerce.object_query_4
 CREATE TABLE IF NOT EXISTS `object_query_4` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT '4',
@@ -2381,10 +2381,10 @@ CREATE TABLE IF NOT EXISTS `object_query_4` (
   CONSTRAINT `fk_object_query_4__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_4: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_4: ~0 rows (aproximadamente)
 DELETE FROM `object_query_4`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_5
+-- A despejar estrutura para tabela app-commerce.object_query_5
 CREATE TABLE IF NOT EXISTS `object_query_5` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT '5',
@@ -2400,13 +2400,13 @@ CREATE TABLE IF NOT EXISTS `object_query_5` (
   CONSTRAINT `fk_object_query_5__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_5: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_5: ~2 rows (aproximadamente)
 DELETE FROM `object_query_5`;
 INSERT INTO `object_query_5` (`oo_id`, `oo_classId`, `oo_className`, `name`, `reference`, `calculated`, `showAsFilter`, `filterSortOrder`, `exportNewsletterProvider`) VALUES
 	(45, '5', 'CustomerSegmentGroup', 'State', 'State', 1, 0, NULL, 0),
 	(46, '5', 'CustomerSegmentGroup', 'Gender', 'Gender', 1, 0, NULL, 0);
 
--- A despejar estrutura para tabela app-ecommerce.object_query_6
+-- A despejar estrutura para tabela app-commerce.object_query_6
 CREATE TABLE IF NOT EXISTS `object_query_6` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT '6',
@@ -2423,14 +2423,14 @@ CREATE TABLE IF NOT EXISTS `object_query_6` (
   CONSTRAINT `fk_object_query_6__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_6: ~3 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_6: ~3 rows (aproximadamente)
 DELETE FROM `object_query_6`;
 INSERT INTO `object_query_6` (`oo_id`, `oo_classId`, `oo_className`, `name`, `group__id`, `group__type`, `reference`, `calculated`, `useAsTargetGroup`, `targetGroup`) VALUES
 	(47, '6', 'CustomerSegment', 'male', 46, 'object', 'male', 1, 0, NULL),
 	(48, '6', 'CustomerSegment', 'female', 46, 'object', 'female', 1, 0, NULL),
 	(49, '6', 'CustomerSegment', 'not-set', 46, 'object', 'not-set', 1, 0, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.object_query_7
+-- A despejar estrutura para tabela app-commerce.object_query_7
 CREATE TABLE IF NOT EXISTS `object_query_7` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT '7',
@@ -2440,10 +2440,10 @@ CREATE TABLE IF NOT EXISTS `object_query_7` (
   CONSTRAINT `fk_object_query_7__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_7: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_7: ~0 rows (aproximadamente)
 DELETE FROM `object_query_7`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_8
+-- A despejar estrutura para tabela app-commerce.object_query_8
 CREATE TABLE IF NOT EXISTS `object_query_8` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT '8',
@@ -2462,10 +2462,10 @@ CREATE TABLE IF NOT EXISTS `object_query_8` (
   CONSTRAINT `fk_object_query_8__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_8: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_8: ~0 rows (aproximadamente)
 DELETE FROM `object_query_8`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_cu
+-- A despejar estrutura para tabela app-commerce.object_query_cu
 CREATE TABLE IF NOT EXISTS `object_query_cu` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'CU',
@@ -2497,7 +2497,7 @@ CREATE TABLE IF NOT EXISTS `object_query_cu` (
   CONSTRAINT `fk_object_query_CU__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_cu: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_cu: ~5 rows (aproximadamente)
 DELETE FROM `object_query_cu`;
 INSERT INTO `object_query_cu` (`oo_id`, `oo_classId`, `oo_className`, `active`, `gender`, `firstname`, `lastname`, `company`, `email`, `street`, `zip`, `city`, `countryCode`, `phone`, `idEncoded`, `customerLanguage`, `newsletter`, `newsletterConfirmed`, `newsletterConfirmToken`, `profiling`, `manualSegments`, `calculatedSegments`, `password`, `passwordRecoveryToken`, `passwordRecoveryTokenDate`) VALUES
 	(42, 'CU', 'Customer', 1, NULL, 'pat', 'ma', NULL, 'patmartins@mail.com', NULL, NULL, NULL, NULL, NULL, 'a1d0c6e83f027327d8461063f4ac58a6', 'en', 1, NULL, NULL, 0, NULL, ',49,', '$2y$10$Up6pq9JH/oMH4bNX5wC.tuRUVLzWvGDkOiaOQ/YRYnBy5fSVYJx.6', NULL, NULL),
@@ -2506,7 +2506,7 @@ INSERT INTO `object_query_cu` (`oo_id`, `oo_classId`, `oo_className`, `active`, 
 	(66, 'CU', 'Customer', 1, NULL, 'Alec', 'Chavez', NULL, 'zerovunu@mailinator.com', NULL, NULL, NULL, NULL, NULL, '3295c76acbf4caaed33c36b1b5fc2cb1', 'en', 0, NULL, NULL, 0, NULL, ',49,', '$2y$10$9JdvpS4vJ1M/fdJwsBhA/.zCgulnhyqWNYlqwV.kSpDTp6VU6O4t6', NULL, NULL),
 	(68, 'CU', 'Customer', 1, NULL, 'teste', 'teste', NULL, 'utilizador@mail.com', NULL, NULL, NULL, NULL, NULL, 'a3f390d88e4c41f2747bfa2f1b5f87db', 'en', 0, NULL, NULL, 0, NULL, ',49,', '$2y$10$UYWG3PjjaDfb.W7bKLSnMuSlKyC4tdkQLt/hJ4XuLpzX6jr4p8a7G', NULL, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_query_ef_fd
 CREATE TABLE IF NOT EXISTS `object_query_ef_fd` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_FD',
@@ -2527,12 +2527,12 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_fd` (
   CONSTRAINT `fk_object_query_EF_FD__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_query_ef_fd`;
 INSERT INTO `object_query_ef_fd` (`oo_id`, `oo_classId`, `oo_className`, `pageLimit`, `defaultOrderByInheritance`, `orderByAsc`, `orderByDesc`, `ajaxReload`, `infiniteScroll`, `limitOnFirstLoad`, `conditionsInheritance`, `filtersInheritance`, `crossSellingCategory__id`, `crossSellingCategory__type`, `similarityFieldsInheritance`) VALUES
 	(12, 'EF_FD', 'FilterDefinition', 10, '', NULL, NULL, 0, 0, NULL, '', '', NULL, NULL, '');
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_oso
+-- A despejar estrutura para tabela app-commerce.object_query_ef_oso
 CREATE TABLE IF NOT EXISTS `object_query_ef_oso` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_OSO',
@@ -2577,7 +2577,7 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_oso` (
   CONSTRAINT `fk_object_query_EF_OSO__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_oso: ~15 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_oso: ~15 rows (aproximadamente)
 DELETE FROM `object_query_ef_oso`;
 INSERT INTO `object_query_ef_oso` (`oo_id`, `oo_classId`, `oo_className`, `ordernumber`, `orderState`, `orderdate`, `items`, `comment`, `customerOrderData`, `voucherTokens`, `giftItems`, `subTotalNetPrice`, `subTotalPrice`, `totalNetPrice`, `totalPrice`, `taxInfo`, `currency`, `cartId`, `successorOrder__id`, `successorOrder__type`, `cartHash`, `customer__id`, `customer__type`, `customerFirstname`, `customerLastname`, `customerCompany`, `customerStreet`, `customerZip`, `customerCity`, `customerCountry`, `customerEmail`, `deliveryFirstname`, `deliveryLastname`, `deliveryCompany`, `deliveryStreet`, `deliveryZip`, `deliveryCity`, `deliveryCountry`, `paymentReference`) VALUES
 	(38, 'EF_OSO', 'OnlineShopOrder', 'ord_6496ea4ac2a6e', 'committed', 1687611979, NULL, NULL, NULL, NULL, NULL, 350.0000, 350.0000, 350.0000, 350.0000, '', 'EUR', 'Pimcore\\Bundle\\EcommerceFrameworkBundle\\CartManager\\SessionCart_sesscart_6496e48c99f77', NULL, NULL, 2921742170, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -2596,7 +2596,7 @@ INSERT INTO `object_query_ef_oso` (`oo_id`, `oo_classId`, `oo_className`, `order
 	(64, 'EF_OSO', 'OnlineShopOrder', 'ord_6498702242e4e', 'committed', 1687711778, NULL, NULL, NULL, NULL, NULL, 336.0000, 336.0000, 336.0000, 336.0000, '', 'EUR', 'Pimcore\\Bundle\\EcommerceFrameworkBundle\\CartManager\\Cart_3', NULL, NULL, 2636455433, 51, 'object', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(67, 'EF_OSO', 'OnlineShopOrder', 'ord_64987232e27ae', 'committed', 1687712306, NULL, NULL, NULL, NULL, NULL, 231.0000, 231.0000, 231.0000, 231.0000, '', 'EUR', 'Pimcore\\Bundle\\EcommerceFrameworkBundle\\CartManager\\Cart_6', NULL, NULL, 380168518, 66, 'object', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_osoi
+-- A despejar estrutura para tabela app-commerce.object_query_ef_osoi
 CREATE TABLE IF NOT EXISTS `object_query_ef_osoi` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_OSOI',
@@ -2616,10 +2616,10 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_osoi` (
   CONSTRAINT `fk_object_query_EF_OSOI__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_osoi: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_osoi: ~0 rows (aproximadamente)
 DELETE FROM `object_query_ef_osoi`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_ostc
+-- A despejar estrutura para tabela app-commerce.object_query_ef_ostc
 CREATE TABLE IF NOT EXISTS `object_query_ef_ostc` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_OSTC',
@@ -2629,10 +2629,10 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_ostc` (
   CONSTRAINT `fk_object_query_EF_OSTC__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_ostc: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_ostc: ~0 rows (aproximadamente)
 DELETE FROM `object_query_ef_ostc`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_osvs
+-- A despejar estrutura para tabela app-commerce.object_query_ef_osvs
 CREATE TABLE IF NOT EXISTS `object_query_ef_osvs` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_OSVS',
@@ -2642,10 +2642,10 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_osvs` (
   CONSTRAINT `fk_object_query_EF_OSVS__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_osvs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_osvs: ~0 rows (aproximadamente)
 DELETE FROM `object_query_ef_osvs`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_osvt
+-- A despejar estrutura para tabela app-commerce.object_query_ef_osvt
 CREATE TABLE IF NOT EXISTS `object_query_ef_osvt` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_OSVT',
@@ -2658,10 +2658,10 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_osvt` (
   CONSTRAINT `fk_object_query_EF_OSVT__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_osvt: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_osvt: ~0 rows (aproximadamente)
 DELETE FROM `object_query_ef_osvt`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_otcp
+-- A despejar estrutura para tabela app-commerce.object_query_ef_otcp
 CREATE TABLE IF NOT EXISTS `object_query_ef_otcp` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_OTCP',
@@ -2674,10 +2674,10 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_otcp` (
   CONSTRAINT `fk_object_query_EF_OTCP__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_otcp: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_otcp: ~0 rows (aproximadamente)
 DELETE FROM `object_query_ef_otcp`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_oto
+-- A despejar estrutura para tabela app-commerce.object_query_ef_oto
 CREATE TABLE IF NOT EXISTS `object_query_ef_oto` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_OTO',
@@ -2696,10 +2696,10 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_oto` (
   CONSTRAINT `fk_object_query_EF_OTO__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_oto: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_oto: ~0 rows (aproximadamente)
 DELETE FROM `object_query_ef_oto`;
 
--- A despejar estrutura para tabela app-ecommerce.object_query_ef_otoi
+-- A despejar estrutura para tabela app-commerce.object_query_ef_otoi
 CREATE TABLE IF NOT EXISTS `object_query_ef_otoi` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `oo_classId` varchar(50) DEFAULT 'EF_OTOI',
@@ -2720,10 +2720,10 @@ CREATE TABLE IF NOT EXISTS `object_query_ef_otoi` (
   CONSTRAINT `fk_object_query_EF_OTOI__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_query_ef_otoi: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_query_ef_otoi: ~0 rows (aproximadamente)
 DELETE FROM `object_query_ef_otoi`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_1
+-- A despejar estrutura para tabela app-commerce.object_relations_1
 CREATE TABLE IF NOT EXISTS `object_relations_1` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2741,7 +2741,7 @@ CREATE TABLE IF NOT EXISTS `object_relations_1` (
   CONSTRAINT `fk_object_relations_1__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_1: ~22 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_1: ~22 rows (aproximadamente)
 DELETE FROM `object_relations_1`;
 INSERT INTO `object_relations_1` (`id`, `src_id`, `dest_id`, `type`, `fieldname`, `index`, `ownertype`, `ownername`, `position`) VALUES
 	(5, 17, 5, 'object', 'localization', 0, 'object', '', '0'),
@@ -2769,7 +2769,7 @@ INSERT INTO `object_relations_1` (`id`, `src_id`, `dest_id`, `type`, `fieldname`
 	(31, 31, 5, 'object', 'localization', 0, 'object', '', '0'),
 	(32, 31, 19, 'object', 'productType', 0, 'object', '', '0');
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_2
+-- A despejar estrutura para tabela app-commerce.object_relations_2
 CREATE TABLE IF NOT EXISTS `object_relations_2` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2787,10 +2787,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_2` (
   CONSTRAINT `fk_object_relations_2__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_2: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_2: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_2`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_3
+-- A despejar estrutura para tabela app-commerce.object_relations_3
 CREATE TABLE IF NOT EXISTS `object_relations_3` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2808,10 +2808,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_3` (
   CONSTRAINT `fk_object_relations_3__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_3: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_3: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_3`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_4
+-- A despejar estrutura para tabela app-commerce.object_relations_4
 CREATE TABLE IF NOT EXISTS `object_relations_4` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2829,10 +2829,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_4` (
   CONSTRAINT `fk_object_relations_4__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_4: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_4: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_4`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_5
+-- A despejar estrutura para tabela app-commerce.object_relations_5
 CREATE TABLE IF NOT EXISTS `object_relations_5` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2850,10 +2850,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_5` (
   CONSTRAINT `fk_object_relations_5__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_5: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_5: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_5`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_6
+-- A despejar estrutura para tabela app-commerce.object_relations_6
 CREATE TABLE IF NOT EXISTS `object_relations_6` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2871,14 +2871,14 @@ CREATE TABLE IF NOT EXISTS `object_relations_6` (
   CONSTRAINT `fk_object_relations_6__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_6: ~3 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_6: ~3 rows (aproximadamente)
 DELETE FROM `object_relations_6`;
 INSERT INTO `object_relations_6` (`id`, `src_id`, `dest_id`, `type`, `fieldname`, `index`, `ownertype`, `ownername`, `position`) VALUES
 	(1, 47, 46, 'object', 'group', 0, 'object', '', '0'),
 	(2, 48, 46, 'object', 'group', 0, 'object', '', '0'),
 	(3, 49, 46, 'object', 'group', 0, 'object', '', '0');
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_7
+-- A despejar estrutura para tabela app-commerce.object_relations_7
 CREATE TABLE IF NOT EXISTS `object_relations_7` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2896,10 +2896,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_7` (
   CONSTRAINT `fk_object_relations_7__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_7: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_7: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_7`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_8
+-- A despejar estrutura para tabela app-commerce.object_relations_8
 CREATE TABLE IF NOT EXISTS `object_relations_8` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2917,10 +2917,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_8` (
   CONSTRAINT `fk_object_relations_8__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_8: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_8: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_8`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_cu
+-- A despejar estrutura para tabela app-commerce.object_relations_cu
 CREATE TABLE IF NOT EXISTS `object_relations_cu` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2938,7 +2938,7 @@ CREATE TABLE IF NOT EXISTS `object_relations_cu` (
   CONSTRAINT `fk_object_relations_CU__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_cu: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_cu: ~5 rows (aproximadamente)
 DELETE FROM `object_relations_cu`;
 INSERT INTO `object_relations_cu` (`id`, `src_id`, `dest_id`, `type`, `fieldname`, `index`, `ownertype`, `ownername`, `position`) VALUES
 	(1, 42, 49, 'object', 'calculatedSegments', 1, 'object', '', '0'),
@@ -2947,7 +2947,7 @@ INSERT INTO `object_relations_cu` (`id`, `src_id`, `dest_id`, `type`, `fieldname
 	(4, 66, 49, 'object', 'calculatedSegments', 1, 'object', '', '0'),
 	(5, 68, 49, 'object', 'calculatedSegments', 1, 'object', '', '0');
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_fd
 CREATE TABLE IF NOT EXISTS `object_relations_ef_fd` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2965,10 +2965,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_fd` (
   CONSTRAINT `fk_object_relations_EF_FD__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_ef_fd`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_oso
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_oso
 CREATE TABLE IF NOT EXISTS `object_relations_ef_oso` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -2986,13 +2986,13 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_oso` (
   CONSTRAINT `fk_object_relations_EF_OSO__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_oso: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_oso: ~2 rows (aproximadamente)
 DELETE FROM `object_relations_ef_oso`;
 INSERT INTO `object_relations_ef_oso` (`id`, `src_id`, `dest_id`, `type`, `fieldname`, `index`, `ownertype`, `ownername`, `position`) VALUES
 	(1, 64, 51, 'object', 'customer', 0, 'object', '', '0'),
 	(2, 67, 66, 'object', 'customer', 0, 'object', '', '0');
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_osoi
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_osoi
 CREATE TABLE IF NOT EXISTS `object_relations_ef_osoi` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -3010,10 +3010,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_osoi` (
   CONSTRAINT `fk_object_relations_EF_OSOI__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_osoi: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_osoi: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_ef_osoi`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_ostc
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_ostc
 CREATE TABLE IF NOT EXISTS `object_relations_ef_ostc` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -3031,10 +3031,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_ostc` (
   CONSTRAINT `fk_object_relations_EF_OSTC__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_ostc: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_ostc: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_ef_ostc`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_osvs
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_osvs
 CREATE TABLE IF NOT EXISTS `object_relations_ef_osvs` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -3052,10 +3052,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_osvs` (
   CONSTRAINT `fk_object_relations_EF_OSVS__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_osvs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_osvs: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_ef_osvs`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_osvt
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_osvt
 CREATE TABLE IF NOT EXISTS `object_relations_ef_osvt` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -3073,10 +3073,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_osvt` (
   CONSTRAINT `fk_object_relations_EF_OSVT__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_osvt: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_osvt: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_ef_osvt`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_otcp
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_otcp
 CREATE TABLE IF NOT EXISTS `object_relations_ef_otcp` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -3094,10 +3094,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_otcp` (
   CONSTRAINT `fk_object_relations_EF_OTCP__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_otcp: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_otcp: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_ef_otcp`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_oto
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_oto
 CREATE TABLE IF NOT EXISTS `object_relations_ef_oto` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -3115,10 +3115,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_oto` (
   CONSTRAINT `fk_object_relations_EF_OTO__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_oto: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_oto: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_ef_oto`;
 
--- A despejar estrutura para tabela app-ecommerce.object_relations_ef_otoi
+-- A despejar estrutura para tabela app-commerce.object_relations_ef_otoi
 CREATE TABLE IF NOT EXISTS `object_relations_ef_otoi` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `src_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -3136,10 +3136,10 @@ CREATE TABLE IF NOT EXISTS `object_relations_ef_otoi` (
   CONSTRAINT `fk_object_relations_EF_OTOI__src_id` FOREIGN KEY (`src_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_relations_ef_otoi: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_relations_ef_otoi: ~0 rows (aproximadamente)
 DELETE FROM `object_relations_ef_otoi`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_1
+-- A despejar estrutura para tabela app-commerce.object_store_1
 CREATE TABLE IF NOT EXISTS `object_store_1` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `images` int(11) DEFAULT NULL,
@@ -3150,7 +3150,7 @@ CREATE TABLE IF NOT EXISTS `object_store_1` (
   CONSTRAINT `fk_object_store_1__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_1: ~12 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_1: ~12 rows (aproximadamente)
 DELETE FROM `object_store_1`;
 INSERT INTO `object_store_1` (`oo_id`, `images`, `name`, `description`, `priceInEur`) VALUES
 	(17, NULL, 'Banho Turco', 'Banho turco', 59.00),
@@ -3166,7 +3166,7 @@ INSERT INTO `object_store_1` (`oo_id`, `images`, `name`, `description`, `priceIn
 	(31, NULL, 'Scubadiving', 'Na zona costeira do algarve', 40.00),
 	(32, NULL, 'Workshop de Costura', 'Workshop de costura, aprenda a arte da costura.', 15.00);
 
--- A despejar estrutura para tabela app-ecommerce.object_store_2
+-- A despejar estrutura para tabela app-commerce.object_store_2
 CREATE TABLE IF NOT EXISTS `object_store_2` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `local` varchar(190) DEFAULT NULL,
@@ -3174,14 +3174,14 @@ CREATE TABLE IF NOT EXISTS `object_store_2` (
   CONSTRAINT `fk_object_store_2__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_2: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_2: ~2 rows (aproximadamente)
 DELETE FROM `object_store_2`;
 INSERT INTO `object_store_2` (`oo_id`, `local`) VALUES
 	(5, 'South'),
 	(6, 'North'),
 	(22, 'Center');
 
--- A despejar estrutura para tabela app-ecommerce.object_store_3
+-- A despejar estrutura para tabela app-commerce.object_store_3
 CREATE TABLE IF NOT EXISTS `object_store_3` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `typeName` varchar(190) DEFAULT NULL,
@@ -3189,7 +3189,7 @@ CREATE TABLE IF NOT EXISTS `object_store_3` (
   CONSTRAINT `fk_object_store_3__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_3: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_3: ~5 rows (aproximadamente)
 DELETE FROM `object_store_3`;
 INSERT INTO `object_store_3` (`oo_id`, `typeName`) VALUES
 	(7, 'Restaurant'),
@@ -3198,7 +3198,7 @@ INSERT INTO `object_store_3` (`oo_id`, `typeName`) VALUES
 	(20, 'Leisure'),
 	(21, 'Hotel');
 
--- A despejar estrutura para tabela app-ecommerce.object_store_4
+-- A despejar estrutura para tabela app-commerce.object_store_4
 CREATE TABLE IF NOT EXISTS `object_store_4` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `name` varchar(190) DEFAULT NULL,
@@ -3206,10 +3206,10 @@ CREATE TABLE IF NOT EXISTS `object_store_4` (
   CONSTRAINT `fk_object_store_4__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_4: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_4: ~0 rows (aproximadamente)
 DELETE FROM `object_store_4`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_5
+-- A despejar estrutura para tabela app-commerce.object_store_5
 CREATE TABLE IF NOT EXISTS `object_store_5` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
@@ -3222,13 +3222,13 @@ CREATE TABLE IF NOT EXISTS `object_store_5` (
   CONSTRAINT `fk_object_store_5__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_5: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_5: ~2 rows (aproximadamente)
 DELETE FROM `object_store_5`;
 INSERT INTO `object_store_5` (`oo_id`, `name`, `reference`, `calculated`, `showAsFilter`, `filterSortOrder`, `exportNewsletterProvider`) VALUES
 	(45, 'State', 'State', 1, 0, NULL, 0),
 	(46, 'Gender', 'Gender', 1, 0, NULL, 0);
 
--- A despejar estrutura para tabela app-ecommerce.object_store_6
+-- A despejar estrutura para tabela app-commerce.object_store_6
 CREATE TABLE IF NOT EXISTS `object_store_6` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
@@ -3240,14 +3240,14 @@ CREATE TABLE IF NOT EXISTS `object_store_6` (
   CONSTRAINT `fk_object_store_6__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_6: ~3 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_6: ~3 rows (aproximadamente)
 DELETE FROM `object_store_6`;
 INSERT INTO `object_store_6` (`oo_id`, `name`, `reference`, `calculated`, `useAsTargetGroup`, `targetGroup`) VALUES
 	(47, 'male', 'male', 1, 0, NULL),
 	(48, 'female', 'female', 1, 0, NULL),
 	(49, 'not-set', 'not-set', 1, 0, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.object_store_7
+-- A despejar estrutura para tabela app-commerce.object_store_7
 CREATE TABLE IF NOT EXISTS `object_store_7` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `name` varchar(190) DEFAULT NULL,
@@ -3256,10 +3256,10 @@ CREATE TABLE IF NOT EXISTS `object_store_7` (
   CONSTRAINT `fk_object_store_7__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_7: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_7: ~0 rows (aproximadamente)
 DELETE FROM `object_store_7`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_8
+-- A despejar estrutura para tabela app-commerce.object_store_8
 CREATE TABLE IF NOT EXISTS `object_store_8` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `code` varchar(190) DEFAULT NULL,
@@ -3277,10 +3277,10 @@ CREATE TABLE IF NOT EXISTS `object_store_8` (
   CONSTRAINT `fk_object_store_8__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_8: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_8: ~0 rows (aproximadamente)
 DELETE FROM `object_store_8`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_cu
+-- A despejar estrutura para tabela app-commerce.object_store_cu
 CREATE TABLE IF NOT EXISTS `object_store_cu` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `active` tinyint(1) DEFAULT NULL,
@@ -3309,7 +3309,7 @@ CREATE TABLE IF NOT EXISTS `object_store_cu` (
   CONSTRAINT `fk_object_store_CU__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_cu: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_cu: ~5 rows (aproximadamente)
 DELETE FROM `object_store_cu`;
 INSERT INTO `object_store_cu` (`oo_id`, `active`, `gender`, `firstname`, `lastname`, `company`, `email`, `street`, `zip`, `city`, `countryCode`, `phone`, `idEncoded`, `customerLanguage`, `newsletter__consent`, `newsletter__note`, `newsletterConfirmed`, `newsletterConfirmToken`, `profiling__consent`, `profiling__note`, `password`, `passwordRecoveryToken`, `passwordRecoveryTokenDate`) VALUES
 	(42, 1, NULL, 'pat', 'ma', NULL, 'patmartins@mail.com', NULL, NULL, NULL, NULL, NULL, 'a1d0c6e83f027327d8461063f4ac58a6', 'en', 1, 4, NULL, NULL, 0, 3, '$2y$10$Up6pq9JH/oMH4bNX5wC.tuRUVLzWvGDkOiaOQ/YRYnBy5fSVYJx.6', NULL, NULL),
@@ -3318,7 +3318,7 @@ INSERT INTO `object_store_cu` (`oo_id`, `active`, `gender`, `firstname`, `lastna
 	(66, 1, NULL, 'Alec', 'Chavez', NULL, 'zerovunu@mailinator.com', NULL, NULL, NULL, NULL, NULL, '3295c76acbf4caaed33c36b1b5fc2cb1', 'en', 0, NULL, NULL, NULL, 0, NULL, '$2y$10$9JdvpS4vJ1M/fdJwsBhA/.zCgulnhyqWNYlqwV.kSpDTp6VU6O4t6', NULL, NULL),
 	(68, 1, NULL, 'teste', 'teste', NULL, 'utilizador@mail.com', NULL, NULL, NULL, NULL, NULL, 'a3f390d88e4c41f2747bfa2f1b5f87db', 'en', 0, NULL, NULL, NULL, 0, NULL, '$2y$10$UYWG3PjjaDfb.W7bKLSnMuSlKyC4tdkQLt/hJ4XuLpzX6jr4p8a7G', NULL, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_fd
+-- A despejar estrutura para tabela app-commerce.object_store_ef_fd
 CREATE TABLE IF NOT EXISTS `object_store_ef_fd` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `pageLimit` double DEFAULT NULL,
@@ -3335,12 +3335,12 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_fd` (
   CONSTRAINT `fk_object_store_EF_FD__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_fd: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_fd: ~0 rows (aproximadamente)
 DELETE FROM `object_store_ef_fd`;
 INSERT INTO `object_store_ef_fd` (`oo_id`, `pageLimit`, `defaultOrderByInheritance`, `orderByAsc`, `orderByDesc`, `ajaxReload`, `infiniteScroll`, `limitOnFirstLoad`, `conditionsInheritance`, `filtersInheritance`, `similarityFieldsInheritance`) VALUES
 	(12, 10, '', NULL, NULL, 0, 0, NULL, '', '', '');
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_oso
+-- A despejar estrutura para tabela app-commerce.object_store_ef_oso
 CREATE TABLE IF NOT EXISTS `object_store_ef_oso` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `ordernumber` varchar(255) DEFAULT NULL,
@@ -3376,7 +3376,7 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_oso` (
   CONSTRAINT `fk_object_store_EF_OSO__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_oso: ~15 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_oso: ~15 rows (aproximadamente)
 DELETE FROM `object_store_ef_oso`;
 INSERT INTO `object_store_ef_oso` (`oo_id`, `ordernumber`, `orderState`, `orderdate`, `comment`, `customerOrderData`, `subTotalNetPrice`, `subTotalPrice`, `totalNetPrice`, `totalPrice`, `taxInfo`, `currency`, `cartId`, `cartHash`, `customerFirstname`, `customerLastname`, `customerCompany`, `customerStreet`, `customerZip`, `customerCity`, `customerCountry`, `customerEmail`, `deliveryFirstname`, `deliveryLastname`, `deliveryCompany`, `deliveryStreet`, `deliveryZip`, `deliveryCity`, `deliveryCountry`, `paymentReference`) VALUES
 	(38, 'ord_6496ea4ac2a6e', 'committed', 1687611979, NULL, NULL, 350.0000, 350.0000, 350.0000, 350.0000, NULL, 'EUR', 'Pimcore\\Bundle\\EcommerceFrameworkBundle\\CartManager\\SessionCart_sesscart_6496e48c99f77', 2921742170, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -3395,7 +3395,7 @@ INSERT INTO `object_store_ef_oso` (`oo_id`, `ordernumber`, `orderState`, `orderd
 	(64, 'ord_6498702242e4e', 'committed', 1687711778, NULL, NULL, 336.0000, 336.0000, 336.0000, 336.0000, NULL, 'EUR', 'Pimcore\\Bundle\\EcommerceFrameworkBundle\\CartManager\\Cart_3', 2636455433, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(67, 'ord_64987232e27ae', 'committed', 1687712306, NULL, NULL, 231.0000, 231.0000, 231.0000, 231.0000, NULL, 'EUR', 'Pimcore\\Bundle\\EcommerceFrameworkBundle\\CartManager\\Cart_6', 380168518, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_osoi
+-- A despejar estrutura para tabela app-commerce.object_store_ef_osoi
 CREATE TABLE IF NOT EXISTS `object_store_ef_osoi` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `orderState` varchar(190) DEFAULT NULL,
@@ -3410,10 +3410,10 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_osoi` (
   CONSTRAINT `fk_object_store_EF_OSOI__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_osoi: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_osoi: ~0 rows (aproximadamente)
 DELETE FROM `object_store_ef_osoi`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_ostc
+-- A despejar estrutura para tabela app-commerce.object_store_ef_ostc
 CREATE TABLE IF NOT EXISTS `object_store_ef_ostc` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `taxEntryCombinationType` varchar(190) DEFAULT NULL,
@@ -3421,10 +3421,10 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_ostc` (
   CONSTRAINT `fk_object_store_EF_OSTC__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_ostc: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_ostc: ~0 rows (aproximadamente)
 DELETE FROM `object_store_ef_ostc`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_osvs
+-- A despejar estrutura para tabela app-commerce.object_store_ef_osvs
 CREATE TABLE IF NOT EXISTS `object_store_ef_osvs` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
@@ -3432,10 +3432,10 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_osvs` (
   CONSTRAINT `fk_object_store_EF_OSVS__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_osvs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_osvs: ~0 rows (aproximadamente)
 DELETE FROM `object_store_ef_osvs`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_osvt
+-- A despejar estrutura para tabela app-commerce.object_store_ef_osvt
 CREATE TABLE IF NOT EXISTS `object_store_ef_osvt` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `tokenId` double DEFAULT NULL,
@@ -3444,10 +3444,10 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_osvt` (
   CONSTRAINT `fk_object_store_EF_OSVT__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_osvt: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_osvt: ~0 rows (aproximadamente)
 DELETE FROM `object_store_ef_osvt`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_otcp
+-- A despejar estrutura para tabela app-commerce.object_store_ef_otcp
 CREATE TABLE IF NOT EXISTS `object_store_ef_otcp` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `OSproductNumber` varchar(255) DEFAULT NULL,
@@ -3458,10 +3458,10 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_otcp` (
   CONSTRAINT `fk_object_store_EF_OTCP__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_otcp: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_otcp: ~0 rows (aproximadamente)
 DELETE FROM `object_store_ef_otcp`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_oto
+-- A despejar estrutura para tabela app-commerce.object_store_ef_oto
 CREATE TABLE IF NOT EXISTS `object_store_ef_oto` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `offernumber` varchar(255) DEFAULT NULL,
@@ -3476,10 +3476,10 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_oto` (
   CONSTRAINT `fk_object_store_EF_OTO__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_oto: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_oto: ~0 rows (aproximadamente)
 DELETE FROM `object_store_ef_oto`;
 
--- A despejar estrutura para tabela app-ecommerce.object_store_ef_otoi
+-- A despejar estrutura para tabela app-commerce.object_store_ef_otoi
 CREATE TABLE IF NOT EXISTS `object_store_ef_otoi` (
   `oo_id` int(11) unsigned NOT NULL DEFAULT 0,
   `productNumber` varchar(255) DEFAULT NULL,
@@ -3495,10 +3495,10 @@ CREATE TABLE IF NOT EXISTS `object_store_ef_otoi` (
   CONSTRAINT `fk_object_store_EF_OTOI__oo_id` FOREIGN KEY (`oo_id`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.object_store_ef_otoi: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_store_ef_otoi: ~0 rows (aproximadamente)
 DELETE FROM `object_store_ef_otoi`;
 
--- A despejar estrutura para tabela app-ecommerce.object_url_slugs
+-- A despejar estrutura para tabela app-commerce.object_url_slugs
 CREATE TABLE IF NOT EXISTS `object_url_slugs` (
   `objectId` int(11) unsigned NOT NULL DEFAULT 0,
   `classId` varchar(50) NOT NULL DEFAULT '0',
@@ -3521,10 +3521,10 @@ CREATE TABLE IF NOT EXISTS `object_url_slugs` (
   CONSTRAINT `fk_object_url_slugs__objectId` FOREIGN KEY (`objectId`) REFERENCES `objects` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.object_url_slugs: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.object_url_slugs: ~0 rows (aproximadamente)
 DELETE FROM `object_url_slugs`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_actiontrigger_actions
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_actiontrigger_actions
 CREATE TABLE IF NOT EXISTS `plugin_cmf_actiontrigger_actions` (
   `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `ruleId` int(20) unsigned NOT NULL,
@@ -3537,10 +3537,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_actiontrigger_actions` (
   KEY `ruleId` (`ruleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_actiontrigger_actions: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_actiontrigger_actions: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_actiontrigger_actions`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_actiontrigger_queue
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_actiontrigger_queue
 CREATE TABLE IF NOT EXISTS `plugin_cmf_actiontrigger_queue` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `customerId` int(11) unsigned NOT NULL,
@@ -3554,10 +3554,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_actiontrigger_queue` (
   KEY `actionId` (`actionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_actiontrigger_queue: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_actiontrigger_queue: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_actiontrigger_queue`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_actiontrigger_rules
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_actiontrigger_rules
 CREATE TABLE IF NOT EXISTS `plugin_cmf_actiontrigger_rules` (
   `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -3572,10 +3572,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_actiontrigger_rules` (
   KEY `active` (`active`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_actiontrigger_rules: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_actiontrigger_rules: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_actiontrigger_rules`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_activities
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_activities
 CREATE TABLE IF NOT EXISTS `plugin_cmf_activities` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `customerId` int(11) unsigned NOT NULL,
@@ -3594,7 +3594,7 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_activities` (
   KEY `a_id` (`a_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_activities: ~12 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_activities: ~12 rows (aproximadamente)
 DELETE FROM `plugin_cmf_activities`;
 INSERT INTO `plugin_cmf_activities` (`id`, `customerId`, `activityDate`, `type`, `implementationClass`, `o_id`, `a_id`, `attributes`, `md5`, `creationDate`, `modificationDate`) VALUES
 	(1, 42, 1687692039, 'Customer Login', 'App\\Model\\CustomerManagementFramework\\Activity\\LoginActivity', NULL, NULL, _binary 0x7b22637573746f6d6572223a34322c2264617465223a313638373639323033397d, '5dba2321792e39b5fa1580f6f68000ba', 1687692039, 1687692039),
@@ -3610,7 +3610,7 @@ INSERT INTO `plugin_cmf_activities` (`id`, `customerId`, `activityDate`, `type`,
 	(11, 68, 1687712437, 'Customer Login', 'App\\Model\\CustomerManagementFramework\\Activity\\LoginActivity', NULL, NULL, _binary 0x7b22637573746f6d6572223a36382c2264617465223a313638373731323433377d, 'b2a7519b33ee629221996c49bbf9bf79', 1687712437, 1687712437),
 	(12, 51, 1687712988, 'Customer Login', 'App\\Model\\CustomerManagementFramework\\Activity\\LoginActivity', NULL, NULL, _binary 0x7b22637573746f6d6572223a35312c2264617465223a313638373731323938387d, '61b2e533d022c7da74ad426eaea10c66', 1687712988, 1687712988);
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_activities_metadata
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_activities_metadata
 CREATE TABLE IF NOT EXISTS `plugin_cmf_activities_metadata` (
   `activityId` int(20) NOT NULL,
   `key` varchar(150) NOT NULL,
@@ -3619,10 +3619,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_activities_metadata` (
   KEY `activityId` (`activityId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_activities_metadata: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_activities_metadata: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_activities_metadata`;
 
--- A despejar estrutura para função app-ecommerce.PLUGIN_CMF_COLLECT_ASSET_SEGMENT_ASSIGNMENTS
+-- A despejar estrutura para função app-commerce.PLUGIN_CMF_COLLECT_ASSET_SEGMENT_ASSIGNMENTS
 DELIMITER //
 CREATE FUNCTION `PLUGIN_CMF_COLLECT_ASSET_SEGMENT_ASSIGNMENTS`(elementIdent INT) RETURNS text CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci
     READS SQL DATA
@@ -3646,7 +3646,7 @@ BEGIN
   END//
 DELIMITER ;
 
--- A despejar estrutura para função app-ecommerce.PLUGIN_CMF_COLLECT_DOCUMENT_SEGMENT_ASSIGNMENTS
+-- A despejar estrutura para função app-commerce.PLUGIN_CMF_COLLECT_DOCUMENT_SEGMENT_ASSIGNMENTS
 DELIMITER //
 CREATE FUNCTION `PLUGIN_CMF_COLLECT_DOCUMENT_SEGMENT_ASSIGNMENTS`(elementIdent INT) RETURNS text CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci
     READS SQL DATA
@@ -3670,7 +3670,7 @@ BEGIN
   END//
 DELIMITER ;
 
--- A despejar estrutura para função app-ecommerce.PLUGIN_CMF_COLLECT_OBJECT_SEGMENT_ASSIGNMENTS
+-- A despejar estrutura para função app-commerce.PLUGIN_CMF_COLLECT_OBJECT_SEGMENT_ASSIGNMENTS
 DELIMITER //
 CREATE FUNCTION `PLUGIN_CMF_COLLECT_OBJECT_SEGMENT_ASSIGNMENTS`(elementIdent INT) RETURNS text CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci
     READS SQL DATA
@@ -3694,7 +3694,7 @@ BEGIN
   END//
 DELIMITER ;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_customer_filter_definition
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_customer_filter_definition
 CREATE TABLE IF NOT EXISTS `plugin_cmf_customer_filter_definition` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ownerId` int(11) NOT NULL,
@@ -3708,10 +3708,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_customer_filter_definition` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_customer_filter_definition: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_customer_filter_definition: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_customer_filter_definition`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_deletions
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_deletions
 CREATE TABLE IF NOT EXISTS `plugin_cmf_deletions` (
   `id` int(11) unsigned NOT NULL,
   `entityType` char(20) NOT NULL,
@@ -3721,10 +3721,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_deletions` (
   KEY `type` (`entityType`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_deletions: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_deletions: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_deletions`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_duplicatesindex
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_duplicatesindex
 CREATE TABLE IF NOT EXISTS `plugin_cmf_duplicatesindex` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `duplicateData` text NOT NULL,
@@ -3741,7 +3741,7 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_duplicatesindex` (
   KEY `metaphone` (`metaphone`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_duplicatesindex: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_duplicatesindex: ~5 rows (aproximadamente)
 DELETE FROM `plugin_cmf_duplicatesindex`;
 INSERT INTO `plugin_cmf_duplicatesindex` (`id`, `duplicateData`, `duplicateDataMd5`, `fieldCombination`, `fieldCombinationCrc`, `metaphone`, `soundex`, `creationDate`) VALUES
 	(1, '{"email":"patmartins@mail.com"}', 'e84522b215754bc27e573edcbae2050d', 'email', 3885137012, 'PTMRTNSMLKM', NULL, 1687692038),
@@ -3750,7 +3750,7 @@ INSERT INTO `plugin_cmf_duplicatesindex` (`id`, `duplicateData`, `duplicateDataM
 	(4, '{"email":"zerovunu@mailinator.com"}', 'bf93fd9a29d54d77266d061bd672c705', 'email', 3885137012, 'SRFNMLNTRKM', NULL, 1687711904),
 	(5, '{"email":"utilizador@mail.com"}', 'a37379f51ee6d254b981ede89213fcf1', 'email', 3885137012, 'UTLSTRMLKM', NULL, 1687712437);
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_duplicatesindex_customers
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_duplicatesindex_customers
 CREATE TABLE IF NOT EXISTS `plugin_cmf_duplicatesindex_customers` (
   `duplicate_id` int(11) unsigned NOT NULL,
   `customer_id` int(11) unsigned NOT NULL,
@@ -3758,7 +3758,7 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_duplicatesindex_customers` (
   KEY `customer_id` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_duplicatesindex_customers: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_duplicatesindex_customers: ~5 rows (aproximadamente)
 DELETE FROM `plugin_cmf_duplicatesindex_customers`;
 INSERT INTO `plugin_cmf_duplicatesindex_customers` (`duplicate_id`, `customer_id`) VALUES
 	(1, 42),
@@ -3767,7 +3767,7 @@ INSERT INTO `plugin_cmf_duplicatesindex_customers` (`duplicate_id`, `customer_id
 	(4, 66),
 	(5, 68);
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_duplicates_false_positives
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_duplicates_false_positives
 CREATE TABLE IF NOT EXISTS `plugin_cmf_duplicates_false_positives` (
   `row1` text NOT NULL,
   `row2` text NOT NULL,
@@ -3775,10 +3775,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_duplicates_false_positives` (
   `row2Details` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_duplicates_false_positives: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_duplicates_false_positives: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_duplicates_false_positives`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_newsletter_queue
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_newsletter_queue
 CREATE TABLE IF NOT EXISTS `plugin_cmf_newsletter_queue` (
   `customerId` int(11) unsigned NOT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -3788,10 +3788,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_newsletter_queue` (
   KEY `operation` (`operation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_newsletter_queue: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_newsletter_queue: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_newsletter_queue`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_potential_duplicates
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_potential_duplicates
 CREATE TABLE IF NOT EXISTS `plugin_cmf_potential_duplicates` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `duplicateCustomerIds` varchar(255) NOT NULL DEFAULT '',
@@ -3804,16 +3804,16 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_potential_duplicates` (
   KEY `declined` (`declined`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_potential_duplicates: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_potential_duplicates: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_potential_duplicates`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_segmentbuilder_changes_queue
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_segmentbuilder_changes_queue
 CREATE TABLE IF NOT EXISTS `plugin_cmf_segmentbuilder_changes_queue` (
   `customerId` int(11) unsigned NOT NULL,
   UNIQUE KEY `customerId` (`customerId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_segmentbuilder_changes_queue: ~5 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_segmentbuilder_changes_queue: ~5 rows (aproximadamente)
 DELETE FROM `plugin_cmf_segmentbuilder_changes_queue`;
 INSERT INTO `plugin_cmf_segmentbuilder_changes_queue` (`customerId`) VALUES
 	(42),
@@ -3822,7 +3822,7 @@ INSERT INTO `plugin_cmf_segmentbuilder_changes_queue` (`customerId`) VALUES
 	(66),
 	(68);
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_segment_assignment
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_segment_assignment
 CREATE TABLE IF NOT EXISTS `plugin_cmf_segment_assignment` (
   `elementId` int(11) NOT NULL,
   `elementType` enum('document','asset','object') NOT NULL,
@@ -3832,10 +3832,10 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_segment_assignment` (
   PRIMARY KEY (`elementId`,`elementType`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_segment_assignment: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_segment_assignment: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_segment_assignment`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_segment_assignment_index
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_segment_assignment_index
 CREATE TABLE IF NOT EXISTS `plugin_cmf_segment_assignment_index` (
   `elementId` int(11) NOT NULL,
   `elementType` enum('document','asset','object') NOT NULL,
@@ -3843,30 +3843,30 @@ CREATE TABLE IF NOT EXISTS `plugin_cmf_segment_assignment_index` (
   PRIMARY KEY (`elementId`,`elementType`,`segmentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_segment_assignment_index: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_segment_assignment_index: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_segment_assignment_index`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_segment_assignment_queue
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_segment_assignment_queue
 CREATE TABLE IF NOT EXISTS `plugin_cmf_segment_assignment_queue` (
   `elementId` int(11) NOT NULL,
   `elementType` enum('document','asset','object') NOT NULL,
   PRIMARY KEY (`elementId`,`elementType`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_segment_assignment_queue: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_segment_assignment_queue: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_segment_assignment_queue`;
 
--- A despejar estrutura para tabela app-ecommerce.plugin_cmf_sequence_numbers
+-- A despejar estrutura para tabela app-commerce.plugin_cmf_sequence_numbers
 CREATE TABLE IF NOT EXISTS `plugin_cmf_sequence_numbers` (
   `name` char(50) NOT NULL,
   `number` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.plugin_cmf_sequence_numbers: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.plugin_cmf_sequence_numbers: ~0 rows (aproximadamente)
 DELETE FROM `plugin_cmf_sequence_numbers`;
 
--- A despejar estrutura para tabela app-ecommerce.product_index
+-- A despejar estrutura para tabela app-commerce.product_index
 CREATE TABLE IF NOT EXISTS `product_index` (
   `id` int(11) NOT NULL DEFAULT 0,
   `virtualProductId` int(11) NOT NULL,
@@ -3886,7 +3886,7 @@ CREATE TABLE IF NOT EXISTS `product_index` (
   FULLTEXT KEY `search` (`name`,`description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- A despejar dados para tabela app-ecommerce.product_index: ~11 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.product_index: ~11 rows (aproximadamente)
 DELETE FROM `product_index`;
 INSERT INTO `product_index` (`id`, `virtualProductId`, `virtualProductActive`, `classId`, `parentId`, `type`, `categoryIds`, `parentCategoryIds`, `priceSystemName`, `active`, `inProductList`, `name`, `description`, `price`) VALUES
 	(17, 17, 1, '1', 4, 'object', ',,', ',,', 'default', 1, 1, 'Banho Turco', 'Banho turco', 59),
@@ -3902,7 +3902,7 @@ INSERT INTO `product_index` (`id`, `virtualProductId`, `virtualProductActive`, `
 	(31, 31, 1, '1', 4, 'object', ',,', ',,', 'default', 1, 1, 'Scubadiving', 'Na zona costeira do algarve', 40),
 	(32, 32, 1, '1', 4, 'object', ',,', ',,', 'default', 1, 1, 'Workshop de Costura', 'Workshop de costura, aprenda a arte da costura.', 15);
 
--- A despejar estrutura para tabela app-ecommerce.product_index_relations
+-- A despejar estrutura para tabela app-commerce.product_index_relations
 CREATE TABLE IF NOT EXISTS `product_index_relations` (
   `src` int(11) NOT NULL,
   `src_virtualProductId` int(11) NOT NULL,
@@ -3912,7 +3912,7 @@ CREATE TABLE IF NOT EXISTS `product_index_relations` (
   PRIMARY KEY (`src`,`dest`,`fieldname`,`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 
--- A despejar dados para tabela app-ecommerce.product_index_relations: ~22 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.product_index_relations: ~22 rows (aproximadamente)
 DELETE FROM `product_index_relations`;
 INSERT INTO `product_index_relations` (`src`, `src_virtualProductId`, `dest`, `fieldname`, `type`) VALUES
 	(17, 17, 5, 'localization', 'object'),
@@ -3940,7 +3940,7 @@ INSERT INTO `product_index_relations` (`src`, `src_virtualProductId`, `dest`, `f
 	(32, 32, 20, 'productType', 'object'),
 	(32, 32, 22, 'localization', 'object');
 
--- A despejar estrutura para tabela app-ecommerce.properties
+-- A despejar estrutura para tabela app-commerce.properties
 CREATE TABLE IF NOT EXISTS `properties` (
   `cid` int(11) unsigned NOT NULL DEFAULT 0,
   `ctype` enum('document','asset','object') NOT NULL DEFAULT 'document',
@@ -3953,13 +3953,13 @@ CREATE TABLE IF NOT EXISTS `properties` (
   KEY `getall` (`cpath`,`ctype`,`inheritable`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.properties: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.properties: ~2 rows (aproximadamente)
 DELETE FROM `properties`;
 INSERT INTO `properties` (`cid`, `ctype`, `cpath`, `name`, `type`, `data`, `inheritable`) VALUES
 	(2, 'document', '/Main-Page', 'navigation_name', 'text', 'MainPage', 0),
 	(3, 'document', '/About-Us', 'navigation_name', 'text', 'About-Us', 0);
 
--- A despejar estrutura para tabela app-ecommerce.quantityvalue_units
+-- A despejar estrutura para tabela app-commerce.quantityvalue_units
 CREATE TABLE IF NOT EXISTS `quantityvalue_units` (
   `id` varchar(50) NOT NULL,
   `group` varchar(50) DEFAULT NULL,
@@ -3975,10 +3975,10 @@ CREATE TABLE IF NOT EXISTS `quantityvalue_units` (
   CONSTRAINT `fk_baseunit` FOREIGN KEY (`baseunit`) REFERENCES `quantityvalue_units` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.quantityvalue_units: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.quantityvalue_units: ~0 rows (aproximadamente)
 DELETE FROM `quantityvalue_units`;
 
--- A despejar estrutura para tabela app-ecommerce.recyclebin
+-- A despejar estrutura para tabela app-commerce.recyclebin
 CREATE TABLE IF NOT EXISTS `recyclebin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(20) DEFAULT NULL,
@@ -3991,13 +3991,13 @@ CREATE TABLE IF NOT EXISTS `recyclebin` (
   KEY `recyclebin_date` (`date`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.recyclebin: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.recyclebin: ~2 rows (aproximadamente)
 DELETE FROM `recyclebin`;
 INSERT INTO `recyclebin` (`id`, `type`, `subtype`, `path`, `amount`, `date`, `deletedby`) VALUES
 	(1, 'object', 'object', '/Produto/Prod1', 1, 1687606772, 'admin'),
 	(2, 'object', 'object', '/Produto/Prod2', 1, 1687606776, 'admin');
 
--- A despejar estrutura para tabela app-ecommerce.schedule_tasks
+-- A despejar estrutura para tabela app-commerce.schedule_tasks
 CREATE TABLE IF NOT EXISTS `schedule_tasks` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `cid` int(11) unsigned DEFAULT NULL,
@@ -4014,10 +4014,10 @@ CREATE TABLE IF NOT EXISTS `schedule_tasks` (
   KEY `version` (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.schedule_tasks: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.schedule_tasks: ~0 rows (aproximadamente)
 DELETE FROM `schedule_tasks`;
 
--- A despejar estrutura para tabela app-ecommerce.search_backend_data
+-- A despejar estrutura para tabela app-commerce.search_backend_data
 CREATE TABLE IF NOT EXISTS `search_backend_data` (
   `id` int(11) NOT NULL,
   `key` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT '',
@@ -4044,10 +4044,10 @@ CREATE TABLE IF NOT EXISTS `search_backend_data` (
   FULLTEXT KEY `fulltext` (`data`,`properties`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.search_backend_data: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.search_backend_data: ~0 rows (aproximadamente)
 DELETE FROM `search_backend_data`;
 
--- A despejar estrutura para tabela app-ecommerce.settings_store
+-- A despejar estrutura para tabela app-commerce.settings_store
 CREATE TABLE IF NOT EXISTS `settings_store` (
   `id` varchar(190) NOT NULL DEFAULT '',
   `scope` varchar(190) NOT NULL DEFAULT '',
@@ -4057,7 +4057,7 @@ CREATE TABLE IF NOT EXISTS `settings_store` (
   KEY `scope` (`scope`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.settings_store: ~6 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.settings_store: ~6 rows (aproximadamente)
 DELETE FROM `settings_store`;
 INSERT INTO `settings_store` (`id`, `scope`, `data`, `type`) VALUES
 	('admin_system_settings', 'pimcore_admin_system_settings', '{"branding":{"login_screen_invert_colors":false,"color_login_screen":"","color_admin_interface":"","color_admin_interface_background":"","login_screen_custom_image":""},"assets":{"hide_edit_image":false,"disable_tree_preview":false}}', 'string'),
@@ -4069,7 +4069,7 @@ INSERT INTO `settings_store` (`id`, `scope`, `data`, `type`) VALUES
 	('BUNDLE_INSTALLED__Pimcore\\Bundle\\NewsletterBundle\\PimcoreNewsletterBundle', 'pimcore', '1', 'bool'),
 	('BUNDLE_INSTALLED__Pimcore\\Bundle\\PersonalizationBundle\\PimcorePersonalizationBundle', 'pimcore', '1', 'bool');
 
--- A despejar estrutura para tabela app-ecommerce.sites
+-- A despejar estrutura para tabela app-commerce.sites
 CREATE TABLE IF NOT EXISTS `sites` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `mainDomain` varchar(255) DEFAULT NULL,
@@ -4085,10 +4085,10 @@ CREATE TABLE IF NOT EXISTS `sites` (
   CONSTRAINT `fk_sites_documents` FOREIGN KEY (`rootId`) REFERENCES `documents` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.sites: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.sites: ~0 rows (aproximadamente)
 DELETE FROM `sites`;
 
--- A despejar estrutura para tabela app-ecommerce.tags
+-- A despejar estrutura para tabela app-commerce.tags
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parentId` int(10) unsigned DEFAULT NULL,
@@ -4101,10 +4101,10 @@ CREATE TABLE IF NOT EXISTS `tags` (
   KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.tags: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.tags: ~0 rows (aproximadamente)
 DELETE FROM `tags`;
 
--- A despejar estrutura para tabela app-ecommerce.tags_assignment
+-- A despejar estrutura para tabela app-commerce.tags_assignment
 CREATE TABLE IF NOT EXISTS `tags_assignment` (
   `tagid` int(10) unsigned NOT NULL DEFAULT 0,
   `cid` int(10) NOT NULL DEFAULT 0,
@@ -4114,10 +4114,10 @@ CREATE TABLE IF NOT EXISTS `tags_assignment` (
   KEY `ctype_cid` (`cid`,`ctype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.tags_assignment: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.tags_assignment: ~0 rows (aproximadamente)
 DELETE FROM `tags_assignment`;
 
--- A despejar estrutura para tabela app-ecommerce.targeting_rules
+-- A despejar estrutura para tabela app-commerce.targeting_rules
 CREATE TABLE IF NOT EXISTS `targeting_rules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
@@ -4130,10 +4130,10 @@ CREATE TABLE IF NOT EXISTS `targeting_rules` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.targeting_rules: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.targeting_rules: ~0 rows (aproximadamente)
 DELETE FROM `targeting_rules`;
 
--- A despejar estrutura para tabela app-ecommerce.targeting_storage
+-- A despejar estrutura para tabela app-commerce.targeting_storage
 CREATE TABLE IF NOT EXISTS `targeting_storage` (
   `visitorId` varchar(100) NOT NULL,
   `scope` varchar(50) NOT NULL,
@@ -4146,10 +4146,10 @@ CREATE TABLE IF NOT EXISTS `targeting_storage` (
   KEY `targeting_storage_name_index` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.targeting_storage: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.targeting_storage: ~0 rows (aproximadamente)
 DELETE FROM `targeting_storage`;
 
--- A despejar estrutura para tabela app-ecommerce.targeting_target_groups
+-- A despejar estrutura para tabela app-commerce.targeting_target_groups
 CREATE TABLE IF NOT EXISTS `targeting_target_groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
@@ -4159,10 +4159,10 @@ CREATE TABLE IF NOT EXISTS `targeting_target_groups` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.targeting_target_groups: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.targeting_target_groups: ~0 rows (aproximadamente)
 DELETE FROM `targeting_target_groups`;
 
--- A despejar estrutura para tabela app-ecommerce.tmp_store
+-- A despejar estrutura para tabela app-commerce.tmp_store
 CREATE TABLE IF NOT EXISTS `tmp_store` (
   `id` varchar(190) NOT NULL DEFAULT '',
   `tag` varchar(190) DEFAULT NULL,
@@ -4176,13 +4176,13 @@ CREATE TABLE IF NOT EXISTS `tmp_store` (
   KEY `expiryDate` (`expiryDate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.tmp_store: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.tmp_store: ~2 rows (aproximadamente)
 DELETE FROM `tmp_store`;
 INSERT INTO `tmp_store` (`id`, `tag`, `data`, `serialized`, `date`, `expiryDate`) VALUES
 	('document_session_2_tmv387c70l76hk843ne36gd0eu', 'document-session', 'O:56:"Pimcore\\Bundle\\PersonalizationBundle\\Model\\Document\\Page":32:{s:15:"\0*\0dependencies";N;s:25:"\0*\0__dataVersionTimestamp";i:1687698514;s:7:"\0*\0path";s:1:"/";s:13:"\0*\0properties";a:1:{s:15:"navigation_name";O:22:"Pimcore\\Model\\Property":8:{s:7:"\0*\0name";s:15:"navigation_name";s:7:"\0*\0data";s:8:"MainPage";s:7:"\0*\0type";s:4:"text";s:8:"\0*\0ctype";s:8:"document";s:8:"\0*\0cpath";N;s:6:"\0*\0cid";i:2;s:14:"\0*\0inheritable";b:0;s:12:"\0*\0inherited";b:0;}}s:5:"\0*\0id";i:2;s:15:"\0*\0creationDate";i:1687698329;s:19:"\0*\0modificationDate";i:1687698764;s:15:"\0*\0versionCount";i:8;s:12:"\0*\0userOwner";i:2;s:9:"\0*\0locked";N;s:19:"\0*\0userModification";i:2;s:11:"\0*\0parentId";i:1;s:12:"\0*\0_fulldump";b:1;s:7:"\0*\0type";s:4:"page";s:6:"\0*\0key";s:9:"Main-Page";s:8:"\0*\0index";i:1;s:12:"\0*\0published";b:1;s:11:"\0*\0children";a:0:{}s:11:"\0*\0siblings";a:0:{}s:13:"\0*\0controller";s:47:"App\\Controller\\DefaultController::defaultAction";s:11:"\0*\0template";s:19:"home\\home.html.twig";s:12:"\0*\0editables";a:0:{}s:24:"\0*\0contentMainDocumentId";N;s:26:"\0*\0contentMasterDocumentId";R:33;s:22:"\0*\0supportsContentMain";b:1;s:26:"\0*\0missingRequiredEditable";N;s:25:"\0*\0staticGeneratorEnabled";b:0;s:26:"\0*\0staticGeneratorLifetime";N;s:8:"\0*\0title";s:8:"MainPage";s:14:"\0*\0description";s:0:"";s:12:"\0*\0prettyUrl";s:2:"/h";s:17:"\0*\0targetGroupIds";s:0:"";}', 0, 1687698764, 1688303564),
 	('document_session_3_tmv387c70l76hk843ne36gd0eu', 'document-session', 'O:56:"Pimcore\\Bundle\\PersonalizationBundle\\Model\\Document\\Page":32:{s:15:"\0*\0dependencies";N;s:25:"\0*\0__dataVersionTimestamp";i:1687698505;s:7:"\0*\0path";s:1:"/";s:13:"\0*\0properties";a:1:{s:15:"navigation_name";O:22:"Pimcore\\Model\\Property":8:{s:7:"\0*\0name";s:15:"navigation_name";s:7:"\0*\0data";s:8:"About-Us";s:7:"\0*\0type";s:4:"text";s:8:"\0*\0ctype";s:8:"document";s:8:"\0*\0cpath";N;s:6:"\0*\0cid";i:3;s:14:"\0*\0inheritable";b:0;s:12:"\0*\0inherited";b:0;}}s:5:"\0*\0id";i:3;s:15:"\0*\0creationDate";i:1687698505;s:19:"\0*\0modificationDate";i:1687698608;s:15:"\0*\0versionCount";i:1;s:12:"\0*\0userOwner";i:2;s:9:"\0*\0locked";N;s:19:"\0*\0userModification";i:2;s:11:"\0*\0parentId";i:1;s:12:"\0*\0_fulldump";b:1;s:7:"\0*\0type";s:4:"page";s:6:"\0*\0key";s:8:"About-Us";s:8:"\0*\0index";i:2;s:12:"\0*\0published";b:1;s:11:"\0*\0children";a:0:{}s:11:"\0*\0siblings";a:0:{}s:13:"\0*\0controller";s:47:"App\\Controller\\DefaultController::defaultAction";s:11:"\0*\0template";s:25:"aboutus\\aboutus.html.twig";s:12:"\0*\0editables";a:0:{}s:24:"\0*\0contentMainDocumentId";N;s:26:"\0*\0contentMasterDocumentId";R:33;s:22:"\0*\0supportsContentMain";b:1;s:26:"\0*\0missingRequiredEditable";N;s:25:"\0*\0staticGeneratorEnabled";b:0;s:26:"\0*\0staticGeneratorLifetime";N;s:8:"\0*\0title";s:8:"About-Us";s:14:"\0*\0description";s:0:"";s:12:"\0*\0prettyUrl";s:3:"/ab";s:17:"\0*\0targetGroupIds";s:0:"";}', 0, 1687698608, 1688303408);
 
--- A despejar estrutura para tabela app-ecommerce.translations_admin
+-- A despejar estrutura para tabela app-commerce.translations_admin
 CREATE TABLE IF NOT EXISTS `translations_admin` (
   `key` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `type` varchar(10) DEFAULT NULL,
@@ -4196,7 +4196,7 @@ CREATE TABLE IF NOT EXISTS `translations_admin` (
   KEY `language` (`language`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.translations_admin: ~1 878 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.translations_admin: ~1 878 rows (aproximadamente)
 DELETE FROM `translations_admin`;
 INSERT INTO `translations_admin` (`key`, `type`, `language`, `text`, `creationDate`, `modificationDate`, `userOwner`, `userModification`) VALUES
 	('<b>Filter MultiRelation</b><div>Multi selection filter for relation fields.</div><div>- Use And Condition: Uses AND condition instead of OR.&nbsp;</div>', 'simple', 'cs', '', 1687569520, 1687569520, 2, 2),
@@ -6180,7 +6180,7 @@ INSERT INTO `translations_admin` (`key`, `type`, `language`, `text`, `creationDa
 	('username', 'simple', 'en', '', 1687566469, 1687566469, 0, 0),
 	('username', 'simple', 'fr', '', 1687566469, 1687566469, 0, 0);
 
--- A despejar estrutura para tabela app-ecommerce.translations_messages
+-- A despejar estrutura para tabela app-commerce.translations_messages
 CREATE TABLE IF NOT EXISTS `translations_messages` (
   `key` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `type` varchar(10) DEFAULT NULL,
@@ -6194,7 +6194,7 @@ CREATE TABLE IF NOT EXISTS `translations_messages` (
   KEY `language` (`language`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.translations_messages: ~96 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.translations_messages: ~96 rows (aproximadamente)
 DELETE FROM `translations_messages`;
 INSERT INTO `translations_messages` (`key`, `type`, `language`, `text`, `creationDate`, `modificationDate`, `userOwner`, `userModification`) VALUES
 	('AVANÇAR', 'simple', 'de', '', 1687611869, 1687611869, 0, 0),
@@ -6294,7 +6294,7 @@ INSERT INTO `translations_messages` (`key`, `type`, `language`, `text`, `creatio
 	('general.register-now', 'simple', 'en', '', 1687568820, 1687568820, 0, 0),
 	('general.register-now', 'simple', 'fr', '', 1687568820, 1687568820, 0, 0);
 
--- A despejar estrutura para tabela app-ecommerce.tree_locks
+-- A despejar estrutura para tabela app-commerce.tree_locks
 CREATE TABLE IF NOT EXISTS `tree_locks` (
   `id` int(11) NOT NULL DEFAULT 0,
   `type` enum('asset','document','object') NOT NULL DEFAULT 'asset',
@@ -6304,10 +6304,10 @@ CREATE TABLE IF NOT EXISTS `tree_locks` (
   KEY `locked` (`locked`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.tree_locks: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.tree_locks: ~0 rows (aproximadamente)
 DELETE FROM `tree_locks`;
 
--- A despejar estrutura para tabela app-ecommerce.users
+-- A despejar estrutura para tabela app-commerce.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parentId` int(11) unsigned DEFAULT NULL,
@@ -6344,20 +6344,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `password` (`password`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.users: ~2 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.users: ~2 rows (aproximadamente)
 DELETE FROM `users`;
 INSERT INTO `users` (`id`, `parentId`, `type`, `name`, `password`, `firstname`, `lastname`, `email`, `language`, `contentLanguages`, `admin`, `active`, `permissions`, `roles`, `welcomescreen`, `closeWarning`, `memorizeTabs`, `allowDirtyClose`, `docTypes`, `classes`, `twoFactorAuthentication`, `provider`, `activePerspective`, `perspectives`, `websiteTranslationLanguagesEdit`, `websiteTranslationLanguagesView`, `lastLogin`, `keyBindings`) VALUES
 	(0, 0, 'user', 'system', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 	(2, 0, 'user', 'admin', '$2y$10$BKZYEvRYvj1.gMdE4408O.gthLj9ntDTYSFtA8in/Cu7YdqAGZJPi', NULL, NULL, NULL, 'en', '', 1, 1, '', '', 0, 1, 1, 0, '', '', 'null', NULL, NULL, '', '', '', NULL, NULL);
 
--- A despejar estrutura para tabela app-ecommerce.users_permission_definitions
+-- A despejar estrutura para tabela app-commerce.users_permission_definitions
 CREATE TABLE IF NOT EXISTS `users_permission_definitions` (
   `key` varchar(50) NOT NULL DEFAULT '',
   `category` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.users_permission_definitions: ~45 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.users_permission_definitions: ~45 rows (aproximadamente)
 DELETE FROM `users_permission_definitions`;
 INSERT INTO `users_permission_definitions` (`key`, `category`) VALUES
 	('admin_translations', 'Pimcore Admin Bundle'),
@@ -6407,7 +6407,7 @@ INSERT INTO `users_permission_definitions` (`key`, `category`) VALUES
 	('website_settings', ''),
 	('workflow_details', '');
 
--- A despejar estrutura para tabela app-ecommerce.users_workspaces_asset
+-- A despejar estrutura para tabela app-commerce.users_workspaces_asset
 CREATE TABLE IF NOT EXISTS `users_workspaces_asset` (
   `cid` int(11) unsigned NOT NULL DEFAULT 0,
   `cpath` varchar(765) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
@@ -6428,10 +6428,10 @@ CREATE TABLE IF NOT EXISTS `users_workspaces_asset` (
   CONSTRAINT `fk_users_workspaces_asset_users` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.users_workspaces_asset: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.users_workspaces_asset: ~0 rows (aproximadamente)
 DELETE FROM `users_workspaces_asset`;
 
--- A despejar estrutura para tabela app-ecommerce.users_workspaces_document
+-- A despejar estrutura para tabela app-commerce.users_workspaces_document
 CREATE TABLE IF NOT EXISTS `users_workspaces_document` (
   `cid` int(11) unsigned NOT NULL DEFAULT 0,
   `cpath` varchar(765) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
@@ -6454,10 +6454,10 @@ CREATE TABLE IF NOT EXISTS `users_workspaces_document` (
   CONSTRAINT `fk_users_workspaces_document_users` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.users_workspaces_document: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.users_workspaces_document: ~0 rows (aproximadamente)
 DELETE FROM `users_workspaces_document`;
 
--- A despejar estrutura para tabela app-ecommerce.users_workspaces_object
+-- A despejar estrutura para tabela app-commerce.users_workspaces_object
 CREATE TABLE IF NOT EXISTS `users_workspaces_object` (
   `cid` int(11) unsigned NOT NULL DEFAULT 0,
   `cpath` varchar(765) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
@@ -6483,10 +6483,10 @@ CREATE TABLE IF NOT EXISTS `users_workspaces_object` (
   CONSTRAINT `fk_users_workspaces_object_users` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
--- A despejar dados para tabela app-ecommerce.users_workspaces_object: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.users_workspaces_object: ~0 rows (aproximadamente)
 DELETE FROM `users_workspaces_object`;
 
--- A despejar estrutura para tabela app-ecommerce.versions
+-- A despejar estrutura para tabela app-commerce.versions
 CREATE TABLE IF NOT EXISTS `versions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `cid` int(11) unsigned DEFAULT NULL,
@@ -6511,7 +6511,7 @@ CREATE TABLE IF NOT EXISTS `versions` (
   KEY `stackTrace` (`stackTrace`(1))
 ) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.versions: ~161 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.versions: ~161 rows (aproximadamente)
 DELETE FROM `versions`;
 INSERT INTO `versions` (`id`, `cid`, `ctype`, `userId`, `note`, `stackTrace`, `date`, `public`, `serialized`, `versionCount`, `binaryFileHash`, `binaryFileId`, `autoSave`, `storageType`) VALUES
 	(1, 5, 'object', 2, '', '#0 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\Element\\AbstractElement.php(611): Pimcore\\Model\\Version->save()\n#1 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(285): Pimcore\\Model\\Element\\AbstractElement->doSaveVersion(NULL, false, true, false)\n#2 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(216): Pimcore\\Model\\DataObject\\Concrete->saveVersion(false, false, NULL)\n#3 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\AbstractObject.php(578): Pimcore\\Model\\DataObject\\Concrete->update(false, Array)\n#4 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(687): Pimcore\\Model\\DataObject\\AbstractObject->save(Array)\n#5 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\admin-ui-classic-bundle\\src\\Controller\\Admin\\DataObject\\DataObjectController.php(962): Pimcore\\Model\\DataObject\\Concrete->save()\n#6 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\HttpKernel.php(166): Pimcore\\Bundle\\AdminBundle\\Controller\\Admin\\DataObject\\DataObjectController->addAction(Object(Symfony\\Component\\HttpFoundation\\Request), Object(Pimcore\\Model\\Factory))\n#7 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\HttpKernel.php(74): Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw(Object(Symfony\\Component\\HttpFoundation\\Request), 1)\n#8 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\Kernel.php(197): Symfony\\Component\\HttpKernel\\HttpKernel->handle(Object(Symfony\\Component\\HttpFoundation\\Request), 1, true)\n#9 C:\\laragon\\www\\app-commerce\\public\\index.php(36): Symfony\\Component\\HttpKernel\\Kernel->handle(Object(Symfony\\Component\\HttpFoundation\\Request))\n#10 {main}', 1687566984, 0, 1, 1, NULL, NULL, 0, 'fs'),
@@ -6705,7 +6705,7 @@ INSERT INTO `versions` (`id`, `cid`, `ctype`, `userId`, `note`, `stackTrace`, `d
 	(225, 67, 'object', 0, 'CommitOrderProcessor::commitOrder - set state to committed before sending confirmation mail.', '#0 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\Element\\AbstractElement.php(611): Pimcore\\Model\\Version->save()\n#1 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(285): Pimcore\\Model\\Element\\AbstractElement->doSaveVersion(\'CommitOrderProc...\', false, true, false)\n#2 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(216): Pimcore\\Model\\DataObject\\Concrete->saveVersion(false, false, \'CommitOrderProc...\')\n#3 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\AbstractObject.php(578): Pimcore\\Model\\DataObject\\Concrete->update(true, Array)\n#4 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(687): Pimcore\\Model\\DataObject\\AbstractObject->save(Array)\n#5 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\ecommerce-framework-bundle\\src\\CheckoutManager\\V7\\CommitOrderProcessor.php(274): Pimcore\\Model\\DataObject\\Concrete->save(Array)\n#6 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\ecommerce-framework-bundle\\src\\CheckoutManager\\V7\\CommitOrderProcessor.php(232): Pimcore\\Bundle\\EcommerceFrameworkBundle\\CheckoutManager\\V7\\CommitOrderProcessor->commitOrder(Object(Pimcore\\Model\\DataObject\\OnlineShopOrder))\n#7 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\ecommerce-framework-bundle\\src\\CheckoutManager\\V7\\CommitOrderProcessor.php(142): Pimcore\\Bundle\\EcommerceFrameworkBundle\\CheckoutManager\\V7\\CommitOrderProcessor->commitOrderPayment(Object(Pimcore\\Bundle\\EcommerceFrameworkBundle\\PaymentManager\\Status), Object(Pimcore\\Bundle\\EcommerceFrameworkBundle\\PaymentManager\\Payment\\PayPalSmartPaymentButton))\n#8 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\ecommerce-framework-bundle\\src\\CheckoutManager\\V7\\CheckoutManager.php(329): Pimcore\\Bundle\\EcommerceFrameworkBundle\\CheckoutManager\\V7\\CommitOrderProcessor->handlePaymentResponseAndCommitOrderPayment(Array, Object(Pimcore\\Bundle\\EcommerceFrameworkBundle\\PaymentManager\\Payment\\PayPalSmartPaymentButton))\n#9 C:\\laragon\\www\\app-commerce\\src\\Controller\\PaymentController.php(118): Pimcore\\Bundle\\EcommerceFrameworkBundle\\CheckoutManager\\V7\\CheckoutManager->handlePaymentResponseAndCommitOrderPayment(Array)\n#10 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\HttpKernel.php(166): App\\Controller\\PaymentController->commitOrderAction(Object(Symfony\\Component\\HttpFoundation\\Request), Object(Pimcore\\Bundle\\EcommerceFrameworkBundle\\Factory), Object(Symfony\\Bridge\\Monolog\\Logger), Object(Pimcore\\Translation\\Translator), Object(Symfony\\Component\\HttpFoundation\\Session\\Session))\n#11 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\HttpKernel.php(74): Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw(Object(Symfony\\Component\\HttpFoundation\\Request), 1)\n#12 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\Kernel.php(197): Symfony\\Component\\HttpKernel\\HttpKernel->handle(Object(Symfony\\Component\\HttpFoundation\\Request), 1, true)\n#13 C:\\laragon\\www\\app-commerce\\public\\index.php(36): Symfony\\Component\\HttpKernel\\Kernel->handle(Object(Symfony\\Component\\HttpFoundation\\Request))\n#14 {main}', 1687712360, 0, 1, 7, NULL, NULL, 0, 'fs'),
 	(226, 68, 'object', 0, '', '#0 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\Element\\AbstractElement.php(611): Pimcore\\Model\\Version->save()\n#1 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(285): Pimcore\\Model\\Element\\AbstractElement->doSaveVersion(NULL, false, true, false)\n#2 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(216): Pimcore\\Model\\DataObject\\Concrete->saveVersion(false, false, NULL)\n#3 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\AbstractObject.php(578): Pimcore\\Model\\DataObject\\Concrete->update(false, Array)\n#4 C:\\laragon\\www\\app-commerce\\vendor\\pimcore\\pimcore\\models\\DataObject\\Concrete.php(687): Pimcore\\Model\\DataObject\\AbstractObject->save(Array)\n#5 C:\\laragon\\www\\app-commerce\\src\\Controller\\AccountController.php(158): Pimcore\\Model\\DataObject\\Concrete->save()\n#6 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\HttpKernel.php(166): App\\Controller\\AccountController->registerAction(Object(Symfony\\Component\\HttpFoundation\\Request), Object(ContainerXxYSJwI\\DefaultCustomerProviderGhostD86e40d), Object(CustomerManagementFrameworkBundle\\Security\\Authentication\\LoginManager), Object(App\\Form\\RegistrationFormHandler), Object(App\\EventListener\\AuthenticationLoginListener), Object(Pimcore\\Translation\\Translator), Object(Pimcore\\DataObject\\Consent\\Service), Object(Symfony\\Cmf\\Component\\Routing\\ChainRouter), Object(App\\Services\\NewsletterDoubleOptInService), NULL)\n#7 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\HttpKernel.php(74): Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw(Object(Symfony\\Component\\HttpFoundation\\Request), 1)\n#8 C:\\laragon\\www\\app-commerce\\vendor\\symfony\\http-kernel\\Kernel.php(197): Symfony\\Component\\HttpKernel\\HttpKernel->handle(Object(Symfony\\Component\\HttpFoundation\\Request), 1, true)\n#9 C:\\laragon\\www\\app-commerce\\public\\index.php(36): Symfony\\Component\\HttpKernel\\Kernel->handle(Object(Symfony\\Component\\HttpFoundation\\Request))\n#10 {main}', 1687712437, 0, 1, 1, NULL, NULL, 0, 'fs');
 
--- A despejar estrutura para tabela app-ecommerce.webdav_locks
+-- A despejar estrutura para tabela app-commerce.webdav_locks
 CREATE TABLE IF NOT EXISTS `webdav_locks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `owner` varchar(100) DEFAULT NULL,
@@ -6720,10 +6720,10 @@ CREATE TABLE IF NOT EXISTS `webdav_locks` (
   KEY `uri` (`uri`(100))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.webdav_locks: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.webdav_locks: ~0 rows (aproximadamente)
 DELETE FROM `webdav_locks`;
 
--- A despejar estrutura para tabela app-ecommerce.website_settings
+-- A despejar estrutura para tabela app-commerce.website_settings
 CREATE TABLE IF NOT EXISTS `website_settings` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(190) NOT NULL DEFAULT '',
@@ -6738,95 +6738,95 @@ CREATE TABLE IF NOT EXISTS `website_settings` (
   KEY `siteId` (`siteId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- A despejar dados para tabela app-ecommerce.website_settings: ~0 rows (aproximadamente)
+-- A despejar dados para tabela app-commerce.website_settings: ~0 rows (aproximadamente)
 DELETE FROM `website_settings`;
 
--- A despejar estrutura para vista app-ecommerce.object_1
+-- A despejar estrutura para vista app-commerce.object_1
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_1`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_1` AS select `object_query_1`.`oo_id` AS `oo_id`,`object_query_1`.`oo_classId` AS `oo_classId`,`object_query_1`.`oo_className` AS `oo_className`,`object_query_1`.`images` AS `images`,`object_query_1`.`name` AS `name`,`object_query_1`.`description` AS `description`,`object_query_1`.`priceInEur` AS `priceInEur`,`object_query_1`.`localization__id` AS `localization__id`,`object_query_1`.`localization__type` AS `localization__type`,`object_query_1`.`caracteristics` AS `caracteristics`,`object_query_1`.`productType__id` AS `productType__id`,`object_query_1`.`productType__type` AS `productType__type`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_1` join `objects` on(`objects`.`id` = `object_query_1`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_2
+-- A despejar estrutura para vista app-commerce.object_2
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_2`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_2` AS select `object_query_2`.`oo_id` AS `oo_id`,`object_query_2`.`oo_classId` AS `oo_classId`,`object_query_2`.`oo_className` AS `oo_className`,`object_query_2`.`local` AS `local`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_2` join `objects` on(`objects`.`id` = `object_query_2`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_3
+-- A despejar estrutura para vista app-commerce.object_3
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_3`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_3` AS select `object_query_3`.`oo_id` AS `oo_id`,`object_query_3`.`oo_classId` AS `oo_classId`,`object_query_3`.`oo_className` AS `oo_className`,`object_query_3`.`typeName` AS `typeName`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_3` join `objects` on(`objects`.`id` = `object_query_3`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_4
+-- A despejar estrutura para vista app-commerce.object_4
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_4`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_4` AS select `object_query_4`.`oo_id` AS `oo_id`,`object_query_4`.`oo_classId` AS `oo_classId`,`object_query_4`.`oo_className` AS `oo_className`,`object_query_4`.`name` AS `name`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_4` join `objects` on(`objects`.`id` = `object_query_4`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_5
+-- A despejar estrutura para vista app-commerce.object_5
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_5`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_5` AS select `object_query_5`.`oo_id` AS `oo_id`,`object_query_5`.`oo_classId` AS `oo_classId`,`object_query_5`.`oo_className` AS `oo_className`,`object_query_5`.`name` AS `name`,`object_query_5`.`reference` AS `reference`,`object_query_5`.`calculated` AS `calculated`,`object_query_5`.`showAsFilter` AS `showAsFilter`,`object_query_5`.`filterSortOrder` AS `filterSortOrder`,`object_query_5`.`exportNewsletterProvider` AS `exportNewsletterProvider`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_5` join `objects` on(`objects`.`id` = `object_query_5`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_6
+-- A despejar estrutura para vista app-commerce.object_6
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_6`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_6` AS select `object_query_6`.`oo_id` AS `oo_id`,`object_query_6`.`oo_classId` AS `oo_classId`,`object_query_6`.`oo_className` AS `oo_className`,`object_query_6`.`name` AS `name`,`object_query_6`.`group__id` AS `group__id`,`object_query_6`.`group__type` AS `group__type`,`object_query_6`.`reference` AS `reference`,`object_query_6`.`calculated` AS `calculated`,`object_query_6`.`useAsTargetGroup` AS `useAsTargetGroup`,`object_query_6`.`targetGroup` AS `targetGroup`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_6` join `objects` on(`objects`.`id` = `object_query_6`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_7
+-- A despejar estrutura para vista app-commerce.object_7
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_7`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_7` AS select `object_query_7`.`oo_id` AS `oo_id`,`object_query_7`.`oo_classId` AS `oo_classId`,`object_query_7`.`oo_className` AS `oo_className`,`object_query_7`.`name` AS `name`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_7` join `objects` on(`objects`.`id` = `object_query_7`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_8
+-- A despejar estrutura para vista app-commerce.object_8
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_8`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_8` AS select `object_query_8`.`oo_id` AS `oo_id`,`object_query_8`.`oo_classId` AS `oo_classId`,`object_query_8`.`oo_className` AS `oo_className`,`object_query_8`.`code` AS `code`,`object_query_8`.`attributeType` AS `attributeType`,`object_query_8`.`label` AS `label`,`object_query_8`.`link` AS `link`,`object_query_8`.`active` AS `active`,`object_query_8`.`utm_source` AS `utm_source`,`object_query_8`.`utm_medium` AS `utm_medium`,`object_query_8`.`utm_campaign` AS `utm_campaign`,`object_query_8`.`utm_term` AS `utm_term`,`object_query_8`.`utm_content` AS `utm_content`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_8` join `objects` on(`objects`.`id` = `object_query_8`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_cu
+-- A despejar estrutura para vista app-commerce.object_cu
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_cu`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_cu` AS select `object_query_cu`.`oo_id` AS `oo_id`,`object_query_cu`.`oo_classId` AS `oo_classId`,`object_query_cu`.`oo_className` AS `oo_className`,`object_query_cu`.`active` AS `active`,`object_query_cu`.`gender` AS `gender`,`object_query_cu`.`firstname` AS `firstname`,`object_query_cu`.`lastname` AS `lastname`,`object_query_cu`.`company` AS `company`,`object_query_cu`.`email` AS `email`,`object_query_cu`.`street` AS `street`,`object_query_cu`.`zip` AS `zip`,`object_query_cu`.`city` AS `city`,`object_query_cu`.`countryCode` AS `countryCode`,`object_query_cu`.`phone` AS `phone`,`object_query_cu`.`idEncoded` AS `idEncoded`,`object_query_cu`.`customerLanguage` AS `customerLanguage`,`object_query_cu`.`newsletter` AS `newsletter`,`object_query_cu`.`newsletterConfirmed` AS `newsletterConfirmed`,`object_query_cu`.`newsletterConfirmToken` AS `newsletterConfirmToken`,`object_query_cu`.`profiling` AS `profiling`,`object_query_cu`.`manualSegments` AS `manualSegments`,`object_query_cu`.`calculatedSegments` AS `calculatedSegments`,`object_query_cu`.`password` AS `password`,`object_query_cu`.`passwordRecoveryToken` AS `passwordRecoveryToken`,`object_query_cu`.`passwordRecoveryTokenDate` AS `passwordRecoveryTokenDate`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_cu` join `objects` on(`objects`.`id` = `object_query_cu`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_fd
+-- A despejar estrutura para vista app-commerce.object_ef_fd
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_fd`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_fd` AS select `object_query_ef_fd`.`oo_id` AS `oo_id`,`object_query_ef_fd`.`oo_classId` AS `oo_classId`,`object_query_ef_fd`.`oo_className` AS `oo_className`,`object_query_ef_fd`.`pageLimit` AS `pageLimit`,`object_query_ef_fd`.`defaultOrderByInheritance` AS `defaultOrderByInheritance`,`object_query_ef_fd`.`orderByAsc` AS `orderByAsc`,`object_query_ef_fd`.`orderByDesc` AS `orderByDesc`,`object_query_ef_fd`.`ajaxReload` AS `ajaxReload`,`object_query_ef_fd`.`infiniteScroll` AS `infiniteScroll`,`object_query_ef_fd`.`limitOnFirstLoad` AS `limitOnFirstLoad`,`object_query_ef_fd`.`conditionsInheritance` AS `conditionsInheritance`,`object_query_ef_fd`.`filtersInheritance` AS `filtersInheritance`,`object_query_ef_fd`.`crossSellingCategory__id` AS `crossSellingCategory__id`,`object_query_ef_fd`.`crossSellingCategory__type` AS `crossSellingCategory__type`,`object_query_ef_fd`.`similarityFieldsInheritance` AS `similarityFieldsInheritance`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_fd` join `objects` on(`objects`.`id` = `object_query_ef_fd`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_oso
+-- A despejar estrutura para vista app-commerce.object_ef_oso
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_oso`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_oso` AS select `object_query_ef_oso`.`oo_id` AS `oo_id`,`object_query_ef_oso`.`oo_classId` AS `oo_classId`,`object_query_ef_oso`.`oo_className` AS `oo_className`,`object_query_ef_oso`.`ordernumber` AS `ordernumber`,`object_query_ef_oso`.`orderState` AS `orderState`,`object_query_ef_oso`.`orderdate` AS `orderdate`,`object_query_ef_oso`.`items` AS `items`,`object_query_ef_oso`.`comment` AS `comment`,`object_query_ef_oso`.`customerOrderData` AS `customerOrderData`,`object_query_ef_oso`.`voucherTokens` AS `voucherTokens`,`object_query_ef_oso`.`giftItems` AS `giftItems`,`object_query_ef_oso`.`subTotalNetPrice` AS `subTotalNetPrice`,`object_query_ef_oso`.`subTotalPrice` AS `subTotalPrice`,`object_query_ef_oso`.`totalNetPrice` AS `totalNetPrice`,`object_query_ef_oso`.`totalPrice` AS `totalPrice`,`object_query_ef_oso`.`taxInfo` AS `taxInfo`,`object_query_ef_oso`.`currency` AS `currency`,`object_query_ef_oso`.`cartId` AS `cartId`,`object_query_ef_oso`.`successorOrder__id` AS `successorOrder__id`,`object_query_ef_oso`.`successorOrder__type` AS `successorOrder__type`,`object_query_ef_oso`.`cartHash` AS `cartHash`,`object_query_ef_oso`.`customer__id` AS `customer__id`,`object_query_ef_oso`.`customer__type` AS `customer__type`,`object_query_ef_oso`.`customerFirstname` AS `customerFirstname`,`object_query_ef_oso`.`customerLastname` AS `customerLastname`,`object_query_ef_oso`.`customerCompany` AS `customerCompany`,`object_query_ef_oso`.`customerStreet` AS `customerStreet`,`object_query_ef_oso`.`customerZip` AS `customerZip`,`object_query_ef_oso`.`customerCity` AS `customerCity`,`object_query_ef_oso`.`customerCountry` AS `customerCountry`,`object_query_ef_oso`.`customerEmail` AS `customerEmail`,`object_query_ef_oso`.`deliveryFirstname` AS `deliveryFirstname`,`object_query_ef_oso`.`deliveryLastname` AS `deliveryLastname`,`object_query_ef_oso`.`deliveryCompany` AS `deliveryCompany`,`object_query_ef_oso`.`deliveryStreet` AS `deliveryStreet`,`object_query_ef_oso`.`deliveryZip` AS `deliveryZip`,`object_query_ef_oso`.`deliveryCity` AS `deliveryCity`,`object_query_ef_oso`.`deliveryCountry` AS `deliveryCountry`,`object_query_ef_oso`.`paymentReference` AS `paymentReference`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_oso` join `objects` on(`objects`.`id` = `object_query_ef_oso`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_osoi
+-- A despejar estrutura para vista app-commerce.object_ef_osoi
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_osoi`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_osoi` AS select `object_query_ef_osoi`.`oo_id` AS `oo_id`,`object_query_ef_osoi`.`oo_classId` AS `oo_classId`,`object_query_ef_osoi`.`oo_className` AS `oo_className`,`object_query_ef_osoi`.`orderState` AS `orderState`,`object_query_ef_osoi`.`product__id` AS `product__id`,`object_query_ef_osoi`.`product__type` AS `product__type`,`object_query_ef_osoi`.`productNumber` AS `productNumber`,`object_query_ef_osoi`.`productName` AS `productName`,`object_query_ef_osoi`.`amount` AS `amount`,`object_query_ef_osoi`.`totalNetPrice` AS `totalNetPrice`,`object_query_ef_osoi`.`totalPrice` AS `totalPrice`,`object_query_ef_osoi`.`taxInfo` AS `taxInfo`,`object_query_ef_osoi`.`comment` AS `comment`,`object_query_ef_osoi`.`subItems` AS `subItems`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_osoi` join `objects` on(`objects`.`id` = `object_query_ef_osoi`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_ostc
+-- A despejar estrutura para vista app-commerce.object_ef_ostc
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_ostc`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_ostc` AS select `object_query_ef_ostc`.`oo_id` AS `oo_id`,`object_query_ef_ostc`.`oo_classId` AS `oo_classId`,`object_query_ef_ostc`.`oo_className` AS `oo_className`,`object_query_ef_ostc`.`taxEntryCombinationType` AS `taxEntryCombinationType`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_ostc` join `objects` on(`objects`.`id` = `object_query_ef_ostc`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_osvs
+-- A despejar estrutura para vista app-commerce.object_ef_osvs
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_osvs`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_osvs` AS select `object_query_ef_osvs`.`oo_id` AS `oo_id`,`object_query_ef_osvs`.`oo_classId` AS `oo_classId`,`object_query_ef_osvs`.`oo_className` AS `oo_className`,`object_query_ef_osvs`.`name` AS `name`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_osvs` join `objects` on(`objects`.`id` = `object_query_ef_osvs`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_osvt
+-- A despejar estrutura para vista app-commerce.object_ef_osvt
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_osvt`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_osvt` AS select `object_query_ef_osvt`.`oo_id` AS `oo_id`,`object_query_ef_osvt`.`oo_classId` AS `oo_classId`,`object_query_ef_osvt`.`oo_className` AS `oo_className`,`object_query_ef_osvt`.`tokenId` AS `tokenId`,`object_query_ef_osvt`.`token` AS `token`,`object_query_ef_osvt`.`voucherSeries__id` AS `voucherSeries__id`,`object_query_ef_osvt`.`voucherSeries__type` AS `voucherSeries__type`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_osvt` join `objects` on(`objects`.`id` = `object_query_ef_osvt`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_otcp
+-- A despejar estrutura para vista app-commerce.object_ef_otcp
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_otcp`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_otcp` AS select `object_query_ef_otcp`.`oo_id` AS `oo_id`,`object_query_ef_otcp`.`oo_classId` AS `oo_classId`,`object_query_ef_otcp`.`oo_className` AS `oo_className`,`object_query_ef_otcp`.`OSproductNumber` AS `OSproductNumber`,`object_query_ef_otcp`.`OSName` AS `OSName`,`object_query_ef_otcp`.`productGroup` AS `productGroup`,`object_query_ef_otcp`.`price` AS `price`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_otcp` join `objects` on(`objects`.`id` = `object_query_ef_otcp`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_oto
+-- A despejar estrutura para vista app-commerce.object_ef_oto
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_oto`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_oto` AS select `object_query_ef_oto`.`oo_id` AS `oo_id`,`object_query_ef_oto`.`oo_classId` AS `oo_classId`,`object_query_ef_oto`.`oo_className` AS `oo_className`,`object_query_ef_oto`.`offernumber` AS `offernumber`,`object_query_ef_oto`.`dateCreated` AS `dateCreated`,`object_query_ef_oto`.`dateValidUntil` AS `dateValidUntil`,`object_query_ef_oto`.`totalPriceBeforeDiscount` AS `totalPriceBeforeDiscount`,`object_query_ef_oto`.`totalPrice` AS `totalPrice`,`object_query_ef_oto`.`discountType` AS `discountType`,`object_query_ef_oto`.`discount` AS `discount`,`object_query_ef_oto`.`cartId` AS `cartId`,`object_query_ef_oto`.`items` AS `items`,`object_query_ef_oto`.`customItems` AS `customItems`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_oto` join `objects` on(`objects`.`id` = `object_query_ef_oto`.`oo_id`));
 
--- A despejar estrutura para vista app-ecommerce.object_ef_otoi
+-- A despejar estrutura para vista app-commerce.object_ef_otoi
 -- A remover tabela temporária e a criar estrutura VIEW final
 DROP TABLE IF EXISTS `object_ef_otoi`;
 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `object_ef_otoi` AS select `object_query_ef_otoi`.`oo_id` AS `oo_id`,`object_query_ef_otoi`.`oo_classId` AS `oo_classId`,`object_query_ef_otoi`.`oo_className` AS `oo_className`,`object_query_ef_otoi`.`product__id` AS `product__id`,`object_query_ef_otoi`.`product__type` AS `product__type`,`object_query_ef_otoi`.`productNumber` AS `productNumber`,`object_query_ef_otoi`.`productName` AS `productName`,`object_query_ef_otoi`.`amount` AS `amount`,`object_query_ef_otoi`.`originalTotalPrice` AS `originalTotalPrice`,`object_query_ef_otoi`.`DiscountType` AS `DiscountType`,`object_query_ef_otoi`.`discount` AS `discount`,`object_query_ef_otoi`.`finalTotalPrice` AS `finalTotalPrice`,`object_query_ef_otoi`.`subItems` AS `subItems`,`object_query_ef_otoi`.`comment` AS `comment`,`object_query_ef_otoi`.`cartItemKey` AS `cartItemKey`,`objects`.`id` AS `id`,`objects`.`parentId` AS `parentId`,`objects`.`type` AS `type`,`objects`.`key` AS `key`,`objects`.`path` AS `path`,`objects`.`index` AS `index`,`objects`.`published` AS `published`,`objects`.`creationDate` AS `creationDate`,`objects`.`modificationDate` AS `modificationDate`,`objects`.`userOwner` AS `userOwner`,`objects`.`userModification` AS `userModification`,`objects`.`classId` AS `classId`,`objects`.`className` AS `className`,`objects`.`childrenSortBy` AS `childrenSortBy`,`objects`.`childrenSortOrder` AS `childrenSortOrder`,`objects`.`versionCount` AS `versionCount` from (`object_query_ef_otoi` join `objects` on(`objects`.`id` = `object_query_ef_otoi`.`oo_id`));
